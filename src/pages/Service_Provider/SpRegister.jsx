@@ -14,7 +14,7 @@ function SpRegister() {
                         <Col md={6}>
                             <Row>
                                 <Col md={12} className='d-flex justify-content-center align-items-center mt-5 mb-5 flex-column'>
-                                    <h3 className='text-center mt-3 text-primary'>Service Provider Registration</h3>
+                                    <h3 className=' roboto-bold text-center mt-3 text-primary'>Service Provider Registration</h3>
                                     <input style={{ borderRadius: '50px' }} type="text" className='form-control mt-3' placeholder='Username' />
                                     <input style={{ borderRadius: '50px' }} type="email" className='form-control mt-3' placeholder='Email Address' />
                                     <input style={{ borderRadius: '50px' }} type="password" className='form-control mt-3' placeholder='Password' />
