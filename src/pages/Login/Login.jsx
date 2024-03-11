@@ -1,6 +1,6 @@
 import React from "react";
 import "./Login.css";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import TextField from "@mui/material/TextField";
 import google from "../../Images/google2.png";
 
@@ -101,7 +101,7 @@ function Login() {
                         <label htmlFor="remember" className="me-3">
                           Remember?
                         </label>
-                        <a href="#" className="me-auto">
+                        <a href="/forgot-password" className="me-auto">
                           Forgot password?
                         </a>
                       </div>

@@ -3,7 +3,7 @@ import "./ClientRegister.css";
 import { Col, Row } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { registerAPI } from "../../Services/allAPI";
+import { registerAPI } from "../../../Services/allAPI";
 
 function ClientRegister() {
   const [userDetails, setUserDetails] = useState({
