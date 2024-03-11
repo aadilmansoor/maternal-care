@@ -1,0 +1,19 @@
+.dash_btn{
+    background-color: rgba(0, 0, 0, 0.379);
+}
+
+.top_nav{
+    background-color: rgba(26, 87, 109, 0.63);
+
+}
+
+.admin_home{
+    background-image:linear-gradient(rgba(0,0,0,0.7),#c1dde3), url('https://images.pexels.com/photos/18610087/pexels-photo-18610087/free-photo-of-mother-sitting-with-baby-on-lap-in-park.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    width: 100%;
+    background-size: cover;
+    background-repeat:no-repeat ;
+    background-position: center;
+}
+
+
+
