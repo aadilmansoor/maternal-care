@@ -35,7 +35,7 @@ function Header() {
                 variant="dark"
                 id="dropdown-basic"
               >
-                <i class="fa-solid fa-bars"></i>
+                <i className="fa-solid fa-bars"></i>
               </Dropdown.Toggle>
             </Dropdown>
           </Col>
@@ -48,7 +48,7 @@ function Header() {
           <Col md={4} className=" d-flex justify-content-end">
             <button className="btn" onClick={handleShowRight}>
               <h1 className=" text-dark me-2 ">
-                <i class="fa-solid fa-circle-user"></i>
+                <i className="fa-solid fa-circle-user"></i>
               </h1>
             </button>
           </Col>

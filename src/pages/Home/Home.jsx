@@ -22,7 +22,7 @@ function Home() {
               alt="banner"
             />
           </Link>
-          {/* <h1 className='ms-auto me-5 mt-3 text-warning'><i class="fa-solid fa-circle-user"></i></h1>     */}
+          {/* <h1 className='ms-auto me-5 mt-3 text-warning'><i className="fa-solid fa-circle-user"></i></h1>     */}
           <Dropdown
             className="ms-auto me-5 mt-3"
             style={{ height: "50px", width: "50px", borderRadius: "25px" }}
@@ -39,7 +39,7 @@ function Home() {
               id="dropdown-basic"
             >
               <h1 className=" text-secondary">
-                <i class="fa-solid fa-circle-user"></i>
+                <i className="fa-solid fa-circle-user"></i>
               </h1>
             </Dropdown.Toggle>
             <Dropdown.Menu>
@@ -50,20 +50,16 @@ function Home() {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <div className="d-flex justify-content-center align-items-center flex-column mt-5">
-          <h1 className="text-light  fw-bold mt-5">
+        <div className="d-flex justify-content-center align-items-center flex-column home-heading">
+          <h1 className="text-light  fw-bold mt-5 text-center">
             Begin your child's journey with Us
           </h1>
           <Link
             to={"/login"}
-            className=" d-flex justify-content-center align-items-center"
-            style={{
-              textDecoration: "none",
-              backgroundColor: "rgba(18, 14, 14, 0.566)",
-            }}
+            className="d-flex justify-content-center align-items-center login-link"
           >
-            <button className="btn border text-light w-100">
-              Get Started <i class="fa-solid fa-right-to-bracket"></i>
+            <button className="btn border text-light w-100 btn-get-start mt-3">
+              Get Started <i className="fa-solid fa-right-to-bracket"></i>
             </button>
           </Link>
         </div>
@@ -189,7 +185,7 @@ function Home() {
             <div className="ms-5">
               <h5 className="mt-3 ">
                 <i
-                  class="fa-solid fa-location-dot me-4"
+                  className="fa-solid fa-location-dot me-4"
                   style={{ color: "rgb(26, 87, 109)" }}
                 ></i>
                 K C Tower, CSEZ, Seaport - Airport Rd near , <br />{" "}
@@ -197,14 +193,14 @@ function Home() {
               </h5>
               <h5 className="mt-3 ">
                 <i
-                  class="fa-solid fa-phone me-4"
+                  className="fa-solid fa-phone me-4"
                   style={{ color: "rgb(26, 87, 109)" }}
                 ></i>
                 +91 8921951119
               </h5>
               <h5 className="mt-3 ">
                 <i
-                  class="fa-solid fa-envelope me-4"
+                  className="fa-solid fa-envelope me-4"
                   style={{ color: "rgb(26, 87, 109)" }}
                 ></i>
                 maternitycare@gmail.com
@@ -218,7 +214,7 @@ function Home() {
         <Row>
           <h2 className="text-center mt-3 mb-5">Reviews</h2>
           <Carousel>
-            <Carousel.Item>
+            <Carousel.Item className="mb-4">
               <Col
                 md={12}
                 className="d-flex justify-content-center align-items-center flex-column"

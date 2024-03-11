@@ -38,10 +38,10 @@ function Footer() {
               </p>
               <hr />
               <div>
-                <i class="fa-brands fa-instagram me-4 fa-2x"></i>
-                <i class="fa-brands fa-facebook-f me-4 fa-2x"></i>
-                <i class="fa-brands fa-whatsapp me-4 fa-2x"></i>
-                <i class="fa-solid fa-location-dot me-4 fa-2x"></i>
+                <i className="fa-brands fa-instagram me-4 fa-2x"></i>
+                <i className="fa-brands fa-facebook-f me-4 fa-2x"></i>
+                <i className="fa-brands fa-whatsapp me-4 fa-2x"></i>
+                <i className="fa-solid fa-location-dot me-4 fa-2x"></i>
               </div>
             </Col>
             <p className="text-center">Copyright © 2024. All rights Reserved</p>
