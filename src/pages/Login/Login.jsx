@@ -48,7 +48,7 @@ function Login() {
                         borderRadius: "50%",
                         margin: "20px 0",
                       }}
-                      alt=""
+                      alt="getstarted"
                     />
                     <p
                       style={{
@@ -128,7 +128,7 @@ function Login() {
                             className="ms-2 mt-2"
                             src={google}
                             style={{ width: "25px", height: "25px" }}
-                            alt=""
+                            alt="google"
                           />
                           <h6 className="mt-2">Sign in with Google</h6>
                         </div>
