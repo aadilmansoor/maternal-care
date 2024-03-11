@@ -75,7 +75,7 @@ function Home() {
             <img
               src="https://images.pexels.com/photos/3398674/pexels-photo-3398674.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               style={{ height: "400px", width: "100%", borderRadius: "40px" }}
-              alt="no image"
+              alt="aboutus"
             />
           </Col>
           <Col md={6}>
@@ -113,7 +113,7 @@ function Home() {
             <img
               src={img2}
               style={{ height: "80px ", width: "80px" }}
-              alt="no image"
+              alt="service4"
             />
             <h4>Pre Delivery Care</h4>
             <p>
@@ -126,7 +126,7 @@ function Home() {
             <img
               src={img7}
               style={{ height: "80px ", width: "90px" }}
-              alt="no image"
+              alt="service2"
             />
             <h4>Yoga Therapy</h4>
             <p>
@@ -140,7 +140,7 @@ function Home() {
             <img
               src={img5}
               style={{ height: "80px ", width: "80px" }}
-              alt="no image"
+              alt="service3"
             />
             <h4>Doctors Support</h4>
             <p>
@@ -155,7 +155,7 @@ function Home() {
             <img
               src={img1}
               style={{ height: "80px ", width: "80px" }}
-              alt="no image"
+              alt="service1"
             />
             <h4>Post Delivery Care</h4>
             <p>
@@ -174,14 +174,14 @@ function Home() {
             <img
               src="https://images.pexels.com/photos/5424696/pexels-photo-5424696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               style={{ height: "300px", width: "100%", borderRadius: "40px" }}
-              alt=""
+              alt="contactus1"
             />
           </Col>
           <Col md={3} className="mt-5 ">
             <img
               src="https://images.pexels.com/photos/7282475/pexels-photo-7282475.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               style={{ height: "300px", width: "100%", borderRadius: "40px" }}
-              alt=""
+              alt="contactus"
             />
           </Col>
           <Col md={6} className="mt-5 ">
@@ -230,7 +230,7 @@ function Home() {
                     width: "100px",
                     borderRadius: "50px",
                   }}
-                  alt="no image"
+                  alt="reviewprofile1"
                 />
                 <p className="text-center mt-3">
                   My Therapists Bhavya was very gentle with baby and great for
@@ -252,7 +252,7 @@ function Home() {
                     width: "100px",
                     borderRadius: "50px",
                   }}
-                  alt="no image"
+                  alt="reviewprofile2"
                 />
                 <p className="text-center mt-3">
                   I am availing the service from Janika along with products they
@@ -275,7 +275,7 @@ function Home() {
                     width: "100px",
                     borderRadius: "50px",
                   }}
-                  alt="no image"
+                  alt="reviewprofile3"
                 />
                 <p className="text-center mt-3">
                   I have used Janika Ayurveda services since pregnancy and

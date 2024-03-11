@@ -110,7 +110,7 @@ function Header() {
                     height: "100px",
                     borderRadius: "50%",
                   }}
-                  alt=""
+                  alt="profile"
                 />
               </label>
             </div>
