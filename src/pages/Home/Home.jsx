@@ -50,8 +50,8 @@ function Home() {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <div className="d-flex justify-content-center align-items-center flex-column home-heading">
-          <h1 className="text-light  fw-bold mt-5 text-center">
+        <div className="d-flex justify-content-center align-items-center flex-column mt-5">
+          <h1 className=" righteous-regular text-light  fw-bold mt-5">
             Begin your child's journey with Us
           </h1>
           <Link
