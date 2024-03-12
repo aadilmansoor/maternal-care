@@ -33,14 +33,15 @@ function Login() {
                     className="d-flex flex-column justify-content-center align-items-center"
                   >
                     <h2
-                      className="mt-4"
-                      style={{ color: "blueviolet", textAlign: "center" }}
+                      className="mt-4 righteous-regular"
+                      style={{ color: "white", textAlign: "center" }}
                     >
                       HELLO
                       <br />
                       WELCOME!
                     </h2>
                     <img
+                       
                       src="https://media.istockphoto.com/id/1341609914/vector/pregnant-couple-background-vector-illustration-with-a-husband-takes-care-and-hugs-his-wife.jpg?s=612x612&w=0&k=20&c=IZ7k7IktzY_x61KybAj2yBioHTLk6r86jafhB3ExN0E="
                       style={{
                         width: "200px",
@@ -50,10 +51,11 @@ function Login() {
                       }}
                       alt="getstarted"
                     />
-                    <p
+                    <p 
                       style={{
+                        
                         fontWeight: "bold",
-                        color: "blueviolet",
+                        color: "white",
                         textAlign: "center",
                       }}
                     >
