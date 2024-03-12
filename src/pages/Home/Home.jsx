@@ -1,4 +1,3 @@
-import React from "react";
 import "./Home.css";
 import logo from "../../Images/logo.png";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -71,7 +70,7 @@ function Home() {
             <img
               src="https://images.pexels.com/photos/3398674/pexels-photo-3398674.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               style={{ height: "400px", width: "100%", borderRadius: "40px" }}
-              alt="aboutus"
+              alt="about us"
             />
           </Col>
           <Col md={6}>

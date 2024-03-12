@@ -13,12 +13,6 @@ function UserHeader() {
   const handleCloseRight = () => setShowRight(false);
   const handleShowRight = () => setShowRight(true);
 
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
-
   return (
     <>
       <div className="top_nav" style={{ width: "100%" }}>

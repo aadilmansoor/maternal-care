@@ -17,11 +17,11 @@ function Header() {
   const handleCloseRight = () => setShowRight(false);
   const handleShowRight = () => setShowRight(true);
 
-  const [index, setIndex] = useState(0);
+  // const [index, setIndex] = useState(0);
 
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
+  // const handleSelect = (selectedIndex) => {
+  //   setIndex(selectedIndex);
+  // };
 
   return (
     <>
