@@ -10,6 +10,7 @@ import LeaveRequest from "./pages/Admin/LeaveRequest/LeaveRequest";
 import Bookings from "./pages/Admin/Bookings/Bookings";
 import ClientDashboard from "./pages/Client/ClientDashboard/ClientDashboard";
 import ProviderDashboard from "./pages/Service_Provider/ProviderDashboard/ProviderDashboard";
+import Categories from "./pages/Admin/Categories/Categories";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/service-provider-register" element={<SpRegister />} />
         <Route path="/leave-request" element={<LeaveRequest />} />
         <Route path="/bookings" element={<Bookings />} />
+        <Route path="/categories" element={<Categories/>}/>
       </Routes>
       <Footer />
     </div>
