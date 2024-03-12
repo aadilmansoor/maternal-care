@@ -1,5 +1,5 @@
-export { default as Header } from "./Header";
-export { default as Footer } from "./Footer";
-export { default as ServicesCards } from "./ServicesCards";
-export { default as UserHeader } from "./UserHeader";
-export { default as UserHero } from "./UserHero";
+export { default as Header } from "./header/Header";
+export { default as Footer } from "./footer/Footer";
+export { default as ServicesCards } from "./servicecards/ServicesCards";
+export { default as UserHeader } from "./userheader/UserHeader";
+export { default as UserHero } from "./userhero/UserHero";
