@@ -24,3 +24,32 @@ export const userServices = [
     path: "/user-complaints",
   },
 ];
+
+
+export const serviceProviderServices=[
+  {
+    service:"payment",
+    path:"/"
+  },
+  {
+    service:"payment",
+    path:"/"
+  },
+  {
+    service:"payment",
+    path:"/"
+  },
+  {
+    service:"payment",
+    path:"/"
+  },
+  {
+    service:"payment",
+    path:"/"
+  },
+  {
+    service:"payment",
+    path:"/"
+  },
+];
+

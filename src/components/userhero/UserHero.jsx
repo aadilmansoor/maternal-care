@@ -1,6 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import "./userHero.css";
-import userHero from "../Images/user-hero.jpg";
+import userHero from "../../Images/user-hero.jpg";
 
 const UserHero = () => {
   return (

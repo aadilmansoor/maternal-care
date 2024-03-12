@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+
 import {
   Login,
   Home,
@@ -14,6 +15,7 @@ import {
 } from "./pages";
 
 import { Footer } from "./components";
+
 
 function App() {
   return (

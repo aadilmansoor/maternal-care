@@ -5,7 +5,7 @@ import { Col, Row } from "react-bootstrap";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
-import logo from "../Images/img2.png";
+import logo from "../../Images/img2.png";
 
 function UserHeader() {
   const [showRight, setShowRight] = useState(false);
