@@ -25,6 +25,7 @@ export const userServices = [
   },
 ];
 
+
 export const serviceProviderServices=[
   {
     service:"payment",
@@ -51,3 +52,4 @@ export const serviceProviderServices=[
     path:"/"
   },
 ];
+
