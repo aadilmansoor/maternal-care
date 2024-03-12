@@ -1,5 +1,5 @@
 import { UserHero, UserHeader, ServicesCards } from "../../../components";
-import { userServices } from "../../../Constants/UserServices";
+import { userServices } from "../../../Constants/serviceList";
 
 const ClientDashboard = () => {
   return (

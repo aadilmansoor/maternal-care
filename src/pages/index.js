@@ -1,0 +1,10 @@
+export { default as AdminDashboard } from "./Admin/AdminDashboard/AdminDashBoard";
+export { default as Bookings } from "./Admin/Bookings/Bookings";
+export { default as Categories } from "./Admin/Categories/Categories";
+export { default as LeaveRequest } from "./Admin/LeaveRequest/LeaveRequest";
+export { default as ClientDashboard } from "./Client/ClientDashboard/ClientDashboard";
+export { default as ClientRegister } from "./Client/ClientRegister/ClientRegister";
+export { default as Home } from "./Home/Home";
+export { default as Login } from "./Login/Login";
+export { default as ProviderDashboard } from "./Service_Provider/ProviderDashboard/ProviderDashboard";
+export { default as SpRegister } from "./Service_Provider/SpRegister";
