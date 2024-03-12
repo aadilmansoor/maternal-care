@@ -1,7 +1,6 @@
 import React from "react";
 import "./userHeader.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Dropdown from "react-bootstrap/Dropdown";
 import { Col, Row } from "react-bootstrap";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
@@ -9,11 +8,7 @@ import { Link } from "react-router-dom";
 import logo from "../Images/img2.png";
 
 function UserHeader() {
-  const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
-
-  const handleCloseLeft = () => setShowLeft(false);
-  const handleShowLeft = () => setShowLeft(true);
 
   const handleCloseRight = () => setShowRight(false);
   const handleShowRight = () => setShowRight(true);
@@ -28,24 +23,26 @@ function UserHeader() {
     <>
       <div className="top_nav" style={{ width: "100%" }}>
         <Row>
-          <Col>
-            <Link to={"/user-dashboard"}>
-              <div className="logo-container ms-2 d-flex align-items-center my-1">
+          <Col className="py-1">
+            <div className="d-flex align-items-center h-100">
+              <Link to={"/user-dashboard"} className="ms-3">
                 <img
                   src={logo}
-                  className="rounded-circle bg-dark object-fit-contain h-100"
+                  className="rounded-circle bg-dark object-fit-contain logo-container"
                   alt="logo"
                 />
-              </div>
-            </Link>
+              </Link>
+            </div>
           </Col>
 
-          <Col className=" d-flex justify-content-end align-items-center">
-            <button className="btn" onClick={handleShowRight}>
-              <h1 className=" text-dark me-2 ">
-                <i className="fa-solid fa-circle-user"></i>
-              </h1>
-            </button>
+          <Col className=" d-flex justify-content-end align-items-center py-1">
+            <div className=" d-flex align-items-center justify-content-center me-3">
+              <button type="button" className="btn" onClick={handleShowRight}>
+                <h1 className=" text-dark me-2 ">
+                  <i className="fa-solid fa-circle-user fa-lg"></i>
+                </h1>
+              </button>
+            </div>
           </Col>
         </Row>
       </div>

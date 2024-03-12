@@ -1,9 +1,13 @@
-import UserHeader from "../../../components/UserHeader";
+import { UserHero, UserHeader, ServicesCards } from "../../../components";
+import { userServices } from "../../../Constants/UserServices";
 
 const ClientDashboard = () => {
   return (
-    <section>
+    <section className="text-center">
       <UserHeader />
+      <UserHero />
+      <h1 className="roboto-bold text-center mt-5 mb-3">Our Services</h1>
+      <ServicesCards services={userServices} />
     </section>
   );
 };
