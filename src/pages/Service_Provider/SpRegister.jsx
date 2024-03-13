@@ -57,139 +57,86 @@ function SpRegister() {
                   <h3 className=" roboto-bold text-center mt-3 text-primary">
                     Service Provider Registration
                   </h3>
-                  <Form onSubmit={handleSubmit}>
-                    <input
-                      style={{ borderRadius: "50px" }}
-                      type="text"
-                      className="form-control mt-3"
-                      placeholder="Username"
-                      onChange={(e) =>
-                        setProviderDetails({
-                          ...providerDetails,
-                          username: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      style={{ borderRadius: "50px" }}
-                      type="email"
-                      className="form-control mt-3"
-                      placeholder="Email Address"
-                      onChange={(e) =>
-                        setProviderDetails({
-                          ...providerDetails,
-                          email: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      style={{ borderRadius: "50px" }}
-                      type="password"
-                      className="form-control mt-3"
-                      placeholder="Password"
-                      onChange={(e) =>
-                        setProviderDetails({
-                          ...providerDetails,
-                          password: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      style={{ borderRadius: "50px" }}
-                      type="tel"
-                      className="form-control mt-3"
-                      placeholder="Phone Number"
-                      onChange={(e) =>
-                        setProviderDetails({
-                          ...providerDetails,
-                          mobile: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="text"
-                      placeholder="service"
-                      style={{ borderRadius: "50px" }}
-                      className="form-control mb-3 mt-2"
-                      onChange={(e) =>
-                        setProviderDetails({
-                          ...providerDetails,
-                          service: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="text"
-                      placeholder="specialization"
-                      style={{ borderRadius: "50px" }}
-                      className="form-control mb-3 mt-2"
-                      onChange={(e) =>
-                        setProviderDetails({
-                          ...providerDetails,
-                          specialization: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="text"
-                      placeholder="qualification"
-                      style={{ borderRadius: "50px" }}
-                      className="form-control mb-3 mt-2"
-                      onChange={(e) =>
-                        setProviderDetails({
-                          ...providerDetails,
-                          qualification: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="number"
-                      placeholder="Experience Year"
-                      style={{ borderRadius: "50px" }}
-                      className="form-control mb-3 mt-2"
-                      onChange={(e) =>
-                        setProviderDetails({
-                          ...providerDetails,
-                          exp_year: e.target.value,
-                        })
-                      }
-                    />
-                    <Form.Group controlId="formFile" className="mb-3 w-100">
-                      <Form.Label className="ms-2">
-                        Experience Certificate
-                      </Form.Label>
-                      <Form.Control
-                        type="file"
-                        accept=".pdf"
-                        style={{ borderRadius: "50px" }}
-                        onChange={(e) =>
-                          setProviderDetails({
-                            ...providerDetails,
-                            experience_crt: e.target.files[0],
-                          })
-                        }
-                      />
-                    </Form.Group>
-                    <input
-                      type="rate"
-                      placeholder="Rate"
-                      style={{ borderRadius: "50px" }}
-                      className="form-control mb-3 mt-2"
-                      onChange={(e) =>
-                        setProviderDetails({
-                          ...providerDetails,
-                          rate: e.target.value,
-                        })
-                      }
-                    />
-                    <button
-                      type="submit"
-                      className="w-100 mt-3 btn btn-danger"
-                      style={{ borderRadius: "50px" }}
-                    >
-                      REGISTER
-                    </button>
-                  </Form>
+
+                  <form action="">
+
+                 
+                  <input
+                    style={{ borderRadius: "50px" }}
+                    type="text"
+                    className="form-control mt-3"
+                    placeholder="Username"
+                    required
+                  />
+                  <input
+                    style={{ borderRadius: "50px" }}
+                    type="email"
+                    className="form-control mt-3"
+                    placeholder="Email Address"
+                    required
+                  />
+                  <input
+                    style={{ borderRadius: "50px" }}
+                    type="password"
+                    className="form-control mt-3"
+                    placeholder="Password"
+                    required
+                  />
+                  <input
+                    style={{ borderRadius: "50px" }}
+                    type="tel"
+                    className="form-control mt-3"
+                    placeholder="Phone Number"
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Service"
+                    style={{ borderRadius: "50px" }}
+                    className="form-control mb-3 mt-2"
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Specialization"
+                    style={{ borderRadius: "50px" }}
+                    className="form-control mb-3 mt-2"
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Qualification"
+                    style={{ borderRadius: "50px" }}
+                    className="form-control mb-3 mt-2"
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Experience Year"
+                    style={{ borderRadius: "50px" }}
+                    className="form-control mb-3 mt-2"
+                    required
+                  />
+                  <Form.Group controlId="formFile" className="mb-3 w-100"  >
+                    <Form.Label className="ms-2">Experience Certificate</Form.Label>
+                    <Form.Control type="file"  required accept=".pdf" style={{ borderRadius: "50px" }}/>
+                  </Form.Group>
+                  <input
+                    type="rate"
+                    placeholder="Rate"
+                    style={{ borderRadius: "50px" }}
+                    className="form-control mb-3 mt-2"
+                    required
+
+                  />
+                  <button
+                  type="submit"
+                    className="w-100 mt-3 btn btn-danger"
+                    style={{ borderRadius: "50px" }}
+                  >
+                    REGISTER
+                  </button>
+                  </form>
                 </Col>
               </Row>
             </Col>
