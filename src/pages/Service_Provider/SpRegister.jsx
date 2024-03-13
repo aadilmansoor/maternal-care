@@ -1,7 +1,40 @@
-import React from "react";
+import { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
+import { registerProviderAPI } from "../../Services/allAPI";
+import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function SpRegister() {
+  const navigate = useNavigate();
+  const [providerDetails, setProviderDetails] = useState({
+    username: "",
+    password: "",
+    email: "",
+    mobile: "",
+    service: "",
+    specialization: "",
+    qualification: "",
+    exp_year: "",
+    experience_crt: {},
+    rate: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await registerProviderAPI(providerDetails);
+    console.log(result);
+    if (result.status === 200) {
+      toast.success("Registration Successful", {
+        autoClose: 2000,
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 2500);
+    } else {
+      console.log(result);
+    }
+  };
+
   return (
     <>
       <div className="d-flex justify-content-center align-items-center mt-3 mb-5">
@@ -24,6 +57,7 @@ function SpRegister() {
                   <h3 className=" roboto-bold text-center mt-3 text-primary">
                     Service Provider Registration
                   </h3>
+
                   <form action="">
 
                  
@@ -110,12 +144,13 @@ function SpRegister() {
               <img
                 className=" mb-3"
                 src="https://dailynclexchallenge.com/static/img/blog/nurse-with-pregnant.png"
-                alt="serviceprovider2"
+                alt="service provider2"
                 style={{ height: "700px", width: "100%" }}
               />
             </Col>
           </Row>
         </Container>
+        <ToastContainer position="bottom-right" />
       </div>
     </>
   );

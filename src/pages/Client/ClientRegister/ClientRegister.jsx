@@ -4,8 +4,10 @@ import { Col, Row } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { registerAPI } from "../../../Services/allAPI";
+import { useNavigate } from "react-router-dom";
 
 function ClientRegister() {
+  const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({
     userName: "",
     userEmail: "",
@@ -27,12 +29,26 @@ function ClientRegister() {
     ) {
       toast.warning("Please Fill the Form Completely..!!");
     } else {
-      const result = await registerAPI(userDetails);
-      console.log(result);
-      if (result.status === 200) {
-        toast.warning("Registration Successfull");
-      } else {
-        console.log(result);
+      try {
+        const result = await registerAPI(userDetails);
+        if (result.status === 200) {
+          toast.success("Registration Successful");
+          setTimeout(() => {
+            navigate("/");
+          }, 2500);
+          return;
+        }
+        if (
+          result.response.data.code === 11000 &&
+          result.response.data.keyPattern &&
+          result.response.data.keyPattern.userEmail
+        ) {
+          toast.warning("Email already exists!");
+        } else {
+          toast.error("Oops! Something went wrong.");
+        }
+      } catch (error) {
+        console.log(error.response.data);
       }
     }
   };
@@ -119,7 +135,11 @@ function ClientRegister() {
           </Col>
         </Row>
       </div>
-      <ToastContainer position="top-center" autoClose={2000} theme="colored" />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        theme="colored"
+      />
     </>
   );
 }
