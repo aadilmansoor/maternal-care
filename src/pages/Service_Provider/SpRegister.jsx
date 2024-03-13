@@ -31,7 +31,7 @@ function SpRegister() {
         navigate("/");
       }, 2500);
     } else {
-      console.log(result);
+      toast.warning(result?.response?.data?.message);
     }
   };
 
