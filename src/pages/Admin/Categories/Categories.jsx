@@ -1,62 +1,64 @@
-import React from 'react'
-import { Col, Row } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card';
-import Image1 from '../../../Images/img10.jpg'
-import Image2 from '../../../Images/img11.jpg'
-import Image3 from '../../../Images/img12.jpg'
-import Image4 from '../../../Images/img13.jpg'
+import { Button, Form, InputGroup, ListGroup, Modal } from "react-bootstrap";
+import "./Categories.css";
+import { useState } from "react";
 
 const Categories = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
-    <div>
-    <Row>
-        <Col>
+    <>
+      <h2 className="text-center mt-5 mb-4">Categories</h2>
+      <div className="d-flex flex-column align-items-center mt-2 mb-5 list-container">
+        <Button className="mb-3 add-category-button" onClick={handleShow}>
+          Add New Category <i className="fa-solid fa-plus"></i>
+        </Button>
 
-    <Card style={{ width: '18rem' }}>
-      <Card.Body>
-      <Card.Img variant="top" src={Image3} />
-        <Card.Title className='text-center'>Pre Delivery Care</Card.Title>
-       
-      </Card.Body>
-    </Card>
-    </Col>
-    <Col>
-    <Card style={{ width: '18rem' }}>
-      <Card.Body>
-      <Card.Img  variant="top" src={Image1} />
-        <Card.Title className='text-center'>Yoga Therapy</Card.Title>
-        
-        
-      </Card.Body>
-    </Card>
-    </Col>
-    <Col>
-    <Card style={{ width: '18rem' }}>
-      <Card.Body>
-      <Card.Img variant="top" src={Image2} />
-        <Card.Title className='text-center'>Doctors Support</Card.Title>
-        
-        
-      </Card.Body>
-    </Card>
-    </Col>
-    <Col>
-    <Card style={{ width: '18rem' }}>
-      <Card.Body>
-      <Card.Img  variant="top" src={Image4} />
-        <Card.Title className='text-center'>Post Delivery Care</Card.Title>
-        
-       
-      </Card.Body>
-    </Card>
-    </Col>
+        <ListGroup className="categories-list">
+          <ListGroup.Item>
+            <div className="d-flex justify-content-between align-items-center mx-1">
+              <p className="m-0">Neuro</p>
+              <i className="fa-solid fa-trash text-danger"></i>
+            </div>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <div className="d-flex justify-content-between align-items-center mx-1">
+              <p className="m-0">Physio</p>
+              <i className="fa-solid fa-trash text-danger"></i>
+            </div>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <div className="d-flex justify-content-between align-items-center mx-1">
+              <p className="m-0">Neuro</p>
+              <i className="fa-solid fa-trash text-danger"></i>
+            </div>
+          </ListGroup.Item>
+        </ListGroup>
+      </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Category</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <InputGroup>
+            <Form.Control
+              placeholder="eg: Yoga Therapy"
+              aria-label="Category"
+            />
+          </InputGroup>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Add
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
 
-    </Row>
-   
-  
-    </div>
-    
-  )
-}
-
-export default Categories
+export default Categories;
