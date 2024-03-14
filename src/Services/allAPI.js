@@ -20,3 +20,21 @@ export const registerProviderAPI = async (reqBody) => {
     { "Content-Type": "multipart/form-data" }
   );
 };
+
+export const getProviderRequest = async () => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/admin/listofserviceproviderRequest`,
+    "",
+    ""
+  );
+};
+
+export const approveRequest = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/admin/approval/serviceprovider`,
+    req,
+    ""
+  );
+};

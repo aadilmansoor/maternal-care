@@ -15,7 +15,7 @@ import {
 } from "./pages";
 
 import { Footer } from "./components";
-
+import ProviderVerification from "./pages/Admin/ProviderVerification/ProviderVerification";
 
 function App() {
   return (
@@ -34,6 +34,7 @@ function App() {
         <Route path="/leave-request" element={<LeaveRequest />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="/admin/verification" element={<ProviderVerification />} />
       </Routes>
       <Footer />
     </div>
