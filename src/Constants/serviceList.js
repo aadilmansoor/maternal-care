@@ -25,31 +25,29 @@ export const userServices = [
   },
 ];
 
-
-export const serviceProviderServices=[
+export const serviceProviderServices = [
   {
-    service:"payment",
-    path:"/"
+    service: "payment",
+    path: "/",
   },
   {
-    service:"payment",
-    path:"/"
+    service: "payment",
+    path: "/",
   },
   {
-    service:"payment",
-    path:"/"
+    service: "payment",
+    path: "/",
   },
   {
-    service:"payment",
-    path:"/"
+    service: "payment",
+    path: "/",
   },
   {
-    service:"payment",
-    path:"/"
+    service: "payment",
+    path: "/",
   },
   {
-    service:"payment",
-    path:"/"
+    service: "payment",
+    path: "/",
   },
 ];
-

@@ -1,0 +1,24 @@
+.list-container {
+    margin: 0 48px;
+}
+
+.categories-list,
+.add-category-button {
+    width: 50%;
+}
+
+.categories-list i {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+
+    .list-container {
+        margin: 0 24px;
+    }
+
+    .categories-list,
+    .add-category-button {
+        width: 100%;
+    }
+}
