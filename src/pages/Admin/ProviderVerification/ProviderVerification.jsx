@@ -21,14 +21,13 @@ const ProviderVerification = () => {
     }
   };
 
-  if (requestList.length === 0) {
-  }
+ 
   return (
     <>
       <div className="d-flex justify-content-center align-items-center mt-5 flex-column">
         <h3 className="mb-3">Service Provider Verification</h3>
         <Container>
-          {requestList.length === 0 ? (
+          {requestList?.length === 0 ? (
             <p className="mt-5 text-center">No approval request pending</p>
           ) : (
             <Table responsive>

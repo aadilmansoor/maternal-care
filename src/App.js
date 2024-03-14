@@ -12,6 +12,7 @@ import {
   LeaveRequest,
   Bookings,
   Categories,
+  ClientBooking,
 } from "./pages";
 
 import { Footer } from "./components";
@@ -35,6 +36,8 @@ function App() {
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/admin/verification" element={<ProviderVerification />} />
+        <Route path="/user/bookings" element={<ClientBooking />} />
+        
       </Routes>
       <Footer />
     </div>
