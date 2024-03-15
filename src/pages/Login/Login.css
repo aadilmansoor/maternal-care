@@ -17,3 +17,7 @@
 .google {
     background-image: linear-gradient(to right, rgb(189, 232, 231), rgb(27, 167, 228));
 }
+
+* {
+    padding: 0;
+}

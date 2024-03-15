@@ -83,95 +83,100 @@ function Login() {
 
                   <Col lg={6} className="mt-4">
                     <div
-                      className="rounded"
+                      className="rounded h-100 d-flex justify-content-center align-items-center"
                       style={{ backgroundColor: "white", padding: "20px" }}
                     >
-                      <h4
-                        
-                        style={{ color: "blueviolet", textAlign: "center" }}
-                      >
-                        Login Your Account
-                      </h4>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <TextField
-                          className="w-75 "
-                          id="standard-basic"
-                          type="email"
-                          label="Email"
-                          variant="standard"
-                        />
-                      </div>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <TextField
-                          className="w-75 "
-                          id="standard-basic"
-                          type="password"
-                          label="Password"
-                          variant="standard"
-                        />
-                      </div>
-                      <div className="d-flex justify-content-center  gap-3 flex-wrap mt-3 ">
-                      <div className="">
-                        <input
-                          className="me-2"
-                          style={{ width: "20px", height: "20px" }}
-                          type="checkbox"
-                        />
-                        
-                        <label htmlFor="remember" className="">
-                          Remember?
-                        </label>
-                        </div>
-                        <a href="/forgot-password" className="">
-                          Forgot password?
-                        </a>
-                        
-                      </div>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <button className="btn login_button rounded w-75 mt-4">
-                          Login
-                        </button>
-                      </div>
-                      <div
-                        className={`d-flex justify-content-center align-items-center mt-3 ${
-                          role === "admin" ? "d-none" : ""
-                        }`}
-                      >
-                        <p>or connect with google</p>
-                      </div>
-                      <div
-                        className={`d-flex justify-content-center align-items-center ${
-                          role === "admin" ? "d-none" : ""
-                        }`}
-                      >
-                        <div
-                          className="google d-flex justify-content-evenly rounded"
-                          style={{
-                            width: "75%",
-                            height: "50px",
-                            backgroundColor: "#db4437",
-                            color: "white",
-                            cursor: "pointer",
-                          }}
+                      <div className="w-100">
+                        <h4
+                          style={{ color: "blueviolet", textAlign: "center" }}
                         >
-                          <img
-                            className="ms-2 mt-2"
-                            src={google}
-                            style={{ width: "25px", height: "25px" }}
-                            alt="google"
+                          Login Your Account
+                        </h4>
+                        <div className="d-flex justify-content-center align-items-center mt-2">
+                          <TextField
+                            className="w-75 mt-2"
+                            id="standard-basic"
+                            type="email"
+                            label="Email"
+                            variant="standard"
                           />
-                          <h6 className="mt-2">Sign in with Google</h6>
-                          
+                        </div>
+                        <div className="d-flex justify-content-center align-items-center">
+                          <TextField
+                            className="w-75 mt-2"
+                            id="standard-basic"
+                            type="password"
+                            label="Password"
+                            variant="standard"
+                          />
+                        </div>
+                        <div className="d-flex justify-content-center  gap-3 flex-wrap mt-3 ">
+                          <div className="">
+                            <input
+                              className="me-2"
+                              style={{ width: "20px", height: "20px" }}
+                              type="checkbox"
+                            />
+
+                            <label htmlFor="remember" className="">
+                              Remember?
+                            </label>
+                          </div>
+                          <a href="/forgot-password" className="">
+                            Forgot password?
+                          </a>
+                        </div>
+                        <div className="d-flex justify-content-center align-items-center">
+                          <button className="btn login_button rounded w-75 mt-4">
+                            Login
+                          </button>
+                        </div>
+                        <div
+                          className={`d-flex justify-content-center align-items-center mt-3 ${
+                            role === "admin" ? "d-none" : ""
+                          }`}
+                        >
+                          <p>or connect with google</p>
+                        </div>
+                        <div
+                          className={`d-flex justify-content-center align-items-center ${
+                            role === "admin" ? "d-none" : ""
+                          }`}
+                        >
+                          <div
+                            className="google d-flex justify-content-evenly rounded"
+                            style={{
+                              width: "75%",
+                              height: "50px",
+                              backgroundColor: "#db4437",
+                              color: "white",
+                              cursor: "pointer",
+                            }}
+                          >
+                            <img
+                              className="ms-2 mt-2"
+                              src={google}
+                              style={{ width: "25px", height: "25px" }}
+                              alt="google"
+                            />
+                            <h6 className="mt-2">Sign in with Google</h6>
+                          </div>
+                        </div>
+                        <div className="d-flex justify-content-center gap-4 flex-wrap mt-3">
+                          {role === "admin" ? (
+                            <a href="/login">Login as User</a>
+                          ) : (
+                            <a href="/login?role=admin">Login as Admin</a>
+                          )}
+                          {role === "provider" ? (
+                            <a href="/login">Login as User</a>
+                          ) : (
+                            <a href="/login?role=provider">
+                              Login as Service Provider
+                            </a>
+                          )}
                         </div>
                       </div>
-                      <div className="d-flex justify-content-center gap-4 flex-wrap mt-3">
-                        <a href="/login?role=admin" >
-                          Login as Admin
-                        </a>
-                        <a href="/service-login" >
-                          Login as Service Provider
-                        </a>
-                        </div>
                     </div>
                   </Col>
                 </Row>
