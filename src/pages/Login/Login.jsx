@@ -3,26 +3,28 @@ import "./Login.css";
 import { Col, Row } from "react-bootstrap";
 import TextField from "@mui/material/TextField";
 import google from "../../Images/google2.png";
+import { useLocation } from "react-router-dom";
 
 function Login() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const role = searchParams.get("role");
   return (
     <>
-      <Row className="overflow-hidden">
-        <div
-          className="login_page"
-          style={{ width: "100%", minHeight: "100vh" }}
-        >
+      <Row>
+        <div className="login_page" style={{ width: "100%" }}>
           <Row className="mt-5">
-            <Col lg={1}></Col>
+            <Col lg={1} className="p-0"></Col>
             <Col
               lg={10}
-              className="mt-5 d-flex justify-content-center align-items-center"
+              className="mt-5 d-flex justify-content-center align-items-center p-0"
             >
               <div
-                className="shadow rounded login_body"
+                className={`shadow rounded login_body ${
+                  role === "admin" ? "w-75" : ""
+                }`}
                 style={{
                   width: "100%",
-                  maxWidth: "800px",
                   backgroundColor: "white",
                   padding: "20px",
                 }}
@@ -36,12 +38,27 @@ function Login() {
                       className="mt-4 righteous-regular"
                       style={{ color: "white", textAlign: "center" }}
                     >
-                      HELLO
-                      <br />
-                      WELCOME!
+                      {role === "admin" ? (
+                        <>
+                          WELCOME
+                          <br />
+                          ADMIN
+                        </>
+                      ) : role === "provider" ? (
+                        <>
+                          WELCOME
+                          <br />
+                          SERVICE PROVIDER
+                        </>
+                      ) : (
+                        <>
+                          HELLO
+                          <br />
+                          WELCOME!
+                        </>
+                      )}
                     </h2>
                     <img
-                       
                       src="https://media.istockphoto.com/id/1341609914/vector/pregnant-couple-background-vector-illustration-with-a-husband-takes-care-and-hugs-his-wife.jpg?s=612x612&w=0&k=20&c=IZ7k7IktzY_x61KybAj2yBioHTLk6r86jafhB3ExN0E="
                       style={{
                         width: "200px",
@@ -51,9 +68,8 @@ function Login() {
                       }}
                       alt="getstarted"
                     />
-                    <p 
+                    <p
                       style={{
-                        
                         fontWeight: "bold",
                         color: "white",
                         textAlign: "center",
@@ -116,10 +132,18 @@ function Login() {
                           Login
                         </button>
                       </div>
-                      <div className="d-flex justify-content-center align-items-center mt-3">
+                      <div
+                        className={`d-flex justify-content-center align-items-center mt-3 ${
+                          role === "admin" ? "d-none" : ""
+                        }`}
+                      >
                         <p>or connect with google</p>
                       </div>
-                      <div className="d-flex justify-content-center align-items-center">
+                      <div
+                        className={`d-flex justify-content-center align-items-center ${
+                          role === "admin" ? "d-none" : ""
+                        }`}
+                      >
                         <div
                           className="google d-flex justify-content-evenly rounded"
                           style={{
@@ -153,7 +177,7 @@ function Login() {
                 </Row>
               </div>
             </Col>
-            <Col lg={1}></Col>
+            <Col lg={1} className="p-0"></Col>
           </Row>
         </div>
       </Row>
