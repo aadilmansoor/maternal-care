@@ -13,18 +13,16 @@ function Login() {
     <>
       <Row>
         <div className="login_page" style={{ width: "100%" }}>
-          <Row className="mt-5">
+          <Row className="my-5">
             <Col lg={1} className="p-0"></Col>
             <Col
               lg={10}
               className="mt-5 d-flex justify-content-center align-items-center p-0"
             >
               <div
-                className={`shadow rounded login_body ${
-                  role === "admin" ? "w-75" : ""
-                }`}
+                className="shadow rounded login_body"
                 style={{
-                  width: "100%",
+                  width: "75%",
                   backgroundColor: "white",
                   padding: "20px",
                 }}
@@ -64,7 +62,7 @@ function Login() {
                         width: "200px",
                         height: "200px",
                         borderRadius: "50%",
-                        margin: "20px 0",
+                        margin: "20p 0",
                       }}
                       alt="getstarted"
                     />
@@ -81,7 +79,7 @@ function Login() {
                     </p>
                   </Col>
 
-                  <Col lg={6} className="mt-4">
+                  <Col lg={6} className="my-4">
                     <div
                       className="rounded h-100 d-flex justify-content-center align-items-center"
                       style={{ backgroundColor: "white", padding: "20px" }}
