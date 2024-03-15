@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import { approveRequest, getProviderRequest } from "../../../Services/allAPI";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const ProviderVerification = () => {
   const [requestList, setRequestList] = useState([]);
@@ -68,7 +68,6 @@ const ProviderVerification = () => {
           )}
         </Container>
       </div>
-      <ToastContainer autoClose={2000} theme="colored" />
     </>
   );
 };

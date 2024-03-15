@@ -38,3 +38,12 @@ export const approveRequest = async (req) => {
     ""
   );
 };
+
+export const serviceProviderLogin = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/serviceprovider/login`,
+    req,
+    ""
+  );
+};

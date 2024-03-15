@@ -1,8 +1,17 @@
+import { useEffect } from "react";
 import { serviceProviderServices } from "../../../Constants/serviceList";
 import { ProviderHero, ServicesCards } from "../../../components";
-import "./ProviderServices.css"
+import "./ProviderServices.css";
 
 const ProviderDashboard = () => {
+  useEffect(() => {
+    if (
+      !localStorage.getItem("maternity-token") &&
+      localStorage.getItem("maternity-role") !== "provider"
+    ) {
+      alert("Please Login");
+    }
+  }, []);
   return (
     <div>
       <ProviderHero />
