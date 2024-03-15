@@ -1,19 +1,21 @@
-.login_page{
+.login_page {
     background-image: url('https://wallpapers.com/images/hd/light-blue-wave-poltnby4bf2r3bn6.jpg');
     width: 100%;
     background-repeat: no-repeat;
-    height: 100vh;
+    padding-bottom: 50px;
+    overflow-x: hidden;
+
 }
 
-.login_body{
-    background-image:linear-gradient(to right, rgb(151, 176, 175) , rgb(44, 129, 227));
+.login_body {
+    background-image: linear-gradient(to right, rgb(151, 176, 175), rgb(44, 129, 227));
     box-shadow: 2px aqua;
 }
 
-.login_button{
-    background-image: linear-gradient(to right, rgb(21, 171, 166) , rgb(147, 53, 148));
+.login_button {
+    background-image: linear-gradient(to right, rgb(21, 171, 166), rgb(147, 53, 148));
 }
 
-.google{
-    background-image: linear-gradient(to right, rgb(189, 232, 231) , rgb(27, 167, 228)); 
+.google {
+    background-image: linear-gradient(to right, rgb(189, 232, 231), rgb(27, 167, 228));
 }
