@@ -10,13 +10,13 @@
     box-shadow: 2px aqua;
 }
 
-.login_button {
-    background-image: linear-gradient(to right, rgb(21, 171, 166), rgb(147, 53, 148));
-}
+/* .login_button {
+    background-image: linear-gradient(to right, rgb(21, 171, 166), rgb(245, 111, 247));
+} */
 
-.google {
+/* .google {
     background-image: linear-gradient(to right, rgb(189, 232, 231), rgb(27, 167, 228));
-}
+} */
 
 * {
     padding: 0;

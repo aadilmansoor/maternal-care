@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { registerProviderAPI } from "../../Services/allAPI";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 function SpRegister() {
@@ -27,9 +27,7 @@ function SpRegister() {
       toast.success("Registration Successful", {
         autoClose: 2000,
       });
-      setTimeout(() => {
-        navigate("/");
-      }, 2500);
+      navigate("/");
     } else {
       toast.warning(result?.response?.data?.message);
     }
@@ -213,7 +211,6 @@ function SpRegister() {
             </Col>
           </Row>
         </Container>
-        <ToastContainer position="bottom-right" theme="colored" />
       </div>
     </>
   );

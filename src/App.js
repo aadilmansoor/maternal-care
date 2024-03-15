@@ -17,6 +17,7 @@ import {
 
 import { Footer } from "./components";
 import ProviderVerification from "./pages/Admin/ProviderVerification/ProviderVerification";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -37,8 +38,12 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/admin/verification" element={<ProviderVerification />} />
         <Route path="/user/bookings" element={<ClientBooking />} />
-        
       </Routes>
+      <ToastContainer
+        autoClose={2000}
+        theme="colored"
+        position="bottom-right"
+      />
       <Footer />
     </div>
   );

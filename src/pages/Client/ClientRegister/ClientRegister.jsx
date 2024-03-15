@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ClientRegister.css";
 import { Col, Row } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { registerAPI } from "../../../Services/allAPI";
 import { useNavigate } from "react-router-dom";
@@ -135,11 +135,6 @@ function ClientRegister() {
           </Col>
         </Row>
       </div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-        theme="colored"
-      />
     </>
   );
 }

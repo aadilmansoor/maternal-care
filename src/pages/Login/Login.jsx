@@ -1,18 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import { Col, Row } from "react-bootstrap";
 import TextField from "@mui/material/TextField";
 import google from "../../Images/google2.png";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { serviceProviderLogin } from "../../Services/allAPI";
+import { toast } from "react-toastify";
 
 function Login() {
+  const [loginDetails, setLoginDetails] = useState({
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const role = searchParams.get("role");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(loginDetails);
+    const fetchData = async () => {
+      if (role === "provider") {
+        const result = await serviceProviderLogin(loginDetails);
+        if (result.status === 200) {
+          localStorage.setItem("maternity-token", result?.data?.token);
+          localStorage.setItem("maternity-role", "provider");
+          toast.success("Login Successful");
+          navigate("/care-provider-dashboard");
+        }
+      }
+    };
+    fetchData();
+  };
   return (
     <>
       <Row>
-        <div className="login_page" style={{ width: "100%" }}>
+        <div
+          className="login_page d-flex justify-content-center align-items-center"
+          style={{ width: "100%", minHeight: "100vh" }}
+        >
           <Row className="my-5">
             <Col lg={1} className="p-0"></Col>
             <Col
@@ -33,7 +61,7 @@ function Login() {
                     className="d-flex flex-column justify-content-center align-items-center"
                   >
                     <h2
-                      className="mt-4 righteous-regular"
+                      className="righteous-regular"
                       style={{ color: "white", textAlign: "center" }}
                     >
                       {role === "admin" ? (
@@ -62,20 +90,22 @@ function Login() {
                         width: "200px",
                         height: "200px",
                         borderRadius: "50%",
-                        margin: "20p 0",
+                        margin: "10px 0",
                       }}
                       alt="getstarted"
                     />
                     <p
+                      className="mt-2 text-justify"
                       style={{
-                        fontWeight: "bold",
                         color: "white",
-                        textAlign: "center",
+                        textAlign: "justify",
                       }}
                     >
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Officiis, dignissimos amet hic sed iusto illum similique
-                      sit, animi quam
+                      {" "}
+                      We are dedicated to providing comprehensive and
+                      compassionate care for mothers-to-be and their families.
+                      Our platform is designed to ensure seamless communication
+                      and support throughout your maternity journey.
                     </p>
                   </Col>
 
@@ -86,7 +116,10 @@ function Login() {
                     >
                       <div className="w-100">
                         <h4
-                          style={{ color: "blueviolet", textAlign: "center" }}
+                          style={{
+                            color: "rgb(39, 103, 141)",
+                            textAlign: "center",
+                          }}
                         >
                           Login Your Account
                         </h4>
@@ -97,6 +130,12 @@ function Login() {
                             type="email"
                             label="Email"
                             variant="standard"
+                            onChange={(e) =>
+                              setLoginDetails({
+                                ...loginDetails,
+                                email: e.target.value,
+                              })
+                            }
                           />
                         </div>
                         <div className="d-flex justify-content-center align-items-center">
@@ -106,6 +145,12 @@ function Login() {
                             type="password"
                             label="Password"
                             variant="standard"
+                            onChange={(e) =>
+                              setLoginDetails({
+                                ...loginDetails,
+                                password: e.target.value,
+                              })
+                            }
                           />
                         </div>
                         <div className="d-flex justify-content-center  gap-3 flex-wrap mt-3 ">
@@ -125,7 +170,10 @@ function Login() {
                           </a>
                         </div>
                         <div className="d-flex justify-content-center align-items-center">
-                          <button className="btn login_button rounded w-75 mt-4">
+                          <button
+                            className="btn btn-primary login_button rounded w-75 mt-4"
+                            onClick={handleSubmit}
+                          >
                             Login
                           </button>
                         </div>
@@ -141,24 +189,15 @@ function Login() {
                             role === "admin" ? "d-none" : ""
                           }`}
                         >
-                          <div
-                            className="google d-flex justify-content-evenly rounded"
-                            style={{
-                              width: "75%",
-                              height: "50px",
-                              backgroundColor: "#db4437",
-                              color: "white",
-                              cursor: "pointer",
-                            }}
-                          >
+                          <button className="btn btn-primary rounded w-75">
                             <img
-                              className="ms-2 mt-2"
+                              className="me-2"
                               src={google}
                               style={{ width: "25px", height: "25px" }}
                               alt="google"
                             />
-                            <h6 className="mt-2">Sign in with Google</h6>
-                          </div>
+                            Sign in with Google
+                          </button>
                         </div>
                         <div className="d-flex justify-content-center gap-4 flex-wrap mt-3">
                           {role === "admin" ? (

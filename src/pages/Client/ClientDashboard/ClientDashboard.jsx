@@ -1,6 +1,6 @@
 import { UserHero, UserHeader, ServicesCards } from "../../../components";
 import { userServices } from "../../../Constants/serviceList";
-import "./ClientDashboard.css"
+import "./ClientDashboard.css";
 
 const ClientDashboard = () => {
   return (
