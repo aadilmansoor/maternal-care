@@ -87,14 +87,14 @@ function Login() {
                       style={{ backgroundColor: "white", padding: "20px" }}
                     >
                       <h4
-                        className="mt-3"
+                        
                         style={{ color: "blueviolet", textAlign: "center" }}
                       >
                         Login Your Account
                       </h4>
                       <div className="d-flex justify-content-center align-items-center">
                         <TextField
-                          className="w-75 mt-4"
+                          className="w-75 "
                           id="standard-basic"
                           type="email"
                           label="Email"
@@ -103,25 +103,29 @@ function Login() {
                       </div>
                       <div className="d-flex justify-content-center align-items-center">
                         <TextField
-                          className="w-75 mt-4"
+                          className="w-75 "
                           id="standard-basic"
                           type="password"
                           label="Password"
                           variant="standard"
                         />
                       </div>
-                      <div className="d-flex align-items-center mt-4">
+                      <div className="d-flex justify-content-center  gap-3 flex-wrap mt-3 ">
+                      <div className="">
                         <input
                           className="me-2"
                           style={{ width: "20px", height: "20px" }}
                           type="checkbox"
                         />
-                        <label htmlFor="remember" className="me-3">
+                        
+                        <label htmlFor="remember" className="">
                           Remember?
                         </label>
-                        <a href="/forgot-password" className="me-auto">
+                        </div>
+                        <a href="/forgot-password" className="">
                           Forgot password?
                         </a>
+                        
                       </div>
                       <div className="d-flex justify-content-center align-items-center">
                         <button className="btn login_button rounded w-75 mt-4">
@@ -157,8 +161,17 @@ function Login() {
                             alt="google"
                           />
                           <h6 className="mt-2">Sign in with Google</h6>
+                          
                         </div>
                       </div>
+                      <div className="d-flex justify-content-center gap-4 flex-wrap mt-3">
+                        <a href="/login?role=admin" >
+                          Login as Admin
+                        </a>
+                        <a href="/service-login" >
+                          Login as Service Provider
+                        </a>
+                        </div>
                     </div>
                   </Col>
                 </Row>
