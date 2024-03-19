@@ -4,26 +4,29 @@ import "./Bookings.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 function Bookings() {
-  const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (
-      !localStorage.getItem("maternity-token") &&
-      localStorage.getItem("maternity-role") !== "admin"
-    ) {
-      toast.warning("Please Login");
-      navigate("/");
-      return;
+
+    const [isLoading, setIsLoading] = useState(true);
+    const navigate=useNavigate();
+    useEffect(() => {
+
+        if (
+          !localStorage.getItem("maternity-token") &&
+          localStorage.getItem("maternity-role") !== "admin"
+        ) {
+          toast.warning("Please Login");
+          navigate("/login?role=admin")
+        }
+        else{
+            setIsLoading(false)
+        }
+      }, []);
+    if(isLoading){
+        return (
+        <div className='spin d-flex align-items-center justify-content-center'>
+        <Spinner animation="border"  variant='primary'/>
+        </div>
+        )
     }
-    setIsLoading(false);
-  }, [navigate]);
-  if (isLoading) {
-    return (
-      <div className="spin d-flex align-items-center justify-content-center">
-        <Spinner animation="border" variant="primary" />
-      </div>
-    );
-  }
   return (
     <div className="d-flex justify-content-center align-items-center mt-5 flex-column">
       <h3>Bookings</h3>

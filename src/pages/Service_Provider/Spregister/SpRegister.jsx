@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { registerProviderAPI } from "../../Services/allAPI";
+import { registerProviderAPI } from "../../../Services/allAPI";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import cover from "../../../Images/img16.jpg"
+import "./SpRegister.css"
 
 function SpRegister() {
   const navigate = useNavigate();
@@ -38,13 +40,7 @@ function SpRegister() {
       <div className="d-flex justify-content-center align-items-center mt-3 mb-5">
         <Container>
           <Row className="rounded shadow">
-            <Col md={3} className="mt-5">
-              <img
-                src="https://i0.wp.com/www.agencyreporter.com/wp-content/uploads/2019/09/baby-care-industry.jpg?fit=592%2C509&ssl=1"
-                alt="serviceprovider1"
-                style={{ height: "700px", width: "100%" }}
-              />
-            </Col>
+            
 
             <Col md={6}>
               <Row>
@@ -201,10 +197,10 @@ function SpRegister() {
                 </Col>
               </Row>
             </Col>
-            <Col md={3} className="mt-5">
+            <Col md={6} className="mt-5 spimage">
               <img
-                className=" mb-3"
-                src="https://dailynclexchallenge.com/static/img/blog/nurse-with-pregnant.png"
+                className="  mb-3"
+                src={cover}
                 alt="service provider2"
                 style={{ height: "700px", width: "100%" }}
               />
