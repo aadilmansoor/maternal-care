@@ -7,14 +7,16 @@ function Bookings() {
     const [isLoading, setIsLoading] = useState(true);
     const navigate=useNavigate();
     useEffect(() => {
-        toast.warning("Please Login");
 
         if (
           !localStorage.getItem("maternity-token") &&
           localStorage.getItem("maternity-role") !== "admin"
         ) {
           toast.warning("Please Login");
-
+          navigate("/login?role=admin")
+        }
+        else{
+            setIsLoading(false)
         }
       }, []);
     if(isLoading){

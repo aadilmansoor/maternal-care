@@ -7,5 +7,5 @@ export { default as ClientRegister } from "./Client/ClientRegister/ClientRegiste
 export { default as Home } from "./Home/Home";
 export { default as Login } from "./Login/Login";
 export { default as ProviderDashboard } from "./Service_Provider/ProviderDashboard/ProviderDashboard";
-export { default as SpRegister } from "./Service_Provider/SpRegister";
+export { default as SpRegister } from "./Service_Provider/Spregister/SpRegister";
 export { default as ClientBooking } from "./Client/ClientBooking/ClientBooking";
