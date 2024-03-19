@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { serviceProviderServices } from "../../../Constants/serviceList";
-import { ProviderHero, ServicesCards } from "../../../components";
+import { ProviderHero, ServicesCards, UserHeader } from "../../../components";
 import "./ProviderServices.css";
 
 const ProviderDashboard = () => {
@@ -14,6 +14,7 @@ const ProviderDashboard = () => {
   }, []);
   return (
     <div>
+      <UserHeader role="Service Provider" />
       <ProviderHero />
       <h2 className=" services text-center mt-5 mb-3"> Services</h2>
       <ServicesCards services={serviceProviderServices} />

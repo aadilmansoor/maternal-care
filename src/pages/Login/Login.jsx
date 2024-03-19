@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Login.css";
 import { Col, Row } from "react-bootstrap";
 import TextField from "@mui/material/TextField";
 import google from "../../Images/google2.png";
-import { useLocation, useNavigate } from "react-router-dom";
-import { serviceProviderLogin } from "../../Services/allAPI";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { adminLogin, serviceProviderLogin } from "../../Services/allAPI";
 import { toast } from "react-toastify";
 
 function Login() {
@@ -20,7 +20,6 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(loginDetails);
     const fetchData = async () => {
       if (role === "provider") {
         const result = await serviceProviderLogin(loginDetails);
@@ -29,6 +28,15 @@ function Login() {
           localStorage.setItem("maternity-role", "provider");
           toast.success("Login Successful");
           navigate("/care-provider-dashboard");
+        }
+      }
+      if (role === "admin") {
+        const result = await adminLogin(loginDetails);
+        if (result.status === 200) {
+          localStorage.setItem("maternity-token", process.env.ADMIN_KEY);
+          localStorage.setItem("maternity-role", "admin");
+          toast.success("Login Successful");
+          navigate("/admin-dashboard");
         }
       }
     };
@@ -128,7 +136,7 @@ function Login() {
                             className="w-75 mt-2"
                             id="standard-basic"
                             type="email"
-                            label="Email"
+                            label={`${role === "admin" ? "Username" : "Email"}`}
                             variant="standard"
                             onChange={(e) =>
                               setLoginDetails({
@@ -170,12 +178,10 @@ function Login() {
                           </a>
                         </div>
                         <div className="d-flex justify-content-center align-items-center">
-
                           <button
                             className="btn btn-primary login_button rounded w-75 mt-4"
                             onClick={handleSubmit}
                           >
-
                             Login
                           </button>
                         </div>
@@ -203,16 +209,16 @@ function Login() {
                         </div>
                         <div className="d-flex justify-content-center gap-4 flex-wrap mt-3">
                           {role === "admin" ? (
-                            <a href="/login">Login as User</a>
+                            <Link to={"/login"}>Login as User</Link>
                           ) : (
-                            <a href="/login?role=admin">Login as Admin</a>
+                            <Link to={"/login?role=admin"}>Login as Admin</Link>
                           )}
                           {role === "provider" ? (
-                            <a href="/login">Login as User</a>
+                            <Link to={"/login"}>Login as User</Link>
                           ) : (
-                            <a href="/login?role=provider">
+                            <Link to={`/login?role=provider`}>
                               Login as Service Provider
-                            </a>
+                            </Link>
                           )}
                         </div>
                       </div>

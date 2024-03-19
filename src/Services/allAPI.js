@@ -47,3 +47,20 @@ export const serviceProviderLogin = async (req) => {
     ""
   );
 };
+export const uploadProviderImage = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/serviceProvider/uploadimage`,
+    req,
+    { "Content-Type": "multipart/form-data" }
+  );
+};
+
+export const adminLogin = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/admin/login`,
+    req,
+    ""
+  );
+};

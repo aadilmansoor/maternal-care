@@ -31,23 +31,23 @@ export const serviceProviderServices = [
     path: "/",
   },
   {
-    service: "payment",
+    service: "payment1",
     path: "/",
   },
   {
-    service: "payment",
+    service: "payment2",
     path: "/",
   },
   {
-    service: "payment",
+    service: "payment3",
     path: "/",
   },
   {
-    service: "payment",
+    service: "payment4",
     path: "/",
   },
   {
-    service: "payment",
+    service: "payment5",
     path: "/",
   },
 ];

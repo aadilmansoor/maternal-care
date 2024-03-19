@@ -33,9 +33,7 @@ function ClientRegister() {
         const result = await registerAPI(userDetails);
         if (result.status === 200) {
           toast.success("Registration Successful");
-          setTimeout(() => {
-            navigate("/");
-          }, 2500);
+          navigate("/");
           return;
         }
         if (
