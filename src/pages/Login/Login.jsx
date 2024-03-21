@@ -34,7 +34,10 @@ function Login() {
         }
       }
       if (role === "admin") {
-        const result = await adminLogin(loginDetails);
+        const result = await adminLogin({
+          username: loginDetails.email,
+          password: loginDetails.password,
+        });
         if (result?.status === 200) {
           localStorage.setItem("maternity-token", process.env.ADMIN_KEY);
           localStorage.setItem("maternity-role", "admin");
