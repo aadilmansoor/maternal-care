@@ -29,14 +29,24 @@ function Login() {
           toast.success("Login Successful");
           navigate("/care-provider-dashboard");
         }
+        if (result?.response?.status === 404) {
+          toast.error("Incorrect Email or Password");
+        }
       }
       if (role === "admin") {
-        const result = await adminLogin(loginDetails);
-        if (result.status === 200) {
+        const result = await adminLogin({
+          username: loginDetails.email,
+          password: loginDetails.password,
+        });
+        if (result?.status === 200) {
           localStorage.setItem("maternity-token", process.env.ADMIN_KEY);
           localStorage.setItem("maternity-role", "admin");
           toast.success("Login Successful");
           navigate("/admin-dashboard");
+          return;
+        }
+        if (result?.response?.status === 400) {
+          toast.error("Incorrect Username or Password");
         }
       }
     };
