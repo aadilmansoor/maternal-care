@@ -13,8 +13,9 @@ import {
 
 const Attendance = () => {
   return (
-    <div className="d-flex flex-column align-items-center mt-4">
-      <div className="d-flex gap-3 date-pickers">
+    <div className="d-flex flex-column align-items-center mt-4 container_size">
+      <h2 className="text-center mt-5 mb-4">Attendance</h2>
+      <div className="d-flex gap-3 date-pickers mb-3">
         <Form.Select aria-label="month">
           {months.map((month, index) => {
             return (

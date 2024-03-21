@@ -21,10 +21,9 @@ import { ToastContainer } from "react-toastify";
 import ProviderLeaveRequest from "./pages/Service_Provider/ProviderLeaveRequest/ProviderLeaveRequest";
 import Attendance from "./pages/Service_Provider/Attendance/Attendance";
 
-
 function App() {
   return (
-    <div>
+    <div className="position-relative">
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
@@ -41,7 +40,10 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/admin/verification" element={<ProviderVerification />} />
         <Route path="/user/bookings" element={<ClientBooking />} />
-        <Route path="/service-provider/leave-request" element={<ProviderLeaveRequest/>}/>
+        <Route
+          path="/service-provider/leave-request"
+          element={<ProviderLeaveRequest />}
+        />
         <Route path="/service-provider/attendance" element={<Attendance />} />
       </Routes>
       <ToastContainer

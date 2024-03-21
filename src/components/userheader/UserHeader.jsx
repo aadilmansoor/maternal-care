@@ -68,7 +68,7 @@ function UserHeader({ role = "User" }) {
   return (
     <>
       <div className="top_nav" style={{ width: "100%" }}>
-        <Row>
+        <Row className="mx-0">
           <Col className="py-1">
             <div className="d-flex align-items-center h-100">
               <Link to={"/user-dashboard"} className="ms-3">

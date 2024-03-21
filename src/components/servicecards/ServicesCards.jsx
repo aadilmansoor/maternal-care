@@ -6,7 +6,7 @@ import "./serviceCard.css";
 const ServicesCards = ({ services }) => {
   return (
     <div className="d-flex justify-content-center w-100">
-      <Row>
+      <Row className="mx-0">
         {services.map(({ service, path }, index) => {
           return (
             <Col
