@@ -18,6 +18,7 @@ import {
 import { Footer } from "./components";
 import ProviderVerification from "./pages/Admin/ProviderVerification/ProviderVerification";
 import { ToastContainer } from "react-toastify";
+import Attendance from "./pages/Service_Provider/Attendance/Attendance";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/admin/verification" element={<ProviderVerification />} />
         <Route path="/user/bookings" element={<ClientBooking />} />
+        <Route path="/service-provider/attendance" element={<Attendance />} />
       </Routes>
       <ToastContainer
         autoClose={2000}
