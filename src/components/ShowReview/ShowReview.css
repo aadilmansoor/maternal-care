@@ -1,0 +1,9 @@
+
+.reviewlist{
+    list-style: none;
+    background-color: rgb(251, 251, 251);
+    padding: 10px 20px;
+}
+.reviewcontainer{
+    margin: 20px 100px;
+}
