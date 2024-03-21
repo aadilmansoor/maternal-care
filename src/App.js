@@ -20,6 +20,8 @@ import ProviderVerification from "./pages/Admin/ProviderVerification/ProviderVer
 import { ToastContainer } from "react-toastify";
 import ProviderLeaveRequest from "./pages/Service_Provider/ProviderLeaveRequest/ProviderLeaveRequest";
 import Attendance from "./pages/Service_Provider/Attendance/Attendance";
+import Complaint from "./pages/Client/ClientComplaint/Complaint";
+import ServiceProviderDetails from "./pages/Client/ServiceProviderDetails/ServiceProviderDetails";
 
 function App() {
   return (
@@ -45,6 +47,9 @@ function App() {
           element={<ProviderLeaveRequest />}
         />
         <Route path="/service-provider/attendance" element={<Attendance />} />
+        <Route path="/user/complaints" element={<Complaint/>} />
+        <Route path="/user/service-provider-details" element={<ServiceProviderDetails/>} />
+
       </Routes>
       <ToastContainer
         autoClose={2000}
