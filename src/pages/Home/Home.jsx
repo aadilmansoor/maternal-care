@@ -111,7 +111,7 @@ function Home() {
               alt="service4"
             />
             <h4>Pre Delivery Care</h4>
-            <p>
+            <p className="service_description">
               All aspects that could influence the health and development of a
               baby are guided by us, and we at Janika will be there to help you
               welcome the new addition to your life.{" "}
@@ -124,7 +124,7 @@ function Home() {
               alt="service2"
             />
             <h4>Yoga Therapy</h4>
-            <p>
+            <p className="service_description">
               Pregnancy may be one of the happiest phases in a woman’s life, but
               there is no denying that the stress and strains it puts a woman’s
               body through are immense. Yoga is extremely beneficial and can
@@ -138,7 +138,7 @@ function Home() {
               alt="service3"
             />
             <h4>Doctors Support</h4>
-            <p>
+            <p className="service_description">
               Motherhood is a wonderful phase in every women’s life, but it also
               comes with doubts and confusion about what to do what not to do,
               what is right and what is wrong. New moms through a lot of
@@ -153,7 +153,7 @@ function Home() {
               alt="service1"
             />
             <h4>Post Delivery Care</h4>
-            <p>
+            <p className="service_description">
               The premium package which gives the ultimate Ayurveda care for new
               moms and babies. Stimulates blood circulation, prevents postpartum
               hair fall, reshapes your body, and gives glow to your skin. A
@@ -180,30 +180,29 @@ function Home() {
             />
           </Col>
           <Col md={6} className="mt-5 ">
-            <h2 className="fw-bold text-center">Contact Us</h2>
+            <h2 className="text-center">Contact Us</h2>
             <div className="ms-5">
-              <h5 className="mt-3 ">
+              <p className="mt-3 ">
                 <i
                   className="fa-solid fa-location-dot me-4"
                   style={{ color: "rgb(26, 87, 109)" }}
                 ></i>
-                K C Tower, CSEZ, Seaport - Airport Rd near , <br />{" "}
-                <span className="ms-5">Kakkanad, Ernakulam, Kerala 682037</span>
-              </h5>
-              <h5 className="mt-3 ">
+                K C Tower, Kakkanad, Ernakulam, Kerala 682037
+              </p>
+              <p className="mt-3 ">
                 <i
                   className="fa-solid fa-phone me-4"
                   style={{ color: "rgb(26, 87, 109)" }}
                 ></i>
                 +91 8921951119
-              </h5>
-              <h5 className="mt-3 ">
+              </p>
+              <p className="mt-3 ">
                 <i
                   className="fa-solid fa-envelope me-4"
                   style={{ color: "rgb(26, 87, 109)" }}
                 ></i>
                 maternitycare@gmail.com
-              </h5>
+              </p>
             </div>
           </Col>
         </Row>

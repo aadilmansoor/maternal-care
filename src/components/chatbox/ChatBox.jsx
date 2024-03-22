@@ -9,6 +9,7 @@ const ChatBox = () => {
     useEffect(() => elementRef.current.scrollIntoView());
     return <div ref={elementRef} />;
   };
+
   return (
     <div>
       <span

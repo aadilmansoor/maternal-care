@@ -1,4 +1,3 @@
-import React from "react";
 import "./Header.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Dropdown from "react-bootstrap/Dropdown";

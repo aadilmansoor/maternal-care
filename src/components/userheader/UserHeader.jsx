@@ -1,4 +1,3 @@
-import React from "react";
 import "./userHeader.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Col, Form, InputGroup, Row } from "react-bootstrap";
