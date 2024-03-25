@@ -1,4 +1,4 @@
-import { Rating, Typography } from "@mui/material";
+import { Rating } from "@mui/material";
 import React, { useState } from "react";
 import "./Review.css";
 import { Button, FloatingLabel, Form } from "react-bootstrap";

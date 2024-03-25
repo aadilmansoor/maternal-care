@@ -26,3 +26,11 @@ h2 {
 .btn-get-start {
     background-color: rgb(18, 14, 14, 0.566);
 }
+
+.service_description {
+    text-align: justify;
+}
+
+.review_container {
+    background-color: rgb(241, 240, 240);
+}

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./ShowReview.css";
 import { Rating } from "@mui/material";
 
@@ -8,7 +7,7 @@ const ShowReview = () => {
       <h2 className="d-flex justify-content-center">Reviews</h2>
 
       <ul className="reviewlist">
-        <li >
+        <li>
           <div>
             <p className="poppins-semibold mb-0">Name</p>
             <div className="rating">
@@ -29,7 +28,7 @@ const ShowReview = () => {
           </div>
           <hr />
         </li>
-        <li >
+        <li>
           <div>
             <p className="poppins-semibold mb-0">Name</p>
             <div className="rating">
