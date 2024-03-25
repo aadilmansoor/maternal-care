@@ -22,7 +22,10 @@ import ProviderLeaveRequest from "./pages/Service_Provider/ProviderLeaveRequest/
 import Attendance from "./pages/Service_Provider/Attendance/Attendance";
 import Complaint from "./pages/Client/ClientComplaint/Complaint";
 import ServiceProviderDetails from "./pages/Client/ServiceProviderDetails/ServiceProviderDetails";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import BookingStatus from "./pages/Client/BookingStatus/BookingStatus";
 import Newsletter from "./pages/Admin/Newsletter/Newsletter";
+
 
 function App() {
   return (
@@ -48,11 +51,11 @@ function App() {
           element={<ProviderLeaveRequest />}
         />
         <Route path="/service-provider/attendance" element={<Attendance />} />
-        <Route path="/user/complaints" element={<Complaint />} />
-        <Route
-          path="/user/service-provider-details"
-          element={<ServiceProviderDetails />}
-        />
+
+        <Route path="/user/complaints" element={<Complaint/>} />
+        <Route path="/user/service-provider-details" element={<ServiceProviderDetails/>} />
+        <Route path="/reset-password" element={<ForgotPassword/>} />
+        <Route path="/user/booking-status" element={<BookingStatus/>} />
         <Route path="/admin/send-newsletter" element={<Newsletter />} />
       </Routes>
       <ToastContainer

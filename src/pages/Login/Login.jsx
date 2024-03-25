@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Login.css";
-import { Col, Row } from "react-bootstrap";
+import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import TextField from "@mui/material/TextField";
 import google from "../../Images/google2.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -12,6 +12,11 @@ function Login() {
     email: "",
     password: "",
   });
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -54,6 +59,32 @@ function Login() {
   };
   return (
     <>
+      <Modal show={show} onHide={handleClose} size="sm">
+        <Modal.Header className="header_color">
+          <h3 className="fs-5 text-white poppins-regular text-center w-100">
+            Reset Password
+          </h3>
+        </Modal.Header>
+        <Modal.Body className="modal_body">
+          
+          Enter your email address and we'll send you an email with OTP for
+          verification to reset your password.
+              <Form.Control 
+              className="mt-3"
+                type="email"
+                placeholder="name@example.com"
+                autoFocus
+              />
+        </Modal.Body>
+        <Modal.Footer className="header_color">
+          <Button size="sm" variant="danger" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button size="sm" variant="success" onClick={handleClose}>
+            Get OTP
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Row>
         <div
           className="login_page d-flex justify-content-center align-items-center"
@@ -183,9 +214,12 @@ function Login() {
                               Remember?
                             </label>
                           </div>
-                          <a href="/forgot-password" className="">
+                          <span
+                            className="forgot text-primary  text-decoration-underline"
+                            onClick={handleShow}
+                          >
                             Forgot password?
-                          </a>
+                          </span>
                         </div>
                         <div className="d-flex justify-content-center align-items-center">
                           <button
