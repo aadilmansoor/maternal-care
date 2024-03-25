@@ -21,3 +21,13 @@
 * {
     padding: 0;
 }
+.forgot{
+    cursor:pointer;
+}
+.modal_body{
+    font-family: "Poppins", sans-serif;
+    text-align: justify;
+}
+.header_color{
+    background-color: #194b75;
+}

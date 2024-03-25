@@ -22,6 +22,8 @@ import ProviderLeaveRequest from "./pages/Service_Provider/ProviderLeaveRequest/
 import Attendance from "./pages/Service_Provider/Attendance/Attendance";
 import Complaint from "./pages/Client/ClientComplaint/Complaint";
 import ServiceProviderDetails from "./pages/Client/ServiceProviderDetails/ServiceProviderDetails";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import BookingStatus from "./pages/Client/BookingStatus/BookingStatus";
 
 function App() {
   return (
@@ -49,6 +51,9 @@ function App() {
         <Route path="/service-provider/attendance" element={<Attendance />} />
         <Route path="/user/complaints" element={<Complaint/>} />
         <Route path="/user/service-provider-details" element={<ServiceProviderDetails/>} />
+        <Route path="/reset-password" element={<ForgotPassword/>} />
+        <Route path="/user/bookingstatus" element={<BookingStatus/>} />
+
 
       </Routes>
       <ToastContainer
