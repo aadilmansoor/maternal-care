@@ -207,81 +207,83 @@ function Home() {
           </Col>
         </Row>
       </Container>
-
-      <Container className="mt-5">
-        <Row>
-          <h2 className="text-center mt-3 mb-5">Reviews</h2>
-          <Carousel>
-            <Carousel.Item className="mb-4">
-              <Col
-                md={12}
-                className="d-flex justify-content-center align-items-center flex-column"
-              >
-                <img
-                  src="https://images.pexels.com/photos/3319310/pexels-photo-3319310.jpeg"
-                  style={{
-                    height: "100px",
-                    width: "100px",
-                    borderRadius: "50px",
-                  }}
-                  alt="reviewprofile1"
-                />
-                <p className="text-center mt-3">
-                  My Therapists Bhavya was very gentle with baby and great for
-                  my massage well. She was very professional, experienced and
-                  followed hygiene protocol. I would recommend Janika for new
-                  born baby and mother massage.
-                </p>
-              </Col>
-            </Carousel.Item>
-            <Carousel.Item>
-              <Col
-                md={12}
-                className="d-flex justify-content-center align-items-center flex-column"
-              >
-                <img
-                  src="https://images.pexels.com/photos/7155244/pexels-photo-7155244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                  style={{
-                    height: "100px",
-                    width: "100px",
-                    borderRadius: "50px",
-                  }}
-                  alt="reviewprofile2"
-                />
-                <p className="text-center mt-3">
-                  I am availing the service from Janika along with products they
-                  sent. The therapist who is assigned to me is very experienced
-                  one , Therapist Prabitha is very professional and also very
-                  good in giving treatment. I am loving all the pamper from
-                  Prabitha and Janika products she uses for therapy.
-                </p>
-              </Col>
-            </Carousel.Item>
-            <Carousel.Item>
-              <Col
-                md={12}
-                className="d-flex justify-content-center align-items-center flex-column"
-              >
-                <img
-                  src="https://images.pexels.com/photos/8359636/pexels-photo-8359636.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                  style={{
-                    height: "100px",
-                    width: "100px",
-                    borderRadius: "50px",
-                  }}
-                  alt="reviewprofile3"
-                />
-                <p className="text-center mt-3">
-                  I have used Janika Ayurveda services since pregnancy and
-                  postpartum. I had got 2 wonderful therapists Bindhu chechi and
-                  Anjali chechi. Both took really good care of me and my baby.
-                  Thankful to my therapists immensely.
-                </p>
-              </Col>
-            </Carousel.Item>
-          </Carousel>
-        </Row>
-      </Container>
+      <div className="review_container">
+        <Container className="mt-5 pt-5">
+          <Row>
+            <h2 className="text-center mb-5">Reviews</h2>
+            <Carousel>
+              <Carousel.Item className="mb-4">
+                <Col
+                  md={12}
+                  className="d-flex justify-content-center align-items-center flex-column"
+                >
+                  <img
+                    src="https://images.pexels.com/photos/3319310/pexels-photo-3319310.jpeg"
+                    style={{
+                      height: "100px",
+                      width: "100px",
+                      borderRadius: "50px",
+                    }}
+                    alt="profile"
+                  />
+                  <p className="text-center mt-3">
+                    My Therapists Bhavya was very gentle with baby and great for
+                    my massage well. She was very professional, experienced and
+                    followed hygiene protocol. I would recommend Janika for new
+                    born baby and mother massage.
+                  </p>
+                </Col>
+              </Carousel.Item>
+              <Carousel.Item className="mb-4">
+                <Col
+                  md={12}
+                  className="d-flex justify-content-center align-items-center flex-column"
+                >
+                  <img
+                    src="https://images.pexels.com/photos/7155244/pexels-photo-7155244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    style={{
+                      height: "100px",
+                      width: "100px",
+                      borderRadius: "50px",
+                    }}
+                    alt="profile"
+                  />
+                  <p className="text-center mt-3">
+                    I am availing the service from Janika along with products
+                    they sent. The therapist who is assigned to me is very
+                    experienced one , Therapist Prabitha is very professional
+                    and also very good in giving treatment. I am loving all the
+                    pamper from Prabitha and Janika products she uses for
+                    therapy.
+                  </p>
+                </Col>
+              </Carousel.Item>
+              <Carousel.Item className="mb-4">
+                <Col
+                  md={12}
+                  className="d-flex justify-content-center align-items-center flex-column"
+                >
+                  <img
+                    src="https://images.pexels.com/photos/8359636/pexels-photo-8359636.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    style={{
+                      height: "100px",
+                      width: "100px",
+                      borderRadius: "50px",
+                    }}
+                    alt="profile"
+                  />
+                  <p className="text-center mt-3">
+                    I have used Janika Ayurveda services since pregnancy and
+                    postpartum. I had got 2 wonderful therapists Bindhu chechi
+                    and Anjali chechi. Both took really good care of me and my
+                    baby. Thankful to my therapists immensely.
+                  </p>
+                </Col>
+              </Carousel.Item>
+            </Carousel>
+          </Row>
+        </Container>
+      </div>
     </>
   );
 }

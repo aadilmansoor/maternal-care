@@ -30,3 +30,7 @@ h2 {
 .service_description {
     text-align: justify;
 }
+
+.review_container {
+    background-color: rgb(241, 240, 240);
+}
