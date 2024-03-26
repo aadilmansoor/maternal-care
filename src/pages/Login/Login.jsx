@@ -28,11 +28,16 @@ function Login() {
     const fetchData = async () => {
       if (role === "provider") {
         const result = await serviceProviderLogin(loginDetails);
+        console.log(result);
         if (result.status === 200) {
           localStorage.setItem("maternity-token", result?.data?.token);
           localStorage.setItem("maternity-role", "provider");
+          localStorage.setItem(
+            "serviceProviderId",
+            result?.data?.existingUser?._id
+          );
           toast.success("Login Successful");
-          navigate("/care-provider-dashboard");
+          // navigate("/care-provider-dashboard");
         }
         if (result?.response?.status === 404) {
           toast.error("Incorrect Email or Password");
@@ -66,15 +71,14 @@ function Login() {
           </h3>
         </Modal.Header>
         <Modal.Body className="modal_body">
-          
           Enter your email address and we'll send you an email with OTP for
           verification to reset your password.
-              <Form.Control 
-              className="mt-3"
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-              />
+          <Form.Control
+            className="mt-3"
+            type="email"
+            placeholder="name@example.com"
+            autoFocus
+          />
         </Modal.Body>
         <Modal.Footer className="header_color">
           <Button size="sm" variant="danger" onClick={handleClose}>

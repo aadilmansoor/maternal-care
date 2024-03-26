@@ -64,3 +64,12 @@ export const adminLogin = async (req) => {
     ""
   );
 };
+
+export const serviceProviderMarkAttendance = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/user/serviceprovider/attendance`,
+    req,
+    ""
+  );
+};

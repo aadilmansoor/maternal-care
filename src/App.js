@@ -25,7 +25,7 @@ import ServiceProviderDetails from "./pages/Client/ServiceProviderDetails/Servic
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import BookingStatus from "./pages/Client/BookingStatus/BookingStatus";
 import Newsletter from "./pages/Admin/Newsletter/Newsletter";
-
+import MarkAttendance from "./pages/Service_Provider/MarkAttendance/MarkAttendance";
 
 function App() {
   return (
@@ -52,11 +52,18 @@ function App() {
         />
         <Route path="/service-provider/attendance" element={<Attendance />} />
 
-        <Route path="/user/complaints" element={<Complaint/>} />
-        <Route path="/user/service-provider-details" element={<ServiceProviderDetails/>} />
-        <Route path="/reset-password" element={<ForgotPassword/>} />
-        <Route path="/user/booking-status" element={<BookingStatus/>} />
+        <Route path="/user/complaints" element={<Complaint />} />
+        <Route
+          path="/user/service-provider-details"
+          element={<ServiceProviderDetails />}
+        />
+        <Route path="/reset-password" element={<ForgotPassword />} />
+        <Route path="/user/booking-status" element={<BookingStatus />} />
         <Route path="/admin/send-newsletter" element={<Newsletter />} />
+        <Route
+          path="/service-provider/mark-attendance"
+          element={<MarkAttendance />}
+        />
       </Routes>
       <ToastContainer
         autoClose={2000}
