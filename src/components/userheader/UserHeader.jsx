@@ -1,8 +1,8 @@
 import "./userHeader.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Col, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Images/img2.png";
 import { toast } from "react-toastify";
 import { uploadProviderImage } from "../../Services/allAPI";
@@ -19,8 +19,19 @@ function UserHeader({ role = "User" }) {
   });
   const [showRight, setShowRight] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleCloseRight = () => setShowRight(false);
   const handleShowRight = () => setShowRight(true);
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("maternity-token");
+    localStorage.removeItem("maternity-role");
+    localStorage.removeItem("serviceProviderId");
+    toast.success("Logged out successfully");
+    navigate("/");
+  };
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -92,15 +103,20 @@ function UserHeader({ role = "User" }) {
         </Row>
       </div>
 
-      <Offcanvas show={showRight} onHide={handleCloseRight} placement="end">
+      <Offcanvas
+        show={showRight}
+        onHide={handleCloseRight}
+        placement="end"
+        className="overflow-y-auto"
+      >
         <Offcanvas.Header className="bg-dark d-flex" closeButton>
           <Offcanvas.Title className="text-white">
             {role} Profile
           </Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body className="bg-dark">
+        <Offcanvas.Body className="bg-dark position-relative canvas_container">
           <div
-            className="ms-5"
+            className="ms-5 mb-5"
             style={{
               backgroundColor: "black",
               height: "400px",
@@ -173,6 +189,11 @@ function UserHeader({ role = "User" }) {
               >
                 Update Profile
               </button>
+            </div>
+            <div className="position-absolute bottom-0 text-center btn_container mt-5 mb-5">
+              <Button variant="danger" onClick={(e) => handleLogOut(e)}>
+                Log Out
+              </Button>
             </div>
           </div>
         </Offcanvas.Body>

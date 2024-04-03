@@ -7,7 +7,13 @@ export const registerAPI = async (reqBody) => {
     "POST",
     `${base_URL}/maternalcare/user/register`,
     reqBody,
-    ""
+    {
+      headers: {
+        "Content-type": "application/json",
+      },
+      withCredential: true,
+      credentials: "include",
+    }
   );
 };
 
@@ -39,12 +45,17 @@ export const approveRequest = async (req) => {
   );
 };
 
-export const serviceProviderLogin = async (req) => {
+export const serviceProviderLogin = async (req, res) => {
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/serviceprovider/login`,
     req,
-    ""
+    {
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    }
   );
 };
 export const uploadProviderImage = async (req) => {
@@ -70,6 +81,24 @@ export const serviceProviderMarkAttendance = async (req) => {
     "POST",
     `${base_URL}/maternalcare/user/serviceprovider/attendance`,
     req,
+    ""
+  );
+};
+
+export const serviceProviderShowAttendance = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/user/serviceprovider/attendanceview`,
+    req,
+    ""
+  );
+};
+
+export const getApprovedServiceProvidersList = async (req) => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/admin/listofapprovedserviceproviderRequest`,
+    "",
     ""
   );
 };

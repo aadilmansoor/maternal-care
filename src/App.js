@@ -26,6 +26,7 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import BookingStatus from "./pages/Client/BookingStatus/BookingStatus";
 import Newsletter from "./pages/Admin/Newsletter/Newsletter";
 import MarkAttendance from "./pages/Service_Provider/MarkAttendance/MarkAttendance";
+import ServiceProviders from "./pages/Admin/ServiceProviders/ServiceProviders";
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
           path="/service-provider/mark-attendance"
           element={<MarkAttendance />}
         />
+        <Route path="/admin/service-providers" element={<ServiceProviders />} />
       </Routes>
       <ToastContainer
         autoClose={2000}

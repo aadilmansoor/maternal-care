@@ -28,7 +28,6 @@ function Login() {
     const fetchData = async () => {
       if (role === "provider") {
         const result = await serviceProviderLogin(loginDetails);
-        console.log(result);
         if (result.status === 200) {
           localStorage.setItem("maternity-token", result?.data?.token);
           localStorage.setItem("maternity-role", "provider");
@@ -37,7 +36,7 @@ function Login() {
             result?.data?.existingUser?._id
           );
           toast.success("Login Successful");
-          // navigate("/care-provider-dashboard");
+          navigate("/care-provider-dashboard");
         }
         if (result?.response?.status === 404) {
           toast.error("Incorrect Email or Password");
