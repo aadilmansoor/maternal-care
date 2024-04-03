@@ -1,13 +1,20 @@
 .dash_btn {
-    background-color: rgba(0, 0, 0, 0.379);
+  background-color: rgba(0, 0, 0, 0.379);
 }
 
 .top_nav {
-    background-color: rgba(26, 87, 109, 0.63);
-
+  background-color: rgba(26, 87, 109, 0.63);
 }
 
 .logo-container {
-    height: 49px;
-    width: 49px;
+  height: 49px;
+  width: 49px;
+}
+
+.canvas_container {
+  min-height: 580px;
+}
+
+.btn_container {
+  width: 300px;
 }

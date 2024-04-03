@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 .vscode
+.stylelintignore
+.stylelintrc.json
 
 # testing
 /coverage

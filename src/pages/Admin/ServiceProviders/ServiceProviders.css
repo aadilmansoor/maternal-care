@@ -1,0 +1,18 @@
+.service-providers_container {
+    margin: 20px 100px;
+}
+
+.btn_container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+@media screen and (max-width:800px) {
+    .service-providers_container {
+        margin: 20px 20px;
+    }
+
+}
