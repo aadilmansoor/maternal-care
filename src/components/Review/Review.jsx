@@ -11,7 +11,7 @@ const Review = () => {
   };
   return (
     <div>
-      <h2 className="text-center my-5"> Submit Your Rating & Reviews</h2>
+      <h4 className="headings poppins-semibold text-center my-5"> Submit Your Rating & Reviews</h4>
 
       <div className="wid">
         <div className="rating">
