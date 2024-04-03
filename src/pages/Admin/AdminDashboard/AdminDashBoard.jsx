@@ -1,10 +1,11 @@
 import { Col, Container, Row } from "react-bootstrap";
-import Header from "../../../components/header/Header";
+import { ServicesCards, UserHeader } from "../../../components";
+import { adminServices } from "../../../Constants/serviceList";
 
 function AdminDashBoard() {
   return (
     <>
-      <Header />
+      <UserHeader role="Admin"/>
       <Container>
         <div className="mt-5 mb-5">
           <Row>
@@ -41,6 +42,9 @@ function AdminDashBoard() {
               </p>
             </Col>
           </Row>
+          <h2 className=" services text-center mt-5 mb-3">Admin Panel</h2>
+      <ServicesCards services={adminServices} />
+      
         </div>
       </Container>
     </>

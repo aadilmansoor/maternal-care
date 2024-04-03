@@ -26,6 +26,7 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import BookingStatus from "./pages/Client/BookingStatus/BookingStatus";
 import Newsletter from "./pages/Admin/Newsletter/Newsletter";
 import MarkAttendance from "./pages/Service_Provider/MarkAttendance/MarkAttendance";
+import ServiceProviderInfo from "./components/ServiceProviderInfo/ServiceProviderInfo";
 
 function App() {
   return (
@@ -60,6 +61,8 @@ function App() {
         <Route path="/reset-password" element={<ForgotPassword />} />
         <Route path="/user/booking-status" element={<BookingStatus />} />
         <Route path="/admin/send-newsletter" element={<Newsletter />} />
+        <Route path="/admin/serviceproviderinfo" element={<ServiceProviderInfo/>} />
+
         <Route
           path="/service-provider/mark-attendance"
           element={<MarkAttendance />}

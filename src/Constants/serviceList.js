@@ -51,3 +51,31 @@ export const serviceProviderServices = [
     path: "/",
   },
 ];
+
+export const adminServices=[
+  {
+    service: "Bookings",
+    path: "/admin-bookings",
+  },
+  {
+    service: "Complaints",
+    path: "/admin-complaints",
+  },
+  {
+    service: "Payments",
+    path: "/user-booking",
+  },
+  {
+    service: "Send Newsletter",
+    path: "/user-complaints",
+  },
+  {
+    service: "Service Providers",
+    path: "/user-booking",
+  },
+  {
+    service: "Services List",
+    path: "/user-complaints",
+  },
+
+];

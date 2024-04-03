@@ -4,7 +4,7 @@ import { Rating } from "@mui/material";
 const ShowReview = () => {
   return (
     <div className="reviewcontainer">
-      <h2 className="d-flex justify-content-center">Reviews</h2>
+      <h4 className="headings poppins-semibold d-flex justify-content-center mt-5 mb-4">Reviews</h4>
 
       <ul className="reviewlist">
         <li>
