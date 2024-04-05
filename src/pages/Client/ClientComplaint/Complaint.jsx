@@ -1,11 +1,19 @@
 import "./Complaint.css";
-import { Button, FloatingLabel, Form } from "react-bootstrap";
+import { Button, FloatingLabel, Form, InputGroup } from "react-bootstrap";
 
 const Complaint = () => {
   return (
     <div>
       <h2 className="my-5 text-center">Complaints</h2>
+      
       <div className="wid">
+      <InputGroup className="mb-3">
+        <Form.Control
+          placeholder="Subject"
+          aria-label="Username"
+         
+        />
+      </InputGroup>
         <div class="input-group mb-3"></div>
         <FloatingLabel controlId="floatingTextarea2" label="Type here">
           <Form.Control
@@ -23,6 +31,7 @@ const Complaint = () => {
           </Button>{" "}
         </div>
       </div>
+      
     </div>
   );
 };
