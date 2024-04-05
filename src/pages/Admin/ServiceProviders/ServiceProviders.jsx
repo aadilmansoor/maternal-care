@@ -78,7 +78,7 @@ const ServiceProviders = () => {
                         </span>
                       </TableCell>
                       <TableCell align="right">
-                        <div className="btn_container">
+                        <span className="btn_container">
                           <Button
                             variant="primary"
                             size="sm"
@@ -98,7 +98,7 @@ const ServiceProviders = () => {
                           >
                             See Attendance
                           </Button>
-                        </div>
+                        </span>
                       </TableCell>
                     </TableRow>
                   );

@@ -16,10 +16,24 @@ import { serviceProviderShowAttendance } from "../../../Services/allAPI";
 const Attendance = () => {
   const [month, setMonth] = useState("01");
   const [year, setYear] = useState("2024");
+  const [data, setData] = useState([]);
+  console.log(data);
   useEffect(() => {
-    const fetchData = () => {
-      const result = serviceProviderShowAttendance({ month, year });
-      console.log(result);
+    const fetchData = async () => {
+      const token = localStorage.getItem("maternity-token");
+      const headers = {
+        "Content-type": "application/json",
+        Authorization: `${token}`,
+      };
+      const result = await serviceProviderShowAttendance(
+        { month, year },
+        headers
+      );
+      if (result.status === 200) {
+        setData(result.data);
+      } else {
+        setData([]);
+      }
     };
     fetchData();
   }, [month, year]);
@@ -53,40 +67,43 @@ const Attendance = () => {
         </Form.Select>
       </div>
       <div className="table_container">
-        <TableContainer component={Paper} className="mt-4 mb-4">
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead className="table_head">
-              <TableRow>
-                <TableCell>Date</TableCell>
-                <TableCell align="right">Time In</TableCell>
-                <TableCell align="right">Time Out</TableCell>
-                <TableCell align="right">Status</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell>01/03/2025</TableCell>
-                <TableCell align="right">09:00AM</TableCell>
-                <TableCell align="right">05:00PM</TableCell>
-                <TableCell align="right">
-                  <span className="text-success fs-6">Present</span>
-                </TableCell>
-              </TableRow>
-              <TableRow
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell>01/03/2025</TableCell>
-                <TableCell align="right">--</TableCell>
-                <TableCell align="right">--</TableCell>
-                <TableCell align="right">
-                  <span className="text-danger fs-6">Absent</span>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+        {data.length > 0 ? (
+          <TableContainer component={Paper} className="mt-4 mb-4">
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead className="table_head">
+                <TableRow>
+                  <TableCell>Date</TableCell>
+                  <TableCell align="right">Time In</TableCell>
+                  <TableCell align="right">Time Out</TableCell>
+                  <TableCell align="right">Status</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {data.map((attendance) => {
+                  return (
+                    <TableRow
+                      key={attendance._id}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell>{attendance.date}</TableCell>
+                      <TableCell align="right">{attendance.time_in}</TableCell>
+                      <TableCell align="right">{attendance.time_out}</TableCell>
+                      <TableCell align="right">
+                        {attendance.present ? (
+                          <span className="text-success fs-6">Present</span>
+                        ) : (
+                          <span className="text-danger fs-6">Absent</span>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        ) : (
+          "No data found"
+        )}
       </div>
     </div>
   );

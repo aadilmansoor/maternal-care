@@ -76,21 +76,21 @@ export const adminLogin = async (req) => {
   );
 };
 
-export const serviceProviderMarkAttendance = async (req) => {
+export const serviceProviderMarkAttendance = async (req, headers) => {
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/user/serviceprovider/attendance`,
     req,
-    ""
+    headers
   );
 };
 
-export const serviceProviderShowAttendance = async (req) => {
+export const serviceProviderShowAttendance = async (req, headers) => {
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/user/serviceprovider/attendanceview`,
     req,
-    ""
+    headers
   );
 };
 

@@ -33,14 +33,22 @@ const MarkAttendance = () => {
     const serviceProviderId = localStorage.getItem("serviceProviderId");
 
     const uploadData = async () => {
-      const result = await serviceProviderMarkAttendance({
-        date: formattedDate,
-        time_in,
-        time_out,
-        workingHours,
-        serviceProviderId,
-        present: true,
-      });
+      const token = localStorage.getItem("maternity-token");
+      const headers = {
+        "Content-type": "application/json",
+        Authorization: `${token}`,
+      };
+      const result = await serviceProviderMarkAttendance(
+        {
+          date: formattedDate,
+          time_in,
+          time_out,
+          workingHours,
+          serviceProviderId,
+          present: true,
+        },
+        headers
+      );
       console.log(result);
     };
     uploadData();
