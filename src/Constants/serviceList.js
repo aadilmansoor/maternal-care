@@ -1,11 +1,11 @@
 export const userServices = [
   {
-    service: "Booking",
-    path: "/user-booking",
+    service: "Book Appointment",
+    path: "/user/bookings",
   },
   {
     service: "Complaints",
-    path: "/user-complaints",
+    path: "/user/complaints",
   },
   {
     service: "Booking",
@@ -52,7 +52,7 @@ export const serviceProviderServices = [
   },
 ];
 
-export const adminServices=[
+export const adminServices = [
   {
     service: "Bookings",
     path: "/admin-bookings",
@@ -77,5 +77,4 @@ export const adminServices=[
     service: "Services List",
     path: "/user-complaints",
   },
-
 ];

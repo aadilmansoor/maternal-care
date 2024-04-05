@@ -102,3 +102,12 @@ export const getApprovedServiceProvidersList = async (req) => {
     ""
   );
 };
+
+export const userLogin = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/user/login`,
+    req,
+    ""
+  );
+};

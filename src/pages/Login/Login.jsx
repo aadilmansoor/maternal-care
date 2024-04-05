@@ -4,7 +4,11 @@ import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import TextField from "@mui/material/TextField";
 import google from "../../Images/google2.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { adminLogin, serviceProviderLogin } from "../../Services/allAPI";
+import {
+  adminLogin,
+  serviceProviderLogin,
+  userLogin,
+} from "../../Services/allAPI";
 import { toast } from "react-toastify";
 
 function Login() {
@@ -41,6 +45,7 @@ function Login() {
         if (result?.response?.status === 404) {
           toast.error("Incorrect Email or Password");
         }
+        return;
       }
       if (role === "admin") {
         const result = await adminLogin({
@@ -57,6 +62,19 @@ function Login() {
         if (result?.response?.status === 400) {
           toast.error("Incorrect Username or Password");
         }
+        return;
+      }
+
+      const result = await userLogin({
+        userEmail: loginDetails.email,
+        userPassword: loginDetails.password,
+      });
+      if (result.status === 200) {
+        toast.success("Login successful");
+        navigate("/user-dashboard");
+      }
+      if (result?.response?.status === 404) {
+        toast.warning("Incorrect Username or Password");
       }
     };
     fetchData();
