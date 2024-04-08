@@ -49,7 +49,9 @@ const MarkAttendance = () => {
         },
         headers
       );
-      console.log(result);
+      if(result.status===200){
+        toast.success("Marked attendance")
+      }
     };
     uploadData();
   };
@@ -59,25 +61,39 @@ const MarkAttendance = () => {
       <h2 className="text-center mt-5 mb-4">Mark Attendance</h2>
       <div className=" d-flex justify-content-center mt-4">
         <div className="text-end date-time_container mt-4">
+          <label className="text-start w-100 " htmlFor="date">
+            Date
+          </label>
           <input
+            id="date"
             type="date"
-            className="form-control mb-3"
+            className="form-control mb-4"
             value={dateField.date}
             onChange={(e) =>
               setDateField({ ...dateField, date: e.target.value })
             }
           />
+          <label className="text-start w-100 " htmlFor="time-in">
+            Time In
+          </label>
+
           <input
+            id="time-in"
             type="time"
-            className="form-control mb-3"
+            className="form-control mb-4"
             value={dateField.time_in}
             onChange={(e) =>
               setDateField({ ...dateField, time_in: e.target.value })
             }
           />
+          <label className="text-start w-100 " htmlFor="time-out">
+            Time Out
+          </label>
+
           <input
+            id="time-out"
             type="time"
-            className="form-control mb-3"
+            className="form-control mb-4"
             value={dateField.time_out}
             onChange={(e) =>
               setDateField({ ...dateField, time_out: e.target.value })

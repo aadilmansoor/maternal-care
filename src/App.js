@@ -29,6 +29,7 @@ import MarkAttendance from "./pages/Service_Provider/MarkAttendance/MarkAttendan
 import ServiceProviderInfo from "./components/ServiceProviderInfo/ServiceProviderInfo";
 import ServiceProviders from "./pages/Admin/ServiceProviders/ServiceProviders";
 import ChatPage from "./pages/Admin/ChatPage/ChatPage";
+import SpBookings from "./pages/Service_Provider/ServiceProviderBookings/SpBookings";
 
 function App() {
   return (
@@ -71,6 +72,8 @@ function App() {
           element={<MarkAttendance />}
         />
         <Route path="/admin/service-providers" element={<ServiceProviders />} />
+        <Route path="/service-provider/bookings" element={<SpBookings />} />
+
       </Routes>
       <ToastContainer
         autoClose={2000}

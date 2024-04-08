@@ -49,42 +49,6 @@ const ProviderVerification = () => {
           {requestList?.length === 0 ? (
             <p className="mt-5 text-center">No approval request pending</p>
           ) : (
-            // <Table responsive>
-            //   <thead className="p-2">
-            //     <tr>
-            //       <th>Username</th>
-            //       <th>Email</th>
-            //       <th>Service</th>
-            //       <th>Specialization</th>
-            //       <th>Qualification</th>
-            //       <th>Rate</th>
-            //       <th>Action</th>
-            //     </tr>
-            //   </thead>
-            //   <tbody className="p-2">
-            //     {requestList.map((request) => {
-            //       return (
-            //         <tr key={request.email}>
-            //           <td>{request.username}</td>
-            //           <td>{request.email}</td>
-            //           <td>{request.service}</td>
-            //           <td>{request.specialization}</td>
-            //           <td>{request.qualification}</td>
-            //           <td>{request.rate}</td>
-            //           <td className="d-flex">
-            //             <button
-            //               className="btn btn-success"
-            //               onClick={() => handleAccept(request)}
-            //             >
-            //               Accept
-            //             </button>
-            //             <button className="btn btn-danger">Reject</button>
-            //           </td>
-            //         </tr>
-            //       );
-            //     })}
-            //   </tbody>
-            // </Table>
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
