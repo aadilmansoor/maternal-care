@@ -1,23 +1,31 @@
-.appoinment{
+.appointment {
     text-align: center;
 }
 
-.table1{
+.table1 {
     margin: 0 48px;
     margin-bottom: 50px;
 }
 
+.container_group {
+    margin: 0 20px;
+}
+
 @media screen and (max-width:550px) {
-    .input_group{
+    .input_group {
         flex-direction: column;
         align-items: center;
     }
-    .table1{
+
+    .search_input {
+        width: 100%;
+    }
+
+    .table1 {
         margin: 0 24px;
 
     }
 
- 
-    
-}
 
+
+}

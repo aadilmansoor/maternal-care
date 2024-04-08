@@ -27,6 +27,11 @@ function Login() {
   const searchParams = new URLSearchParams(location.search);
   const role = searchParams.get("role");
 
+  const handleGetOTP = (e) => {
+    e.preventDefault();
+    navigate("/reset-password");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const fetchData = async () => {
@@ -101,7 +106,7 @@ function Login() {
           <Button size="sm" variant="danger" onClick={handleClose}>
             Cancel
           </Button>
-          <Button size="sm" variant="success" onClick={handleClose}>
+          <Button size="sm" variant="success" onClick={handleGetOTP}>
             Get OTP
           </Button>
         </Modal.Footer>
@@ -250,7 +255,7 @@ function Login() {
                             Login
                           </button>
                         </div>
-                        <div
+                        {/* <div
                           className={`d-flex justify-content-center align-items-center mt-3 ${
                             role === "admin" ? "d-none" : ""
                           }`}
@@ -271,7 +276,7 @@ function Login() {
                             />
                             Sign in with Google
                           </button>
-                        </div>
+                        </div> */}
                         <div className="d-flex justify-content-center gap-4 flex-wrap mt-3">
                           {role === "admin" ? (
                             <Link to={"/login"}>Login as User</Link>
