@@ -45,6 +45,15 @@ export const approveRequest = async (req) => {
   );
 };
 
+export const rejectRequest = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/admin/rejection/serviceprovider`,
+    req,
+    ""
+  );
+};
+
 export const serviceProviderLogin = async (req, res) => {
   return await commonAPI(
     "POST",

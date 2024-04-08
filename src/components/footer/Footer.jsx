@@ -36,7 +36,7 @@ function Footer() {
                 ad optio autem deleniti expedita.
               </p>
               <hr />
-              <div>
+              <div className="mt-2">
                 <i className="fa-brands fa-instagram me-4 fa-2x"></i>
                 <i className="fa-brands fa-facebook-f me-4 fa-2x"></i>
                 <i className="fa-brands fa-whatsapp me-4 fa-2x"></i>

@@ -8,16 +8,16 @@ export const userServices = [
     path: "/user/complaints",
   },
   {
-    service: "Booking",
-    path: "/user-booking",
+    service: "Booking Status",
+    path: "/user/booking-status",
   },
   {
     service: "Complaints",
-    path: "/user-complaints",
+    path: "/user/complaints",
   },
   {
     service: "Booking",
-    path: "/user-booking",
+    path: "/user/bookings",
   },
   {
     service: "Complaints",
@@ -27,16 +27,16 @@ export const userServices = [
 
 export const serviceProviderServices = [
   {
-    service: "payment",
-    path: "/",
+    service: "Leave Request",
+    path: "/service-provider/leave-request",
   },
   {
-    service: "payment1",
-    path: "/",
+    service: "View Attendance",
+    path: "/service-provider/attendance",
   },
   {
-    service: "payment2",
-    path: "/",
+    service: "Mark Attendance",
+    path: "/service-provider/mark-attendance",
   },
   {
     service: "payment3",
@@ -55,26 +55,26 @@ export const serviceProviderServices = [
 export const adminServices = [
   {
     service: "Bookings",
-    path: "/admin-bookings",
+    path: "/admin/bookings",
   },
   {
-    service: "Complaints",
-    path: "/admin-complaints",
+    service: "Leave Requests",
+    path: "/admin/leave-requests",
   },
   {
-    service: "Payments",
-    path: "/user-booking",
+    service: "Verification",
+    path: "/admin/verification",
   },
   {
     service: "Send Newsletter",
-    path: "/user-complaints",
+    path: "/admin/send-newsletter",
   },
   {
     service: "Service Providers",
-    path: "/user-booking",
+    path: "/admin/service-providers",
   },
   {
-    service: "Services List",
-    path: "/user-complaints",
+    service: "Add Categories",
+    path: "/admin/categories",
   },
 ];
