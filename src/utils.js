@@ -24,6 +24,9 @@ export const validateTimeInAndOut = (timeIn, timeOut) => {
 };
 
 export const calculateDecimalHours = (timeIn, timeOut) => {
+  if (timeIn === "00:00" && timeOut === "00:00") {
+    return 24;
+  }
   // Split time strings into hours and minutes
   const timeInParts = timeIn.split(":");
   const timeOutParts = timeOut.split(":");

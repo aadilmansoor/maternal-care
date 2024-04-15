@@ -11,6 +11,18 @@
     margin: 0 20px;
 }
 
+.provider_details {
+    list-style: none;
+}
+
+.provider_details li {
+    margin-bottom: 10px;
+}
+
+.provider_details .provider_head {
+    text-decoration: underline;
+}
+
 @media screen and (max-width:550px) {
     .input_group {
         flex-direction: column;

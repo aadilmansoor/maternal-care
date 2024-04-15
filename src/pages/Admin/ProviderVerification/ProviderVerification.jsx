@@ -18,6 +18,7 @@ import {
 
 const ProviderVerification = () => {
   const [requestList, setRequestList] = useState([]);
+  console.log(requestList);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,13 +32,21 @@ const ProviderVerification = () => {
     const result = await approveRequest(data);
     if (result.status === 200) {
       toast.success("Request approved.");
+      const newList = requestList.filter(
+        (provider) => provider._id !== data._id
+      );
+      setRequestList(newList);
     }
   };
 
-  const handleReject = async (email) => {
+  const handleReject = async (email, data) => {
     const result = await rejectRequest({ email });
     if (result.status === "200") {
       toast.success("Request Rejected");
+      const newList = requestList.filter(
+        (provider) => provider._id !== data._id
+      );
+      setRequestList(newList);
     }
   };
 
@@ -95,7 +104,9 @@ const ProviderVerification = () => {
                             </button>
                             <button
                               className="btn btn-danger"
-                              onClick={() => handleReject(request.email)}
+                              onClick={() =>
+                                handleReject(request.email, request)
+                              }
                             >
                               Reject
                             </button>

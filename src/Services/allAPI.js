@@ -103,6 +103,7 @@ export const serviceProviderShowAttendance = async (req, headers) => {
   );
 };
 
+//list of approved service provider
 export const getApprovedServiceProvidersList = async (req) => {
   return await commonAPI(
     "GET",
@@ -112,10 +113,30 @@ export const getApprovedServiceProvidersList = async (req) => {
   );
 };
 
+//user login
 export const userLogin = async (req) => {
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/user/login`,
+    req,
+    ""
+  );
+};
+
+//user booking
+export const userBooking = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/user/primarybooking`,
+    req,
+    ""
+  );
+};
+
+export const searchServiceProvider = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/user/serviceproviderSearch`,
     req,
     ""
   );

@@ -1,62 +1,54 @@
-import { useEffect, useState } from "react";
-import { Container, Spinner, Table } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import "./Bookings.css";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 function Bookings() {
-
-    const [isLoading, setIsLoading] = useState(true);
-    const navigate=useNavigate();
-    useEffect(() => {
-
-        if (
-          !localStorage.getItem("maternity-token") &&
-          localStorage.getItem("maternity-role") !== "admin"
-        ) {
-          toast.warning("Please Login");
-          navigate("/login?role=admin")
-        }
-        else{
-            setIsLoading(false)
-        }
-      }, []);
-    if(isLoading){
-        return (
-        <div className='spin d-flex align-items-center justify-content-center'>
-        <Spinner animation="border"  variant='primary'/>
-        </div>
-        )
-    }
+  function col() {
+    return (
+      <Col
+        lg={4}
+        md={6}
+        className="d-flex justify-content-center p-0 mt-4 mb-4"
+      >
+        <Card style={{ width: "22rem" }} className="card">
+          <ul className="booking_details mt-3">
+            <li className="details_heading">
+              <strong>Service Provider</strong>
+            </li>
+            <li className="">Name: Muhammed Aadil Mansoor</li>
+            <li className="">Location:</li>
+            <li className="">Rate/hr:</li>
+            <li className="details_heading">
+              <strong>User Details</strong>
+            </li>
+            <li className="">Name:</li>
+            <li className="">Email:</li>
+            <li className="">Phone Number: </li>
+            <li className="details_heading">
+              <strong>Booking Details</strong>
+            </li>
+            <li className="">Service:</li>
+            <li className="">Care Type:</li>
+            <li className="">Starting Time:</li>
+            <li className="">End Time:</li>
+            <li className="">Starting Date:</li>
+            <li className="">End Date:</li>
+          </ul>
+          <Card.Footer>
+            <div className="d-flex justify-content-center gap-3">
+              <Button variant="success">Accept</Button>
+              <Button variant="danger">Reject</Button>
+            </div>
+          </Card.Footer>
+        </Card>
+      </Col>
+    );
+  }
   return (
-    <div className="d-flex justify-content-center align-items-center mt-5 flex-column">
-      <h3>Bookings</h3>
-      <Container>
-        <Table responsive>
-          <thead className="p-2">
-            <tr>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Maternity Care Provider</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody className="p-2">
-            <tr>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <div className="d-flex">
-                <td>
-                  <button className="btn btn-success">Accept</button>
-                </td>
-                <td>
-                  <button className="btn btn-danger">Reject</button>
-                </td>
-              </div>
-            </tr>
-          </tbody>
-        </Table>
-      </Container>
+    <div className="booking_page">
+      <h1 className="text-center my-5">Bookings</h1>
+      <Row>
+        {col()}
+        {col()}
+      </Row>
     </div>
   );
 }

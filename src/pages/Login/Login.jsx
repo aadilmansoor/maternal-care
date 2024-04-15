@@ -45,7 +45,7 @@ function Login() {
             result?.data?.existingUser?._id
           );
           toast.success("Login Successful");
-          navigate("/care-provider-dashboard");
+          navigate("/service-provider");
         }
         if (result?.response?.status === 404) {
           toast.error("Incorrect Email or Password");
@@ -61,7 +61,7 @@ function Login() {
           localStorage.setItem("maternity-token", process.env.ADMIN_KEY);
           localStorage.setItem("maternity-role", "admin");
           toast.success("Login Successful");
-          navigate("/admin-dashboard");
+          navigate("/admin");
           return;
         }
         if (result?.response?.status === 400) {
@@ -76,7 +76,7 @@ function Login() {
       });
       if (result.status === 200) {
         toast.success("Login successful");
-        navigate("/user-dashboard");
+        navigate("/user");
       }
       if (result?.response?.status === 404) {
         toast.warning("Incorrect Username or Password");
