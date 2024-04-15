@@ -1,11 +1,12 @@
 import React from 'react'
 import { Footer, UserHeader } from '../components'
+import { Outlet } from 'react-router-dom'
 
-const UserLayout = ({children}) => {
+const UserLayout = () => {
   return (
     <div>
        <UserHeader/>
-        {children}
+        <Outlet />
         <Footer/>
     </div>
   )
