@@ -3,8 +3,8 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import { registerProviderAPI } from "../../../Services/allAPI";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import cover from "../../../Images/img16.jpg"
-import "./SpRegister.css"
+import cover from "../../../Images/img16.jpg";
+import "./SpRegister.css";
 
 function SpRegister() {
   const navigate = useNavigate();
@@ -16,10 +16,12 @@ function SpRegister() {
     service: "",
     specialization: "",
     qualification: "",
+    location:"",
     exp_year: "",
     experience_crt: {},
     rate: "",
   });
+  console.log(providerDetails);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,8 +42,6 @@ function SpRegister() {
       <div className="d-flex justify-content-center align-items-center mt-3 mb-5">
         <Container>
           <Row className="rounded shadow">
-            
-
             <Col md={6}>
               <Row>
                 <Col
@@ -104,19 +104,21 @@ function SpRegister() {
                         })
                       }
                     />
-                    <input
-                      type="text"
-                      placeholder="Service"
-                      style={{ borderRadius: "50px" }}
-                      className="form-control mb-3 mt-2"
-                      required
-                      onChange={(e) =>
-                        setProviderDetails({
-                          ...providerDetails,
-                          service: e.target.value,
-                        })
-                      }
-                    />
+                    <Form.Select className="choose mt-4 mb-4" aria-label="Default select example"
+                    onChange={(e) =>
+                      setProviderDetails({
+                        ...providerDetails,
+                        service: e.target.value,
+                      })
+                    }>
+                      <option>Choose Service</option>
+                      <option value="doctor">Doctor</option>
+                      <option value="therapist">Therapist</option>
+                      <option value="caretaker">Caretaker</option>
+                      <option value="nurse">Nurse</option>
+
+
+                    </Form.Select>
                     <input
                       type="text"
                       placeholder="Specialization"
@@ -140,6 +142,19 @@ function SpRegister() {
                         setProviderDetails({
                           ...providerDetails,
                           qualification: e.target.value,
+                        })
+                      }
+                    />
+                     <input
+                      type="text"
+                      placeholder="Location"
+                      style={{ borderRadius: "50px" }}
+                      className="form-control mb-3 mt-2"
+                      required
+                      onChange={(e) =>
+                        setProviderDetails({
+                          ...providerDetails,
+                          location: e.target.value,
                         })
                       }
                     />
