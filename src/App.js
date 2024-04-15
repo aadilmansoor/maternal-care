@@ -35,45 +35,48 @@ function App() {
   return (
     <div className="position-relative">
       <Routes>
-        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
-        <Route path="/client-register" element={<ClientRegister />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<ForgotPassword />} />
+
+        {/* admin */}
         <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/user" element={<ClientDashboard />} />
-        <Route path="/service-provider" element={<ProviderDashboard />} />
-        <Route path="/service-provider-register" element={<SpRegister />} />
         <Route path="/admin/leave-requests" element={<LeaveRequest />} />
         <Route path="/admin/bookings" element={<Bookings />} />
         <Route path="/admin/categories" element={<Categories />} />
         <Route path="/admin/verification" element={<ProviderVerification />} />
-        <Route path="/user/bookings" element={<ClientBooking />} />
-        <Route
-          path="/service-provider/leave-request"
-          element={<ProviderLeaveRequest />}
-        />
-        <Route path="/service-provider/attendance" element={<Attendance />} />
-
-        <Route path="/user/complaints" element={<Complaint />} />
-        <Route
-          path="/user/service-provider-details"
-          element={<ServiceProviderDetails />}
-        />
-        <Route path="/reset-password" element={<ForgotPassword />} />
-        <Route path="/user/booking-status" element={<BookingStatus />} />
         <Route path="/admin/send-newsletter" element={<Newsletter />} />
         <Route
           path="/admin/service-provider-info"
           element={<ServiceProviderInfo />}
         />
-        <Route path="/admin/chat" element={<ChatPage />} />
+        <Route path="/admin/complaint-box" element={<ChatPage />} />
+        <Route path="/admin/service-providers" element={<ServiceProviders />} />
 
+        {/* service provider */}
+        <Route path="/service-provider" element={<ProviderDashboard />} />
+        <Route path="/service-provider-register" element={<SpRegister />} />
+        <Route
+          path="/service-provider/leave-request"
+          element={<ProviderLeaveRequest />}
+        />
+        <Route path="/service-provider/attendance" element={<Attendance />} />
         <Route
           path="/service-provider/mark-attendance"
           element={<MarkAttendance />}
         />
-        <Route path="/admin/service-providers" element={<ServiceProviders />} />
         <Route path="/service-provider/bookings" element={<SpBookings />} />
 
+        {/* client */}
+        <Route path="/client-register" element={<ClientRegister />} />
+        <Route path="/user" element={<ClientDashboard />} />
+        <Route path="/user/bookings" element={<ClientBooking />} />
+        <Route path="/user/booking-status" element={<BookingStatus />} />
+        <Route path="/user/complaints" element={<Complaint />} />
+        <Route
+          path="/user/service-provider-details"
+          element={<ServiceProviderDetails />}
+        />
       </Routes>
       <ToastContainer
         autoClose={2000}
