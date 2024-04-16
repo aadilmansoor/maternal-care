@@ -14,7 +14,6 @@ const ProviderDashboard = () => {
   }, []);
   return (
     <div>
-      <UserHeader role="Service Provider" />
       <ProviderHero />
       <h2 className=" services text-center mt-5 mb-3"> Services</h2>
       <ServicesCards services={serviceProviderServices} />

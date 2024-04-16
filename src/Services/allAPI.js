@@ -141,3 +141,13 @@ export const searchServiceProvider = async (req) => {
     ""
   );
 };
+
+export const leaveRequest=async(req,headers)=>{
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/serviceprovider/leaverequest`,
+    req,
+    headers
+  
+  );
+}
