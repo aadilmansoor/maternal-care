@@ -32,6 +32,8 @@ import SpBookings from "./pages/Service_Provider/ServiceProviderBookings/SpBooki
 import UserLayout from "./Layout/UserLayout";
 import AdminLayout from "./Layout/AdminLayout";
 import ProviderLayout from "./Layout/ProviderLayout";
+import AdminWebinar from "./pages/Admin/Webinar/Webinar";
+import AddBlog from "./pages/Admin/Blog/Blog";
 
 function App() {
   return (
@@ -49,6 +51,11 @@ function App() {
         <Route path="/admin/categories" element={<Categories />} />
         <Route path="/admin/verification" element={<ProviderVerification />} />
         <Route path="/admin/send-newsletter" element={<Newsletter />} />
+        <Route path="/admin/webinar" element={<AdminWebinar />} />
+        <Route path="/admin/blog" element={<AddBlog/>} />
+
+
+
         <Route
           path="/admin/service-provider-info"
           element={<ServiceProviderInfo />}

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { serviceProviderServices } from "../../../Constants/serviceList";
-import { ProviderHero, ServicesCards, UserHeader } from "../../../components";
+import { ProviderHero, ServicesCards} from "../../../components";
 import "./ProviderServices.css";
 
 const ProviderDashboard = () => {

@@ -151,3 +151,33 @@ export const leaveRequest=async(req,headers)=>{
   
   );
 }
+export const  addWebinar=async(req,header)=>{
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/admin/webinar`,
+    req,
+    header
+    
+  
+  );
+}
+export const  showAllWebinar=async(req)=>{
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/user/webinar/view`,
+    req,
+    ""
+    
+  
+  );
+}
+export const  registerBlog=async(req)=>{
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/admin/blog`,
+    req,
+    ""
+    
+  
+  );
+}
