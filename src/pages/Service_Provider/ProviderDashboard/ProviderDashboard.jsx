@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { serviceProviderServices } from "../../../Constants/serviceList";
-import { ProviderHero, ServicesCards, UserHeader } from "../../../components";
+import { ProviderHero, ServicesCards} from "../../../components";
 import "./ProviderServices.css";
 import { daysBetweenDates } from "../../../utils";
 
@@ -16,7 +16,6 @@ const ProviderDashboard = () => {
   }, []);
   return (
     <div>
-      <UserHeader role="Service Provider" />
       <ProviderHero />
       <h2 className=" services text-center mt-5 mb-3"> Services</h2>
       <ServicesCards services={serviceProviderServices} />
