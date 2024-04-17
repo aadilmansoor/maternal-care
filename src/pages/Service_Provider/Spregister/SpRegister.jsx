@@ -16,11 +16,12 @@ function SpRegister() {
     service: "",
     specialization: "",
     qualification: "",
+    location: "",
     exp_year: "",
     experience_crt: {},
-    location: "",
     rate: "",
   });
+  console.log(providerDetails);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

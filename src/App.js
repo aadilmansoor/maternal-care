@@ -15,7 +15,6 @@ import {
   ClientBooking,
 } from "./pages";
 
-import { Footer } from "./components";
 import ProviderVerification from "./pages/Admin/ProviderVerification/ProviderVerification";
 import { ToastContainer } from "react-toastify";
 import ProviderLeaveRequest from "./pages/Service_Provider/ProviderLeaveRequest/ProviderLeaveRequest";
@@ -30,6 +29,9 @@ import ServiceProviderInfo from "./components/ServiceProviderInfo/ServiceProvide
 import ServiceProviders from "./pages/Admin/ServiceProviders/ServiceProviders";
 import ChatPage from "./pages/Admin/ChatPage/ChatPage";
 import SpBookings from "./pages/Service_Provider/ServiceProviderBookings/SpBookings";
+import UserLayout from "./Layout/UserLayout";
+import AdminLayout from "./Layout/AdminLayout";
+import ProviderLayout from "./Layout/ProviderLayout";
 
 function App() {
   return (
@@ -40,50 +42,61 @@ function App() {
         <Route path="/reset-password" element={<ForgotPassword />} />
 
         {/* admin */}
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/leave-requests" element={<LeaveRequest />} />
-        <Route path="/admin/bookings" element={<Bookings />} />
-        <Route path="/admin/categories" element={<Categories />} />
-        <Route path="/admin/verification" element={<ProviderVerification />} />
-        <Route path="/admin/send-newsletter" element={<Newsletter />} />
-        <Route
-          path="/admin/service-provider-info"
-          element={<ServiceProviderInfo />}
-        />
-        <Route path="/admin/complaint-box" element={<ChatPage />} />
-        <Route path="/admin/service-providers" element={<ServiceProviders />} />
+        <Route element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/leave-requests" element={<LeaveRequest />} />
+          <Route path="/admin/bookings" element={<Bookings />} />
+          <Route path="/admin/categories" element={<Categories />} />
+          <Route
+            path="/admin/verification"
+            element={<ProviderVerification />}
+          />
+          <Route path="/admin/send-newsletter" element={<Newsletter />} />
+          <Route
+            path="/admin/service-provider-info"
+            element={<ServiceProviderInfo />}
+          />
+          <Route path="/admin/complaint-box" element={<ChatPage />} />
+          <Route
+            path="/admin/service-providers"
+            element={<ServiceProviders />}
+          />
+        </Route>
 
         {/* service provider */}
-        <Route path="/service-provider" element={<ProviderDashboard />} />
         <Route path="/service-provider-register" element={<SpRegister />} />
-        <Route
-          path="/service-provider/leave-request"
-          element={<ProviderLeaveRequest />}
-        />
-        <Route path="/service-provider/attendance" element={<Attendance />} />
-        <Route
-          path="/service-provider/mark-attendance"
-          element={<MarkAttendance />}
-        />
-        <Route path="/service-provider/bookings" element={<SpBookings />} />
+        <Route element={<ProviderLayout />}>
+          <Route path="/service-provider" element={<ProviderDashboard />} />
+          <Route
+            path="/service-provider/leave-request"
+            element={<ProviderLeaveRequest />}
+          />
+          <Route path="/service-provider/attendance" element={<Attendance />} />
+          <Route
+            path="/service-provider/mark-attendance"
+            element={<MarkAttendance />}
+          />
+          <Route path="/service-provider/bookings" element={<SpBookings />} />
+        </Route>
 
         {/* client */}
         <Route path="/client-register" element={<ClientRegister />} />
-        <Route path="/user" element={<ClientDashboard />} />
-        <Route path="/user/booking" element={<ClientBooking />} />
-        <Route path="/user/booking-status" element={<BookingStatus />} />
-        <Route path="/user/complaints" element={<Complaint />} />
-        <Route
-          path="/user/service-provider-details"
-          element={<ServiceProviderDetails />}
-        />
+        <Route element={<UserLayout />}>
+          <Route path="/user" element={<ClientDashboard />} />
+          <Route path="/user/booking" element={<ClientBooking />} />
+          <Route path="/user/booking-status" element={<BookingStatus />} />
+          <Route path="/user/complaints" element={<Complaint />} />
+          <Route
+            path="/user/service-provider-details"
+            element={<ServiceProviderDetails />}
+          />
+        </Route>
       </Routes>
       <ToastContainer
         autoClose={2000}
         theme="colored"
         position="bottom-right"
       />
-      <Footer />
     </div>
   );
 }
