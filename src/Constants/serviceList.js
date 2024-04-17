@@ -1,7 +1,7 @@
 export const userServices = [
   {
     service: "Book Appointment",
-    path: "/user/bookings",
+    path: "/user/booking",
   },
   {
     service: "Complaints",
@@ -12,16 +12,8 @@ export const userServices = [
     path: "/user/booking-status",
   },
   {
-    service: "Complaints",
-    path: "/user/complaints",
-  },
-  {
-    service: "Booking",
-    path: "/user/bookings",
-  },
-  {
-    service: "Complaints",
-    path: "/user-complaints",
+    service: "Service Providers",
+    path: "/user/service-provider-details",
   },
 ];
 
@@ -39,8 +31,8 @@ export const serviceProviderServices = [
     path: "/service-provider/mark-attendance",
   },
   {
-    service: "payment3",
-    path: "/",
+    service: "Bookings",
+    path: "/service-provider/bookings",
   },
   {
     service: "payment4",

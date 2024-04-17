@@ -16,7 +16,7 @@ function SpRegister() {
     service: "",
     specialization: "",
     qualification: "",
-    location:"",
+    location: "",
     exp_year: "",
     experience_crt: {},
     rate: "",
@@ -104,20 +104,21 @@ function SpRegister() {
                         })
                       }
                     />
-                    <Form.Select className="choose mt-4 mb-4" aria-label="Default select example"
-                    onChange={(e) =>
-                      setProviderDetails({
-                        ...providerDetails,
-                        service: e.target.value,
-                      })
-                    }>
+                    <Form.Select
+                      className="choose mt-4 mb-4"
+                      aria-label="Default select example"
+                      onChange={(e) =>
+                        setProviderDetails({
+                          ...providerDetails,
+                          service: e.target.value,
+                        })
+                      }
+                    >
                       <option>Choose Service</option>
                       <option value="doctor">Doctor</option>
                       <option value="therapist">Therapist</option>
                       <option value="caretaker">Caretaker</option>
                       <option value="nurse">Nurse</option>
-
-
                     </Form.Select>
                     <input
                       type="text"
@@ -145,7 +146,7 @@ function SpRegister() {
                         })
                       }
                     />
-                     <input
+                    <input
                       type="text"
                       placeholder="Location"
                       style={{ borderRadius: "50px" }}

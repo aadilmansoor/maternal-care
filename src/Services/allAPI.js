@@ -124,12 +124,12 @@ export const userLogin = async (req) => {
 };
 
 //user booking
-export const userBooking = async (req) => {
+export const userBooking = async (req, headers) => {
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/user/primarybooking`,
     req,
-    ""
+    headers
   );
 };
 
@@ -141,6 +141,7 @@ export const searchServiceProvider = async (req) => {
     ""
   );
 };
+
 
 export const leaveRequest=async(req,headers)=>{
   return await commonAPI(
@@ -181,3 +182,63 @@ export const  registerBlog=async(req)=>{
   
   );
 }
+
+//view booking requests by service provider
+export const viewBookingRequestByProvider = async (headers) => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/serviceprovider/primarybooking/view`,
+    "",
+    headers
+  );
+};
+
+// accept booking request by service provider
+export const acceptBookingRequestByProvider = async (req, headers) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/serviceprovider/primarybooking/accept`,
+    req,
+    headers
+  );
+};
+
+// accept booking request by service provider
+export const rejectBookingRequestByProvider = async (req, headers) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/serviceprovider/primarybooking/reject`,
+    req,
+    headers
+  );
+};
+
+//view all booking by admin
+export const viewBookingRequestByAdmin = async () => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/primarybooking/view`,
+    "",
+    ""
+  );
+};
+
+//accept request by admin
+export const acceptBookingRequestByAdmin = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/admin/primarybooking/accept`,
+    req,
+    ""
+  );
+};
+
+//reject request by admin
+export const rejectBookingRequestByAdmin = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/admin/primarybooking/reject`,
+    req,
+    ""
+  );
+};

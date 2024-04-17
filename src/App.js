@@ -53,9 +53,6 @@ function App() {
         <Route path="/admin/send-newsletter" element={<Newsletter />} />
         <Route path="/admin/webinar" element={<AdminWebinar />} />
         <Route path="/admin/blog" element={<AddBlog/>} />
-
-
-
         <Route
           path="/admin/service-provider-info"
           element={<ServiceProviderInfo />}
@@ -66,25 +63,25 @@ function App() {
 
         {/* service provider */}
         <Route path="/service-provider-register" element={<SpRegister />} />
-        <Route  element={<ProviderLayout />}>
-        <Route path="/service-provider" element={<ProviderDashboard />} />
-        <Route
-          path="/service-provider/leave-request"
-          element={<ProviderLeaveRequest />}
-        />
-        <Route path="/service-provider/attendance" element={<Attendance />} />
-        <Route
-          path="/service-provider/mark-attendance"
-          element={<MarkAttendance />}
-        />
-        <Route path="/service-provider/bookings" element={<SpBookings />} />
+        <Route element={<ProviderLayout />}>
+          <Route path="/service-provider" element={<ProviderDashboard />} />
+          <Route
+            path="/service-provider/leave-request"
+            element={<ProviderLeaveRequest />}
+          />
+          <Route path="/service-provider/attendance" element={<Attendance />} />
+          <Route
+            path="/service-provider/mark-attendance"
+            element={<MarkAttendance />}
+          />
+          <Route path="/service-provider/bookings" element={<SpBookings />} />
         </Route>
 
         {/* client */}
         <Route path="/client-register" element={<ClientRegister />} />
-        <Route  element={<UserLayout />}>
+        <Route element={<UserLayout />}>
           <Route path="/user" element={<ClientDashboard />} />
-          <Route path="/user/bookings" element={<ClientBooking />} />
+          <Route path="/user/booking" element={<ClientBooking />} />
           <Route path="/user/booking-status" element={<BookingStatus />} />
           <Route path="/user/complaints" element={<Complaint />} />
           <Route
@@ -98,7 +95,6 @@ function App() {
         theme="colored"
         position="bottom-right"
       />
-      
     </div>
   );
 }
