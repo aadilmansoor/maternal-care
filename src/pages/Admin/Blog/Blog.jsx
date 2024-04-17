@@ -16,6 +16,8 @@ import Accordion from "react-bootstrap/Accordion";
 import Table from "react-bootstrap/Table";
 import Pagination from "@mui/material/Pagination";
 import axios from "axios";
+import { registerBlog, viewBlog } from "../../../Services/allAPI";
+import { toast } from "react-toastify";
 
 function AddBlog() {
   const [addBlog, setAddBlog] = useState({
@@ -87,13 +89,10 @@ function AddBlog() {
 
     const { title, date, description, image } = addBlog;
     if (!title || !date || !description || !image) {
-    //   Swal.fire({
-    //     title: "Fill the Blog Form",
-    //     icon: "warning",
-    //   });
+   toast.warning("Fill the Blog Form")
     } else {
       try {
-        const response = await addBlog(addBlog, header);
+        const response = await registerBlog(addBlog, header);
         if (response.status >= 200 && response.status <= 300) {
           console.log(response);
           setAddBlog({
@@ -102,13 +101,10 @@ function AddBlog() {
             description: "",
             image: null,
           });
-          // getBlogs();
+          getBlogs();
           document.getElementById("formFile").value = "";
           document.getElementById("image").value = ""; // Clear file input
-        //   Swal.fire({
-        //     title: "Blog Added",
-        //     icon: "success",
-        //   });
+        toast.success("Blog Added")
         }
       } catch (error) {
         console.log(error);
@@ -129,17 +125,18 @@ function AddBlog() {
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-//   const getBlogs = async () => {
-//     try {
-//       const result = await getAllBlogApi();
-//       setListBlogs(result?.data?.allBlogs);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-  // useEffect(() => {
-  //   getBlogs();
-  // }, []);
+  const getBlogs = async () => {
+    try {
+      const result = await viewBlog();
+      setListBlogs(result?.data?.blog);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getBlogs();
+  }, []);
 
 //   const handleDelete = (itemid) => {
 //     const id = { id: itemid }; // Create an object with email property
@@ -166,8 +163,8 @@ function AddBlog() {
 //               text: "Blog Deleted.",
 //               icon: "success",
 //             });
-//             console.log(response);
-//             getBlogs();
+            // console.log(response);
+            // getBlogs();
 //           } else {
 //             Swal.fire({
 //               title: "Not Deleted",
@@ -244,7 +241,7 @@ function AddBlog() {
                         <DemoItem>
                           <input
                             type="date"
-                            className="rounded border border-2 p-2"
+                            className="rounded  border border-2 p-2"
                             id="image"
                             onChange={(e) => handleDateChange(e.target.value)}
                           />
@@ -329,6 +326,7 @@ function AddBlog() {
                       <td>
                         {i.image && (
                           <img
+                          className="object-fit-contain"
                             src={i?.image}
                             alt="...no img Found"
                             style={{
@@ -339,7 +337,7 @@ function AddBlog() {
                           />
                         )}
                       </td>
-                      <td>
+                      {/* <td>
                         <button
                           className="p-2 btn"
                           // onClick={() => handleDelete(i?._id)}
@@ -349,7 +347,7 @@ function AddBlog() {
                             style={{ color: "red" }}
                           ></i>
                         </button>
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
               </tbody>

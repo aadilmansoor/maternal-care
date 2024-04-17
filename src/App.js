@@ -34,6 +34,7 @@ import AdminLayout from "./Layout/AdminLayout";
 import ProviderLayout from "./Layout/ProviderLayout";
 import AdminWebinar from "./pages/Admin/Webinar/Webinar";
 import AddBlog from "./pages/Admin/Blog/Blog";
+import Payment from "./components/Payment/Payment";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
         <Route path="/admin/send-newsletter" element={<Newsletter />} />
         <Route path="/admin/webinar" element={<AdminWebinar />} />
         <Route path="/admin/blog" element={<AddBlog/>} />
+
         <Route
           path="/admin/service-provider-info"
           element={<ServiceProviderInfo />}
@@ -84,6 +86,7 @@ function App() {
           <Route path="/user/booking" element={<ClientBooking />} />
           <Route path="/user/booking-status" element={<BookingStatus />} />
           <Route path="/user/complaints" element={<Complaint />} />
+
           <Route
             path="/user/service-provider-details"
             element={<ServiceProviderDetails />}

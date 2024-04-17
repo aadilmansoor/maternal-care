@@ -11,6 +11,7 @@ import {
   validateTimeInAndOut,
 } from "../../../utils";
 import { useNavigate } from "react-router-dom";
+import Payment from "../../../components/Payment/Payment";
 const ClientBooking = () => {
   console.log(daysBetweenDates("17-04-2024", "20-04-2024"));
   const [show, setShow] = useState(false);
@@ -383,6 +384,7 @@ const ClientBooking = () => {
           <Button variant="success" onClick={(e) => handleConfirm(e)}>
             Confirm
           </Button>
+          
         </Modal.Footer>
       </Modal>
     </>
