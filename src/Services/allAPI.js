@@ -142,36 +142,31 @@ export const searchServiceProvider = async (req) => {
   );
 };
 
-
-export const leaveRequest=async(req,headers)=>{
+export const leaveRequest = async (req, headers) => {
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/serviceprovider/leaverequest`,
     req,
     headers
-  
   );
-}
-export const  addWebinar=async(req,header)=>{
+};
+export const addWebinar = async (req, header) => {
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/admin/webinar`,
     req,
     header
-    
-  
   );
-}
-export const  showAllWebinar=async(req)=>{
+};
+export const showAllWebinar = async (req) => {
   return await commonAPI(
     "GET",
     `${base_URL}/maternalcare/user/webinar/view`,
     req,
     ""
-    
-  
   );
 }
+
 export const  registerBlog=async(req,header)=>{
   return await commonAPI(
     "POST",
@@ -189,11 +184,8 @@ export const  viewBlog=async(req)=>{
     `${base_URL}/maternalcare/user/blog/view`,
     req,
     ""
-   
-    
-  
   );
-}
+};
 
 //view booking requests by service provider
 export const viewBookingRequestByProvider = async (headers) => {
@@ -252,5 +244,25 @@ export const rejectBookingRequestByAdmin = async (req) => {
     `${base_URL}/maternalcare/admin/primarybooking/reject`,
     req,
     ""
+  );
+};
+
+//view unpaid booking requests by user
+// export const getUnpaidBookingStatus = async (headers) => {
+//   return await commonAPI(
+//     "GET",
+//     `${base_URL}/maternalcare/primarybooking/billunpaid/view`,
+//     "",
+//     headers
+//   );
+// };
+
+//view booking requests by user
+export const getBookingStatus = async (headers) => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/primarybooking/user/view`,
+    "",
+    headers
   );
 };

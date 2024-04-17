@@ -14,11 +14,6 @@ export const formatDateForBooking = (inputDate) => {
   return formattedDate;
 };
 
-// Example usage
-var inputDate = "2024-09-30";
-var formattedDate = formatDate(inputDate);
-console.log(formattedDate); // Output: 30/09/2024
-
 export const validateTimeInAndOut = (timeIn, timeOut) => {
   // Split time strings into hours and minutes
   const timeInParts = timeIn.split(":");
