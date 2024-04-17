@@ -172,12 +172,24 @@ export const  showAllWebinar=async(req)=>{
   
   );
 }
-export const  registerBlog=async(req)=>{
+export const  registerBlog=async(req,header)=>{
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/admin/blog`,
     req,
+    header
+   
+    
+  
+  );
+}
+export const  viewBlog=async(req)=>{
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/user/blog/view`,
+    req,
     ""
+   
     
   
   );
