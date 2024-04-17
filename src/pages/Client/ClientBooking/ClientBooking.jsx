@@ -1,66 +1,190 @@
 import { Button, Form, InputGroup, Modal, Table } from "react-bootstrap";
 import "./ClientBooking.css";
 import { useEffect, useState } from "react";
-import { searchServiceProvider } from "../../../Services/allAPI";
+import { searchServiceProvider, userBooking } from "../../../Services/allAPI";
+import { toast } from "react-toastify";
+import {
+  calculateDecimalHours,
+  daysBetweenDates,
+  formatDate,
+  formatDateForBooking,
+  validateTimeInAndOut,
+} from "../../../utils";
+import { useNavigate } from "react-router-dom";
 const ClientBooking = () => {
+  console.log(daysBetweenDates("17-04-2024", "20-04-2024"));
   const [show, setShow] = useState(false);
-  const [services, setServices] = useState([]);
-  const [typeCare, setTypeCare] = useState("pre-delivery care");
-  const [service, setService] = useState("caretaker");
-  const [timing, setTiming] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endTime, setEndTime] = useState("");
-  const [endDate, setEndDate] = useState("");
   const [disableTime, setDisableTime] = useState(true);
-  const [location, setLocation] = useState("");
-  console.log(timing);
+  const [listOfServices, setListOfServices] = useState([]);
+  const [serviceProviders, setServiceProviders] = useState([]);
+  const [providerDetails, setProviderDetails] = useState({
+    typeOfCare: "pre-delivery care",
+    service: "caretaker",
+    startingTime: "",
+    endingTime: "",
+    startDate: "",
+    endDate: "",
+    location: "",
+    serviceProviderName: "",
+    serviceProviderId: "",
+    profile_img: "",
+    serviceProviderEmail: "",
+    serviceProviderMobile: "",
+    rate: "",
+  });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (typeCare === "pre-delivery care" || typeCare === "post-delivery care") {
-      setServices(["caretaker"]);
-      setService("caretaker");
-    } else if (typeCare === "yoga therapy") {
-      setServices(["therapist"]);
-      setService("therapist");
-    } else if (typeCare === "doctor support") {
-      setServices(["doctor", "nurse"]);
-      setService("doctor");
+    if (
+      providerDetails.typeOfCare === "pre-delivery care" ||
+      providerDetails.typeOfCare === "post-delivery care"
+    ) {
+      setListOfServices(["caretaker"]);
+      setProviderDetails({
+        ...providerDetails,
+        service: "caretaker",
+        services: "caretaker",
+      });
+    } else if (providerDetails.typeOfCare === "yoga therapy") {
+      setListOfServices(["therapist"]);
+      setProviderDetails({
+        ...providerDetails,
+        service: "therapist",
+        services: "therapist",
+      });
+    } else if (providerDetails.typeOfCare === "doctor support") {
+      setListOfServices(["doctor", "nurse"]);
+      setProviderDetails({
+        ...providerDetails,
+        service: "doctor",
+        services: "doctor",
+      });
     } else {
-      setServices([]);
+      setListOfServices([]);
+      setProviderDetails({ ...providerDetails, service: "", services: "" });
     }
-  }, [typeCare]);
+  }, [providerDetails.typeOfCare]);
 
   useEffect(() => {
-    if (timing === "full day") {
-      setStartTime("00:00");
-      setEndTime("00:00");
+    if (providerDetails.timing === "full day") {
+      setProviderDetails({
+        ...providerDetails,
+        startingTime: "00:00",
+        endingTime: "23:59",
+      });
       setDisableTime(true);
-    } else if (timing === "day") {
-      setStartTime("09:00");
-      setEndTime("17:00");
+    } else if (providerDetails.timing === "day") {
+      setProviderDetails({
+        ...providerDetails,
+        startingTime: "09:00",
+        endingTime: "17:00",
+      });
       setDisableTime(true);
-    } else if (timing === "night") {
-      setStartTime("18:00");
-      setEndTime("22:00");
+    } else if (providerDetails.timing === "night") {
+      setProviderDetails({
+        ...providerDetails,
+        startingTime: "18:00",
+        endingTime: "22:00",
+      });
       setDisableTime(true);
-    } else if (timing === "custom") {
-      setStartTime("");
-      setEndTime("");
+    } else if (providerDetails.timing === "custom") {
+      setProviderDetails({
+        ...providerDetails,
+        startingTime: "",
+        endingTime: "",
+      });
       setDisableTime(false);
     }
-  }, [timing]);
+  }, [providerDetails.timing]);
 
   useEffect(() => {
     const fetchServiceProvider = async () => {
-      const result = await searchServiceProvider({ location, service });
-      console.log(result);
+      const result = await searchServiceProvider({
+        location: providerDetails.location,
+        service: providerDetails.service,
+      });
+      setServiceProviders(result?.data?.searchUser);
+      console.log(serviceProviders);
     };
     fetchServiceProvider();
-  }, [service, location]);
+  }, [providerDetails.service, providerDetails.location]);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleBooking = ({
+    username,
+    location,
+    rate,
+    profile_img,
+    email,
+    mobile,
+    serviceProviderId,
+  }) => {
+    if (
+      providerDetails.timing === "" ||
+      providerDetails.startingTime === "" ||
+      providerDetails.endingTime === "" ||
+      providerDetails.startDate === "" ||
+      providerDetails.endDate === ""
+    ) {
+      toast.warning("Fill all the details.");
+      return;
+    }
+    if (
+      !validateTimeInAndOut(
+        providerDetails.startingTime,
+        providerDetails.endingTime
+      )
+    ) {
+      toast.warning("Start Time should be earlier end Time");
+    }
+    setProviderDetails((currentDetails) => {
+      return {
+        ...currentDetails,
+        serviceProviderName: username,
+        location,
+        rate,
+        profile_img,
+        serviceProviderEmail: email,
+        serviceProviderMobile: mobile,
+        serviceProviderId,
+      };
+    });
+    setShow(true);
+  };
+
+  const handleConfirm = async () => {
+    const token = localStorage.getItem("maternity-token");
+    const headers = {
+      "Content-type": "application/json",
+      Authorization: `${token}`,
+    };
+    const workinghours = calculateDecimalHours(
+      providerDetails.startingTime,
+      providerDetails.endingTime
+    );
+    const noOfDays = daysBetweenDates(
+      formatDate(providerDetails.startDate),
+      formatDate(providerDetails.endDate)
+    );
+    const amountPaid = providerDetails.rate * workinghours * noOfDays;
+
+    console.log({ rate: providerDetails.rate, workinghours, noOfDays });
+    const result = await userBooking(
+      {
+        ...providerDetails,
+        startDate: formatDateForBooking(providerDetails.startDate),
+        endDate: formatDateForBooking(providerDetails.endDate),
+        amountPaid: parseInt(amountPaid),
+        workinghours,
+      },
+      headers
+    );
+    if (result.status === 200) {
+      toast.success("Submitted. Wait for confirmation");
+      navigate("/user");
+    }
+  };
 
   return (
     <>
@@ -69,7 +193,12 @@ const ClientBooking = () => {
         <div className="mb-2 d-flex gap-2 input_group">
           <Form.Select
             aria-label="Default select example"
-            onChange={(e) => setTypeCare(e.target.value)}
+            onChange={(e) =>
+              setProviderDetails({
+                ...providerDetails,
+                typeOfCare: e.target.value,
+              })
+            }
             className="text-capitalize"
           >
             <option value="pre-delivery care">Pre-delivery Care</option>
@@ -79,10 +208,16 @@ const ClientBooking = () => {
           </Form.Select>
           <Form.Select
             aria-label="Default select example"
-            onChange={(e) => setService(e.target.value)}
+            onChange={(e) =>
+              setProviderDetails({
+                ...providerDetails,
+                service: e.target.value,
+                services: e.target.value,
+              })
+            }
             className="text-capitalize"
           >
-            {services.map((value) => {
+            {listOfServices.map((value) => {
               return (
                 <option key={value} value={value} className="text-capitalize">
                   {value}
@@ -92,7 +227,9 @@ const ClientBooking = () => {
           </Form.Select>
           <Form.Select
             aria-label="Default select example"
-            onChange={(e) => setTiming(e.target.value)}
+            onChange={(e) =>
+              setProviderDetails({ ...providerDetails, timing: e.target.value })
+            }
           >
             <option>Select Timing</option>
             <option value="full day">Full Day</option>
@@ -105,36 +242,61 @@ const ClientBooking = () => {
           <input
             className=" form-control "
             type="time"
-            value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
+            value={providerDetails.startingTime}
+            onChange={(e) =>
+              setProviderDetails({
+                ...providerDetails,
+                startingTime: e.target.value,
+              })
+            }
             disabled={disableTime}
           />
           <input
             className=" form-control "
             type="time"
-            value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
+            value={providerDetails.endingTime}
+            onChange={(e) =>
+              setProviderDetails({
+                ...providerDetails,
+                endingTime: e.target.value,
+              })
+            }
             disabled={disableTime}
           />
           <input
             className=" form-control "
             type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
+            value={providerDetails.startDate}
+            onChange={(e) =>
+              setProviderDetails({
+                ...providerDetails,
+                startDate: e.target.value,
+              })
+            }
           />
           <input
             className=" form-control "
             type="date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
+            value={providerDetails.endDate}
+            onChange={(e) =>
+              setProviderDetails({
+                ...providerDetails,
+                endDate: e.target.value,
+              })
+            }
           />
         </div>
         <InputGroup className="search_input mb-5">
           <Form.Control
             placeholder="Search By Location"
             aria-label="Search"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+            value={providerDetails.location}
+            onChange={(e) =>
+              setProviderDetails({
+                ...providerDetails,
+                location: e.target.value,
+              })
+            }
           />
           <InputGroup.Text id="basic-addon1">
             <i className="fa-solid fa-magnifying-glass"></i>
@@ -142,44 +304,45 @@ const ClientBooking = () => {
         </InputGroup>
       </div>
       <div className="table1">
-        <Table responsive bordered hover>
-          <thead className="p-2">
-            <tr>
-              <th>
-                <strong>Name</strong>
-              </th>
-              <th>
-                <strong>Location</strong>
-              </th>
-              <th>
-                <strong>Rate/hr</strong>
-              </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Fawas</td>
-              <td>Kochi</td>
-              <td>1000</td>
-              <td>
-                <button className="btn btn-sm btn-success" onClick={handleShow}>
-                  Book
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Aadil</td>
-              <td>Kannur</td>
-              <td>1000</td>
-              <td>
-                <button className="btn btn-sm btn-success" onClick={handleShow}>
-                  Book
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </Table>
+        {serviceProviders !== undefined ? (
+          <Table responsive bordered hover>
+            <thead className="p-2">
+              <tr>
+                <th>
+                  <strong>Name</strong>
+                </th>
+                <th>
+                  <strong>Location</strong>
+                </th>
+                <th>
+                  <strong>Rate/hr</strong>
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {serviceProviders?.map((provider) => {
+                return (
+                  <tr key={provider._id}>
+                    <td>{provider.username}</td>
+                    <td>{provider.location}</td>
+                    <td>{provider.rate}</td>
+                    <td>
+                      <button
+                        className="btn btn-sm btn-success"
+                        onClick={() => handleBooking(provider)}
+                      >
+                        Book
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+        ) : (
+          <p className="text-center">No service providers found</p>
+        )}
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -190,30 +353,34 @@ const ClientBooking = () => {
             <li className="provider_head">
               <strong>Service Provider Details</strong>
             </li>
-            <li>Name:</li>
-            <li>Location:</li>
-            <li>Rate/hr:</li>
+            <li>Name: {providerDetails.serviceProviderName}</li>
+            <li>Location: {providerDetails.location}</li>
+            <li>Rate/hr: {providerDetails.rate}</li>
             <li>
               Treatment Type:{" "}
-              <span className="text-capitalize">{typeCare}</span>
+              <span className="text-capitalize">
+                {providerDetails.typeOfCare}
+              </span>
             </li>
             <li>
-              Service: <span className="text-capitalize">{service}</span>
+              Service:{" "}
+              <span className="text-capitalize">{providerDetails.service}</span>
             </li>
             <li>
-              Timing: <span className="text-capitalize">{timing}</span>
+              Timing:{" "}
+              <span className="text-capitalize">{providerDetails.timing}</span>
             </li>
-            <li>Start Time: {startTime}</li>
-            <li>End Time: {endTime} </li>
-            <li>Start Date: {startDate} </li>
-            <li>End Date: {endDate} </li>
+            <li>Start Time: {providerDetails.startingTime}</li>
+            <li>End Time: {providerDetails.endingTime} </li>
+            <li>Start Date: {formatDate(providerDetails.startDate)} </li>
+            <li>End Date: {formatDate(providerDetails.endDate)} </li>
           </ul>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="success" onClick={handleClose}>
+          <Button variant="success" onClick={(e) => handleConfirm(e)}>
             Confirm
           </Button>
         </Modal.Footer>

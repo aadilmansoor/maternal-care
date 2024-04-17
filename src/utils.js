@@ -4,6 +4,21 @@ export const formatDate = (inputDate) => {
   return formattedDate;
 };
 
+export const formatDateForBooking = (inputDate) => {
+  // Split the input date string by "-"
+  var parts = inputDate.split("-");
+
+  // Rearrange the parts to the desired format
+  var formattedDate = parts[2] + "/" + parts[1] + "/" + parts[0];
+
+  return formattedDate;
+};
+
+// Example usage
+var inputDate = "2024-09-30";
+var formattedDate = formatDate(inputDate);
+console.log(formattedDate); // Output: 30/09/2024
+
 export const validateTimeInAndOut = (timeIn, timeOut) => {
   // Split time strings into hours and minutes
   const timeInParts = timeIn.split(":");
@@ -50,55 +65,18 @@ export const calculateDecimalHours = (timeIn, timeOut) => {
   return decimalHours;
 };
 
-export const fillMissingDatesAndSort = (data, daysInMonth) => {
-  // Sort data by date in ascending order
-  data.sort((a, b) => {
-    const dateA = new Date(a.date.split("-").reverse().join("-"));
-    const dateB = new Date(b.date.split("-").reverse().join("-"));
-    return dateA - dateB;
-  });
+export const daysBetweenDates = (date1, date2) => {
+  // Parse the input dates
+  var parts1 = date1.split("-");
+  var parts2 = date2.split("-");
+  var startDate = new Date(parts1[2], parts1[1] - 1, parts1[0]); // Month is zero-based
+  var endDate = new Date(parts2[2], parts2[1] - 1, parts2[0]); // Month is zero-based
 
-  // Use a Set for faster lookup of unique dates
-  const uniqueDates = new Set(data.map((item) => item.date));
+  // Calculate the difference in milliseconds
+  var differenceMs = Math.abs(endDate - startDate);
 
-  // Get the first and last dates from the sorted data
-  const firstDate = new Date(data[0].date.split("-").reverse().join("-"));
+  // Convert milliseconds to days and include the start and end dates
+  var daysDifference = Math.ceil(differenceMs / (1000 * 60 * 60 * 24)) + 1;
 
-  // Fill in missing dates with placeholder values for the same month
-  let currentDate = new Date(firstDate);
-  const lastDayOfMonth =
-    daysInMonth ||
-    new Date(firstDate.getFullYear(), firstDate.getMonth() + 1, 0).getDate();
-
-  const newData = [];
-  while (currentDate.getDate() <= lastDayOfMonth) {
-    const formattedDate = currentDate
-      .toLocaleDateString("en-GB")
-      .split("/")
-      .join("-");
-    if (!uniqueDates.has(formattedDate)) {
-      newData.push({
-        date: formattedDate,
-        time_in: "--",
-        time_out: "--",
-        workingHours: 0,
-        serviceProviderId: "",
-        present: false,
-        __v: 0,
-      });
-    }
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-  // Concatenate the original data with the newly generated data
-  const sortedData = data.concat(newData);
-
-  // Sort the updated data by date
-  sortedData.sort((a, b) => {
-    const dateA = new Date(a.date.split("-").reverse().join("-"));
-    const dateB = new Date(b.date.split("-").reverse().join("-"));
-    return dateA - dateB;
-  });
-
-  return sortedData;
+  return daysDifference;
 };

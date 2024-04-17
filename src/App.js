@@ -70,7 +70,7 @@ function App() {
         {/* client */}
         <Route path="/client-register" element={<ClientRegister />} />
         <Route path="/user" element={<ClientDashboard />} />
-        <Route path="/user/bookings" element={<ClientBooking />} />
+        <Route path="/user/booking" element={<ClientBooking />} />
         <Route path="/user/booking-status" element={<BookingStatus />} />
         <Route path="/user/complaints" element={<Complaint />} />
         <Route

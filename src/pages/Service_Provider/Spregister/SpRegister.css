@@ -1,7 +1,11 @@
-@media screen and (max-width:767px){
-    .spimage{
+.choose {
+    border-radius: 20px;
+}
+
+@media screen and (max-width:767px) {
+    .spimage {
         display: none;
 
     }
-    
+
 }
