@@ -18,6 +18,7 @@ const ClientBooking = () => {
   const [disableTime, setDisableTime] = useState(true);
   const [listOfServices, setListOfServices] = useState([]);
   const [serviceProviders, setServiceProviders] = useState([]);
+  const [buttonDisable, setButtonDisable] = useState(false);
   const [providerDetails, setProviderDetails] = useState({
     typeOfCare: "pre-delivery care",
     service: "caretaker",
@@ -155,6 +156,7 @@ const ClientBooking = () => {
   };
 
   const handleConfirm = async () => {
+    setButtonDisable(true);
     const token = localStorage.getItem("maternity-token");
     const headers = {
       "Content-type": "application/json",
@@ -184,6 +186,9 @@ const ClientBooking = () => {
     if (result.status === 200) {
       toast.success("Submitted. Wait for confirmation");
       navigate("/user");
+    } else {
+      toast.danger("Oops! Something went wrong.");
+      setButtonDisable(false);
     }
   };
 
@@ -378,10 +383,18 @@ const ClientBooking = () => {
           </ul>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
+          <Button
+            variant="danger"
+            onClick={handleClose}
+            disabled={buttonDisable}
+          >
             Cancel
           </Button>
-          <Button variant="success" onClick={(e) => handleConfirm(e)}>
+          <Button
+            variant="success"
+            onClick={(e) => handleConfirm(e)}
+            disabled={buttonDisable}
+          >
             Confirm
           </Button>
         </Modal.Footer>

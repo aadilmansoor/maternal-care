@@ -8,6 +8,7 @@ import { paymentUser } from "../../Services/allAPI";
 function Payment({ item }) {
   const [cardNumber, setCardNumber] = useState("");
   const [holderName, setHolderName] = useState("");
+  const [disableButton, setDisableButton] = useState(false);
   const [expiry, setExpiry] = useState("");
   const [cvv, setCvv] = useState("");
   const [show, setShow] = useState(false);
@@ -69,6 +70,7 @@ function Payment({ item }) {
       return;
     } else {
       try {
+        setDisableButton(true);
         const token = localStorage.getItem("maternity-token");
         const headers = {
           "Content-type": "application/json",
@@ -79,8 +81,22 @@ function Payment({ item }) {
           console.log(response);
           toast.success("Payment Completed");
           handleClose();
+        } else if (response.status === 401) {
+          toast.warning("Service provider not available.");
+          handleClose();
+          setDisableButton(false);
+        } else if (response.status === 404) {
+          toast.warning("Payment already processed.");
+          handleClose();
+          setDisableButton(false);
+        } else if (response.status === 400) {
+          toast.warning("Service provider not available.");
+          handleClose();
+          setDisableButton(false);
         }
       } catch (error) {
+        setDisableButton(false);
+        toast.danger("Oops! Something went wrong.");
         console.log(error);
       }
     }
@@ -182,13 +198,16 @@ function Payment({ item }) {
                 </div>
               </div>
             </div>
-            <h5 className="text-center px-5 mt-3">Total Amount : {total}&#8377;</h5>
+            <h5 className="text-center px-5 mt-3">
+              Total Amount : {total}&#8377;
+            </h5>
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button
             variant="primary"
             className="btn w-75 me-5"
+            disabled={disableButton}
             onClick={handleSubmit}
           >
             Pay Now
