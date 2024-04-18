@@ -265,7 +265,7 @@ export const getBookingStatus = async (headers) => {
 };
 
 // pay amount by user
-export const paymentUser = async (req, headers) => {
+export const paymentUser = async (req,headers) => {
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/primarybooking/user/payment/view`,

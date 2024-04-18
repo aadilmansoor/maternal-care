@@ -182,7 +182,7 @@ function Payment({ item }) {
                 </div>
               </div>
             </div>
-            <h3 className="ms-5 px-5 mt-3">Total Amount : {total}&#8377;</h3>
+            <h5 className="text-center px-5 mt-3">Total Amount : {total}&#8377;</h5>
           </form>
         </Modal.Body>
         <Modal.Footer>

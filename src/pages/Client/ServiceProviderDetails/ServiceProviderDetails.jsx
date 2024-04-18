@@ -4,6 +4,7 @@ import ShowReview from "../../../components/ShowReview/ShowReview";
 import ServiceProviderInfo from "../../../components/ServiceProviderInfo/ServiceProviderInfo";
 
 const ServiceProviderDetails = () => {
+  
   return (
     <div>
       <ServiceProviderInfo/>
