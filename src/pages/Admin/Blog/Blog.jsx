@@ -15,7 +15,6 @@ import dayjs from "dayjs";
 import Accordion from "react-bootstrap/Accordion";
 import Table from "react-bootstrap/Table";
 import Pagination from "@mui/material/Pagination";
-import axios from "axios";
 import { registerBlog, viewBlog } from "../../../Services/allAPI";
 import { toast } from "react-toastify";
 
@@ -89,7 +88,7 @@ function AddBlog() {
 
     const { title, date, description, image } = addBlog;
     if (!title || !date || !description || !image) {
-   toast.warning("Fill the Blog Form")
+      toast.warning("Fill the Blog Form");
     } else {
       try {
         const response = await registerBlog(addBlog, header);
@@ -104,7 +103,7 @@ function AddBlog() {
           getBlogs();
           document.getElementById("formFile").value = "";
           document.getElementById("image").value = ""; // Clear file input
-        toast.success("Blog Added")
+          toast.success("Blog Added");
         }
       } catch (error) {
         console.log(error);
@@ -138,60 +137,58 @@ function AddBlog() {
     getBlogs();
   }, []);
 
-//   const handleDelete = (itemid) => {
-//     const id = { id: itemid }; // Create an object with email property
+  //   const handleDelete = (itemid) => {
+  //     const id = { id: itemid }; // Create an object with email property
 
-//     Swal.fire({
-//       title: "Are you sure?",
-//       text: "You won't be able to revert this!",
-//       icon: "warning",
-//       showCancelButton: true,
-//       confirmButtonColor: "#3085d6",
-//       cancelButtonColor: "#d33",
-//       confirmButtonText: "Delete ",
-//     }).then(async (result) => {
-//       if (result.isConfirmed) {
-//         try {
-//           const response = await axios.delete(
-//             `http://localhost:5000/blog/delete-blog`,
-//             { data: id } // Use 'data' option to pass the payload
-//           );
+  //     Swal.fire({
+  //       title: "Are you sure?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonColor: "#3085d6",
+  //       cancelButtonColor: "#d33",
+  //       confirmButtonText: "Delete ",
+  //     }).then(async (result) => {
+  //       if (result.isConfirmed) {
+  //         try {
+  //           const response = await axios.delete(
+  //             `http://localhost:5000/blog/delete-blog`,
+  //             { data: id } // Use 'data' option to pass the payload
+  //           );
 
-//           if (response?.status >= 200 && response?.status <= 300) {
-//             Swal.fire({
-//               title: "Deleted",
-//               text: "Blog Deleted.",
-//               icon: "success",
-//             });
-            // console.log(response);
-            // getBlogs();
-//           } else {
-//             Swal.fire({
-//               title: "Not Deleted",
-//               text: "Blog Not Deleted",
-//               icon: "warning",
-//             });
-//           }
-//         } catch (error) {
-//           Swal.fire({
-//             title: "Oops",
-//             text: "Something went Wrong",
-//             icon: "error",
-//           });
-//           console.error("Error in Deleting:", error);
-//         }
-//       }
-//     });
-//   };
-
+  //           if (response?.status >= 200 && response?.status <= 300) {
+  //             Swal.fire({
+  //               title: "Deleted",
+  //               text: "Blog Deleted.",
+  //               icon: "success",
+  //             });
+  // console.log(response);
+  // getBlogs();
+  //           } else {
+  //             Swal.fire({
+  //               title: "Not Deleted",
+  //               text: "Blog Not Deleted",
+  //               icon: "warning",
+  //             });
+  //           }
+  //         } catch (error) {
+  //           Swal.fire({
+  //             title: "Oops",
+  //             text: "Something went Wrong",
+  //             icon: "error",
+  //           });
+  //           console.error("Error in Deleting:", error);
+  //         }
+  //       }
+  //     });
+  //   };
 
   console.log(addBlog);
-  
 
   return (
     <div style={{ display: "flex" }}>
       {/* <BlogAside></BlogAside> */}
-      <Container className="p-5 text-center" >
+      <Container className="p-5 text-center">
         <Accordion
           defaultActiveKey={null}
           className="ms-5"
@@ -245,7 +242,6 @@ function AddBlog() {
                             id="image"
                             onChange={(e) => handleDateChange(e.target.value)}
                           />
-                          
                         </DemoItem>
                       </DemoContainer>
                     </div>
@@ -274,7 +270,10 @@ function AddBlog() {
                   <div className="my-2 text-center">
                     <button
                       className="btn btn "
-                      style={{ backgroundColor: "rgb(39, 103, 141)", color: "white" }}
+                      style={{
+                        backgroundColor: "rgb(39, 103, 141)",
+                        color: "white",
+                      }}
                       onClick={handleAddBlog}
                     >
                       Add
@@ -287,9 +286,12 @@ function AddBlog() {
         </Accordion>
         {showTable && (
           <>
-            <h2 className="my-5 text-center" style={{ color: "rgb(39, 103, 141)" }}>
+            <h2
+              className="my-5 text-center"
+              style={{ color: "rgb(39, 103, 141)" }}
+            >
               {" "}
-              Listing Blogs
+              Blogs
             </h2>
             <Table
               striped
@@ -326,7 +328,7 @@ function AddBlog() {
                       <td>
                         {i.image && (
                           <img
-                          className="object-fit-contain"
+                            className="object-fit-contain"
                             src={i?.image}
                             alt="...no img Found"
                             style={{

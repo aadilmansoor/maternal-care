@@ -283,3 +283,43 @@ export const viewWebinar = async () => {
     ""
   );
 };
+
+//view all blogs by user
+export const viewAllBlogByUser = async () => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/user/blog/view`,
+    "",
+    ""
+  );
+};
+
+//view all leave request by admin
+export const viewAllLeaveRequests = async () => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/admin/serviceprovider/leaverequest/view`,
+    "",
+    ""
+  );
+};
+
+//accept leave request by admin
+export const acceptLeaveRequestByAdmin = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/admin/serviceprovider/leaverequest/accept`,
+    req,
+    ""
+  );
+};
+
+//reject leave request by admin
+export const rejectLeaveRequestByAdmin = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/admin/serviceprovider/leaverequest/reject`,
+    req,
+    ""
+  );
+};

@@ -86,7 +86,7 @@ function UserHeader({ role = "User" }) {
                   role === "admin"
                     ? "/admin"
                     : role === "provider"
-                    ? "/provider"
+                    ? "/service-provider"
                     : "/user"
                 }
                 className="ms-3"
@@ -110,7 +110,7 @@ function UserHeader({ role = "User" }) {
               Webinar
             </a>
             <a
-              href="/"
+              href="/user/blog"
               className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
                 role !== "User" ? "d-none" : ""
               }`}

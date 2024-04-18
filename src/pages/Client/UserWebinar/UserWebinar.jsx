@@ -100,7 +100,7 @@ const UserWebinar = () => {
                 <Card style={{ width: "20rem" }}>
                   <Card.Img
                     variant="top"
-                    src={holderImage}
+                    src={webinar.image}
                     height={318}
                     width={318}
                     className="img_holder"
