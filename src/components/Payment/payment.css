@@ -7,8 +7,8 @@
     height: 180px;
     background-image: radial-gradient(
       circle 897px at 9% 80.3%,
-      rgba(55, 60, 245, 1) 0%,
-      rgba(234, 161, 15, 0.9) 100.2%
+      rgb(38, 58, 103) 0%,
+      rgba(176, 184, 207, 0.9) 100.2%
     );
     border-radius: 10px;
     padding: 20px;

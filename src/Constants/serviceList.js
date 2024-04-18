@@ -13,7 +13,7 @@ export const userServices = [
   },
   {
     service: "Service Providers",
-    path: "/user/service-provider-details",
+    path: "/user/service-providers",
   },
 ];
 
@@ -69,4 +69,5 @@ export const adminServices = [
     service: "Add Categories",
     path: "/admin/categories",
   },
+ 
 ];
