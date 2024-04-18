@@ -102,14 +102,18 @@ function UserHeader({ role = "User" }) {
 
           <Col className=" d-flex justify-content-end align-items-center py-1">
             <a
-              href="/"
-              className="roboto-regular fs-5 text-decoration-none text-white me-4"
+              href="/user/webinar"
+              className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
+                role !== "User" ? "d-none" : ""
+              }`}
             >
               Webinar
             </a>
             <a
               href="/"
-              className="roboto-regular fs-5 text-decoration-none text-white me-4"
+              className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
+                role !== "User" ? "d-none" : ""
+              }`}
             >
               Blog
             </a>

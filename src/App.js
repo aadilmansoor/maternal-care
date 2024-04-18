@@ -23,7 +23,6 @@ import Complaint from "./pages/Client/ClientComplaint/Complaint";
 import ServiceProviderDetails from "./pages/Client/ServiceProviderDetails/ServiceProviderDetails";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import BookingStatus from "./pages/Client/BookingStatus/BookingStatus";
-import Webinar from "./pages/Client/Webinar/Webinar";
 import Newsletter from "./pages/Admin/Newsletter/Newsletter";
 import MarkAttendance from "./pages/Service_Provider/MarkAttendance/MarkAttendance";
 import ServiceProviderInfo from "./components/ServiceProviderInfo/ServiceProviderInfo";
@@ -33,8 +32,10 @@ import SpBookings from "./pages/Service_Provider/ServiceProviderBookings/SpBooki
 import UserLayout from "./Layout/UserLayout";
 import AdminLayout from "./Layout/AdminLayout";
 import ProviderLayout from "./Layout/ProviderLayout";
-import AdminWebinar from "./pages/Admin/Webinar/Webinar";
 import AddBlog from "./pages/Admin/Blog/Blog";
+import AdminWebinar from "./pages/Admin/AdminWebinar/AdminWebinar";
+import UserWebinar from "./pages/Client/UserWebinar/UserWebinar";
+import UserBlog from "./pages/Client/UserBlog/UserBlog";
 
 function App() {
   return (
@@ -92,12 +93,8 @@ function App() {
           <Route path="/user/booking" element={<ClientBooking />} />
           <Route path="/user/booking-status" element={<BookingStatus />} />
           <Route path="/user/complaints" element={<Complaint />} />
-          <Route path="/user/webinar" element={<Webinar />} />
-          <Route
-            path="/user/service-providers"
-            element={<ServiceProviders />}
-          />
-
+          <Route path="/user/webinar" element={<UserWebinar />} />
+          <Route path="/user/blog" element={<UserBlog />} />
           <Route
             path="/user/service-provider-details"
             element={<ServiceProviderDetails />}
