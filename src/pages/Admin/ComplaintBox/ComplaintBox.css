@@ -36,7 +36,6 @@ hr {
 }
 
 .chat_profile {
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
     min-width: 400px;
     height: 100vh;
     overflow-y: auto;
@@ -56,6 +55,10 @@ hr {
     background-color: rgb(252, 252, 252);
     width: 100%;
     height: 100vh;
+    background-image: url("/src/Images/chat-bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .message_content {

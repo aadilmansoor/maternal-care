@@ -265,7 +265,7 @@ export const getBookingStatus = async (headers) => {
 };
 
 // pay amount by user
-export const paymentUser = async (req,headers) => {
+export const paymentUser = async (req, headers) => {
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/primarybooking/user/payment/view`,
@@ -322,4 +322,14 @@ export const rejectLeaveRequestByAdmin = async (req) => {
     req,
     ""
   );
+};
+
+//sent message by user
+export const sentMessageUser = async (req) => {
+  return await commonAPI("POST", `${base_URL}/maternalcare/chat/post`, req, "");
+};
+
+//receive message by user or admin
+export const receiveMessageAPI = async (req) => {
+  return await commonAPI("POST", `${base_URL}/maternalcare/chat/get`, req, "");
 };

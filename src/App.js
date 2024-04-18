@@ -27,7 +27,7 @@ import Newsletter from "./pages/Admin/Newsletter/Newsletter";
 import MarkAttendance from "./pages/Service_Provider/MarkAttendance/MarkAttendance";
 import ServiceProviderInfo from "./components/ServiceProviderInfo/ServiceProviderInfo";
 import ServiceProviders from "./pages/Admin/ServiceProviders/ServiceProviders";
-import ChatPage from "./pages/Admin/ChatPage/ChatPage";
+import ComplaintBox from "./pages/Admin/ComplaintBox/ComplaintBox";
 import SpBookings from "./pages/Service_Provider/ServiceProviderBookings/SpBookings";
 import UserLayout from "./Layout/UserLayout";
 import AdminLayout from "./Layout/AdminLayout";
@@ -36,6 +36,7 @@ import AddBlog from "./pages/Admin/Blog/Blog";
 import AdminWebinar from "./pages/Admin/AdminWebinar/AdminWebinar";
 import UserWebinar from "./pages/Client/UserWebinar/UserWebinar";
 import UserBlog from "./pages/Client/UserBlog/UserBlog";
+import AdminChatBox from "./pages/Admin/AdminChatBox/AdminChatBox";
 
 function App() {
   return (
@@ -63,7 +64,8 @@ function App() {
             path="/admin/service-provider-info"
             element={<ServiceProviderInfo />}
           />
-          <Route path="/admin/complaint-box" element={<ChatPage />} />
+          <Route path="/admin/complaint-box" element={<ComplaintBox />} />
+          <Route path="/admin/chat-box" element={<AdminChatBox />} />
           <Route
             path="/admin/service-providers"
             element={<ServiceProviders />}

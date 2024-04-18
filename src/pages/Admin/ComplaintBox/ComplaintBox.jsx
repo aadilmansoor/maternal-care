@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
-import "./ChatPage.css";
+import "./ComplaintBox.css";
 
-const ChatPage = () => {
+const ComplaintPage = () => {
   function chatInfo() {
     return (
       <>
@@ -89,4 +89,4 @@ const ChatPage = () => {
     </>
   );
 };
-export default ChatPage;
+export default ComplaintPage;

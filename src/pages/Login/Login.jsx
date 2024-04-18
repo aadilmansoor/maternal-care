@@ -74,8 +74,10 @@ function Login() {
         userPassword: loginDetails.password,
       });
       if (result.status === 200) {
+        console.log(result);
         localStorage.setItem("maternity-token", result?.data?.token);
         localStorage.setItem("maternity-role", "user");
+        localStorage.setItem("userId", result?.data?.exist_User?._id);
         toast.success("Login successful");
         navigate("/user");
       }

@@ -83,7 +83,7 @@ function UserHeader({ role = "User" }) {
             <div className="d-flex align-items-center h-100">
               <Link
                 to={
-                  role === "admin"
+                  role === "Admin"
                     ? "/admin"
                     : role === "provider"
                     ? "/service-provider"
