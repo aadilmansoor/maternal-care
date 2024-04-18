@@ -165,20 +165,17 @@ export const showAllWebinar = async (req) => {
     req,
     ""
   );
-}
+};
 
-export const  registerBlog=async(req,header)=>{
+export const registerBlog = async (req, header) => {
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/admin/blog`,
     req,
     header
-   
-    
-  
   );
-}
-export const  viewBlog=async(req)=>{
+};
+export const viewBlog = async (req) => {
   return await commonAPI(
     "GET",
     `${base_URL}/maternalcare/user/blog/view`,
@@ -263,6 +260,16 @@ export const getBookingStatus = async (headers) => {
     "GET",
     `${base_URL}/maternalcare/primarybooking/user/view`,
     "",
+    headers
+  );
+};
+
+// pay amount by user
+export const paymentUser = async (req, headers) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/primarybooking/user/payment/view`,
+    req,
     headers
   );
 };

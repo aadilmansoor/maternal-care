@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import "./payment.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-// import Swal from "sweetalert2";
-import axios from "axios";
-// import baseurl from "../../Services/baseurl";
+import { toast } from "react-toastify";
+import { paymentUser } from "../../Services/allAPI";
 
 function Payment({ item }) {
   const [cardNumber, setCardNumber] = useState("");
@@ -12,10 +11,8 @@ function Payment({ item }) {
   const [expiry, setExpiry] = useState("");
   const [cvv, setCvv] = useState("");
   const [show, setShow] = useState(false);
-//   const [total, setTotal] = useState(item.amountPaid);
-  const [total, setTotal] = useState( 0);
-//   const [idd, setId] = useState({ id: item._id });
-  const [idd, setId] = useState('jhgjhjkhbjkh');
+  const [total, setTotal] = useState(item.amountPaid);
+  const [id, setId] = useState({ id: item._id });
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,7 +24,6 @@ function Payment({ item }) {
       setCardNumber(input);
     }
   };
-  const token = sessionStorage.getItem("token");
 
   const handleExpiryChange = (event) => {
     const input = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
@@ -50,62 +46,50 @@ function Payment({ item }) {
     // Check if the input contains any invalid characters
     const isValidName = /^[a-zA-Z\s]*$/.test(input);
     if (!isValidName) {
-      alert("Please enter a valid name containing only letters and spaces.");
+      toast.warning(
+        "Please enter a valid name containing only letters and spaces."
+      );
       return;
     }
     setHolderName(input);
   };
 
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-//     // Perform validations
-//     if (!cardNumber || !holderName || !expiry || !cvv) {
-//     //   Swal.fire({
-//     //     title: "Please fill in all fields.",
-//     //     icon: "warning",
-//     //   });
-//       return;
-//     }
+    // Perform validations
+    if (!cardNumber || !holderName || !expiry || !cvv) {
+      toast.warning("Please fill in all fields.");
+      return;
+    }
 
-//     // Validate card number format (16 digits)
-//     if (cardNumber.length !== 16) {
-//     //   Swal.fire({
-//     //     title: "Please enter a valid 16-digit card number.",
-//     //     icon: "warning",
-//     //   });
-//       return;
-//     } else {
-//       try {
-//         const response = await axios.post(
-//         //   `${baseurl}/maternalcare/primarybooking/user/payment/view`,
-//           idd,
-//           {
-//             headers: {
-//               Authorization: `${token}`,
-//             },
-//           }
-//         );
-//         if (response.status >= 200 && response.status <= 300) {
-//           console.log(response);
-//         //   Swal.fire({
-//         //     title: "Payment Complete",
-//         //     icon: "success",
-//         //   });
-//           handleClose();
-//         }
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     }
-//   };
-
-
+    // Validate card number format (16 digits)
+    if (cardNumber.length !== 16) {
+      toast.warning("Please enter a valid 16-digit card number.");
+      return;
+    } else {
+      try {
+        const token = localStorage.getItem("maternity-token");
+        const headers = {
+          "Content-type": "application/json",
+          Authorization: `${token}`,
+        };
+        const response = await paymentUser(id, headers);
+        if (response.status >= 200 && response.status <= 300) {
+          console.log(response);
+          toast.success("Payment Completed");
+          handleClose();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   return (
     <div>
       <Button variant="primary" onClick={handleShow}>
-        Complete Payment
+        Pay Now
       </Button>
 
       <Modal show={show} onHide={handleClose} animation={false}>
@@ -113,7 +97,7 @@ function Payment({ item }) {
           <Modal.Title>Payment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form >
+          <form>
             <div className="visa-card">
               <div className="logoContainer">
                 <svg
@@ -205,7 +189,7 @@ function Payment({ item }) {
           <Button
             variant="primary"
             className="btn w-75 me-5"
-            // onClick={handleSubmit}
+            onClick={handleSubmit}
           >
             Pay Now
           </Button>

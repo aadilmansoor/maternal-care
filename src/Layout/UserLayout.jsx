@@ -1,15 +1,28 @@
-import React from 'react'
-import { Footer, UserHeader } from '../components'
-import { Outlet } from 'react-router-dom'
+import React, { useEffect } from "react";
+import { Footer, UserHeader } from "../components";
+import { Outlet, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UserLayout = () => {
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   if (
+  //     !localStorage.getItem("maternity-token") ||
+  //     localStorage.getItem("maternity-role") !== "user"
+  //   ) {
+  //     toast.warning("Please Login");
+  //     navigate("/login");
+  //   }
+  // }, []);
   return (
-    <div>
-       <UserHeader/>
+    <>
+      <div style={{ minHeight: "72vh" }}>
+        <UserHeader />
         <Outlet />
-        <Footer/>
-    </div>
-  )
-}
+      </div>
+      <Footer />
+    </>
+  );
+};
 
-export default UserLayout
+export default UserLayout;

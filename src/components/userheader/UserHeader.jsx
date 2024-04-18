@@ -81,7 +81,16 @@ function UserHeader({ role = "User" }) {
         <Row className="mx-0">
           <Col className="py-1">
             <div className="d-flex align-items-center h-100">
-              <Link to={"/user-dashboard"} className="ms-3">
+              <Link
+                to={
+                  role === "admin"
+                    ? "/admin"
+                    : role === "provider"
+                    ? "/provider"
+                    : "/user"
+                }
+                className="ms-3"
+              >
                 <img
                   src={logo}
                   className="rounded-circle bg-dark object-fit-contain logo-container"
@@ -92,6 +101,18 @@ function UserHeader({ role = "User" }) {
           </Col>
 
           <Col className=" d-flex justify-content-end align-items-center py-1">
+            <a
+              href="/"
+              className="roboto-regular fs-5 text-decoration-none text-white me-4"
+            >
+              Webinar
+            </a>
+            <a
+              href="/"
+              className="roboto-regular fs-5 text-decoration-none text-white me-4"
+            >
+              Blog
+            </a>
             <div className=" d-flex align-items-center justify-content-center me-3">
               <button type="button" className="btn" onClick={handleShowRight}>
                 <h1 className=" text-dark me-2 ">

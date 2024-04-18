@@ -337,7 +337,7 @@ const SpBookings = () => {
                   className="d-flex justify-content-center p-0 mt-4 mb-4 booking_card"
                   key={request._id}
                 >
-                  <Card style={{ width: "18rem" }} className="card">
+                  <Card style={{ width: "18rem" }} className="card_hover">
                     <ListGroup variant="flush" className="mt-3">
                       <ListGroup.Item className="border-0">
                         <strong>

@@ -23,6 +23,7 @@ import Complaint from "./pages/Client/ClientComplaint/Complaint";
 import ServiceProviderDetails from "./pages/Client/ServiceProviderDetails/ServiceProviderDetails";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import BookingStatus from "./pages/Client/BookingStatus/BookingStatus";
+import Webinar from "./pages/Client/Webinar/Webinar";
 import Newsletter from "./pages/Admin/Newsletter/Newsletter";
 import MarkAttendance from "./pages/Service_Provider/MarkAttendance/MarkAttendance";
 import ServiceProviderInfo from "./components/ServiceProviderInfo/ServiceProviderInfo";
@@ -34,7 +35,6 @@ import AdminLayout from "./Layout/AdminLayout";
 import ProviderLayout from "./Layout/ProviderLayout";
 import AdminWebinar from "./pages/Admin/Webinar/Webinar";
 import AddBlog from "./pages/Admin/Blog/Blog";
-import Payment from "./components/Payment/Payment";
 
 function App() {
   return (
@@ -45,22 +45,28 @@ function App() {
         <Route path="/reset-password" element={<ForgotPassword />} />
 
         {/* admin */}
-        <Route  element={<AdminLayout/>}>
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/leave-requests" element={<LeaveRequest />} />
-        <Route path="/admin/bookings" element={<Bookings />} />
-        <Route path="/admin/categories" element={<Categories />} />
-        <Route path="/admin/verification" element={<ProviderVerification />} />
-        <Route path="/admin/send-newsletter" element={<Newsletter />} />
-        <Route path="/admin/webinar" element={<AdminWebinar />} />
-        <Route path="/admin/blog" element={<AddBlog/>} />
+        <Route element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/leave-requests" element={<LeaveRequest />} />
+          <Route path="/admin/bookings" element={<Bookings />} />
+          <Route path="/admin/categories" element={<Categories />} />
+          <Route
+            path="/admin/verification"
+            element={<ProviderVerification />}
+          />
+          <Route path="/admin/send-newsletter" element={<Newsletter />} />
+          <Route path="/admin/webinar" element={<AdminWebinar />} />
+          <Route path="/admin/blog" element={<AddBlog />} />
 
-        <Route
-          path="/admin/service-provider-info"
-          element={<ServiceProviderInfo />}
-        />
-        <Route path="/admin/complaint-box" element={<ChatPage />} />
-        <Route path="/admin/service-providers" element={<ServiceProviders />} />
+          <Route
+            path="/admin/service-provider-info"
+            element={<ServiceProviderInfo />}
+          />
+          <Route path="/admin/complaint-box" element={<ChatPage />} />
+          <Route
+            path="/admin/service-providers"
+            element={<ServiceProviders />}
+          />
         </Route>
 
         {/* service provider */}
@@ -86,6 +92,7 @@ function App() {
           <Route path="/user/booking" element={<ClientBooking />} />
           <Route path="/user/booking-status" element={<BookingStatus />} />
           <Route path="/user/complaints" element={<Complaint />} />
+          <Route path="/user/webinar" element={<Webinar />} />
 
           <Route
             path="/user/service-provider-details"

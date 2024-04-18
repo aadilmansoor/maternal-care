@@ -58,7 +58,6 @@ function Login() {
           password: loginDetails.password,
         });
         if (result?.status === 200) {
-          localStorage.setItem("maternity-token", process.env.ADMIN_KEY);
           localStorage.setItem("maternity-role", "admin");
           toast.success("Login Successful");
           navigate("/admin");

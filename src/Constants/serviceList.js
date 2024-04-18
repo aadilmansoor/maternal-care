@@ -19,6 +19,10 @@ export const userServices = [
 
 export const serviceProviderServices = [
   {
+    service: "Bookings",
+    path: "/service-provider/bookings",
+  },
+  {
     service: "Leave Request",
     path: "/service-provider/leave-request",
   },
@@ -29,18 +33,6 @@ export const serviceProviderServices = [
   {
     service: "Mark Attendance",
     path: "/service-provider/mark-attendance",
-  },
-  {
-    service: "Bookings",
-    path: "/service-provider/bookings",
-  },
-  {
-    service: "payment4",
-    path: "/",
-  },
-  {
-    service: "payment5",
-    path: "/",
   },
 ];
 
@@ -56,6 +48,14 @@ export const adminServices = [
   {
     service: "Verification",
     path: "/admin/verification",
+  },
+  {
+    service: "Webinar",
+    path: "/admin/webinar",
+  },
+  {
+    service: "Blog",
+    path: "/admin/blog",
   },
   {
     service: "Send Newsletter",

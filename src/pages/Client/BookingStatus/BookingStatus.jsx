@@ -3,6 +3,7 @@ import "./BookingStatus.css";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { getBookingStatus } from "../../../Services/allAPI";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
+import Payment from "../../../components/Payment/Payment";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -184,9 +185,7 @@ const BookingStatus = () => {
                         </Card.Subtitle>
 
                         <div className="text-center">
-                          <Button size="sm" variant="success">
-                            Pay Now
-                          </Button>
+                          <Payment item={request} />
                         </div>
                       </Card.Body>
                     </Card>
