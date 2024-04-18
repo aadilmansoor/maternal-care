@@ -211,7 +211,7 @@ function UserHeader({ role = "User" }) {
                 Update Profile
               </button>
             </div>
-            <div className="position-absolute bottom-0 text-center btn_container mt-5 mb-5">
+            <div className="position-absolute bottom-0 text-center  btn_contain mt-5 mb-5">
               <Button variant="danger" onClick={(e) => handleLogOut(e)}>
                 Log Out
               </Button>

@@ -93,6 +93,10 @@ function App() {
           <Route path="/user/booking-status" element={<BookingStatus />} />
           <Route path="/user/complaints" element={<Complaint />} />
           <Route path="/user/webinar" element={<Webinar />} />
+          <Route
+            path="/user/service-providers"
+            element={<ServiceProviders />}
+          />
 
           <Route
             path="/user/service-provider-details"

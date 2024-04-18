@@ -10,20 +10,27 @@ import { Button, Table } from "react-bootstrap";
 import "./ServiceProviders.css";
 import { useEffect, useState } from "react";
 import { getApprovedServiceProvidersList } from "../../../Services/allAPI";
+import { useNavigate } from "react-router-dom";
+
+
 
 const ServiceProviders = () => {
   const [serviceProvidersList, setServiceProvidersList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await getApprovedServiceProvidersList();
       setServiceProvidersList(result?.data?.response);
+      
+      
+      
     };
     fetchData();
   }, []);
 
-  const handleMoreDetails = (id) => {
-    console.log(id);
+  const handleMoreDetails = (serviceProvider) => {
+    navigate("/user/service-provider-details");
   };
 
   const handleAttendance = (id) => {
@@ -84,7 +91,7 @@ const ServiceProviders = () => {
                             size="sm"
                             className="me-2"
                             onClick={() =>
-                              handleMoreDetails(serviceProvider._id)
+                              handleMoreDetails(serviceProvider)
                             }
                           >
                             More Details
