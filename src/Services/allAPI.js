@@ -273,3 +273,13 @@ export const paymentUser = async (req, headers) => {
     headers
   );
 };
+
+//view all webinars by user
+export const viewWebinar = async () => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/user/webinar/view`,
+    "",
+    ""
+  );
+};

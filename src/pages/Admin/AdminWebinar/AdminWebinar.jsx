@@ -104,13 +104,13 @@ function AdminWebinar() {
       !topics ||
       !speaker
     ) {
-    //   Swal.fire({
-    //     title: "Fill the Webinar Form",
-    //     icon: "warning",
-    //   });
+      //   Swal.fire({
+      //     title: "Fill the Webinar Form",
+      //     icon: "warning",
+      //   });
     } else {
       try {
-        const response = await addWebinar(addWeb,header);
+        const response = await addWebinar(addWeb, header);
         console.log(response);
         if (response.status >= 200 && response.status <= 300) {
           console.log(response);
@@ -126,12 +126,12 @@ function AdminWebinar() {
           document.getElementById("formFile").value = null;
           document.getElementById("image").value = null;
           document.getElementById("time").value = null;
-       toast.success("Webinar  Added")
-        //   getWebs();
+          toast.success("Webinar  Added");
+          //   getWebs();
         }
       } catch (error) {
         console.log(error);
-        toast.danger("Oops!something went wrong")
+        toast.danger("Oops!something went wrong");
 
         // Swal.fire({
         //   title: "Webinar Not Added Not Added",
@@ -141,51 +141,51 @@ function AdminWebinar() {
     }
   };
 
-//   const handleDelete = (itemid) => {
-//     const id = { id: itemid }; // Create an object with email property
+  //   const handleDelete = (itemid) => {
+  //     const id = { id: itemid }; // Create an object with email property
 
-//     // Swal.fire({
-//     //   title: "Are you sure?",
-//     //   text: "You won't be able to revert this!",
-//     //   icon: "warning",
-//     //   showCancelButton: true,
-//     //   confirmButtonColor: "#3085d6",
-//     //   cancelButtonColor: "#d33",
-//     //   confirmButtonText: "Delete ",
-//     // }).then(async (result) => {
-//     //   if (result.isConfirmed) {
-//     //     try {
-//     //       const response = await axios.delete(
-//     //         `http://localhost:5000/webinar/delete-webinar`,
-//     //         { data: id } // Use 'data' option to pass the payload
-//     //       );
+  //     // Swal.fire({
+  //     //   title: "Are you sure?",
+  //     //   text: "You won't be able to revert this!",
+  //     //   icon: "warning",
+  //     //   showCancelButton: true,
+  //     //   confirmButtonColor: "#3085d6",
+  //     //   cancelButtonColor: "#d33",
+  //     //   confirmButtonText: "Delete ",
+  //     // }).then(async (result) => {
+  //     //   if (result.isConfirmed) {
+  //     //     try {
+  //     //       const response = await axios.delete(
+  //     //         `http://localhost:5000/webinar/delete-webinar`,
+  //     //         { data: id } // Use 'data' option to pass the payload
+  //     //       );
 
-//     //       if (response?.status >= 200 && response?.status <= 300) {
-//     //         Swal.fire({
-//     //           title: "Deleted",
-//     //           text: "Webinar Deleted.",
-//     //           icon: "success",
-//     //         });
-//     //         console.log(response);
-//     //         getWebs();
-//     //       } else {
-//     //         Swal.fire({
-//     //           title: "Not Deleted",
-//     //           text: "Webinar Not Deleted",
-//     //           icon: "warning",
-//     //         });
-//     //       }
-//     //     } catch (error) {
-//     //       Swal.fire({
-//     //         title: "Oops",
-//     //         text: "Something went Wrong",
-//     //         icon: "error",
-//     //       });
-//     //       console.error("Error in Deleting Webinar:", error);
-//     //     }
-//     //   }
-//     // });
-//   };
+  //     //       if (response?.status >= 200 && response?.status <= 300) {
+  //     //         Swal.fire({
+  //     //           title: "Deleted",
+  //     //           text: "Webinar Deleted.",
+  //     //           icon: "success",
+  //     //         });
+  //     //         console.log(response);
+  //     //         getWebs();
+  //     //       } else {
+  //     //         Swal.fire({
+  //     //           title: "Not Deleted",
+  //     //           text: "Webinar Not Deleted",
+  //     //           icon: "warning",
+  //     //         });
+  //     //       }
+  //     //     } catch (error) {
+  //     //       Swal.fire({
+  //     //         title: "Oops",
+  //     //         text: "Something went Wrong",
+  //     //         icon: "error",
+  //     //       });
+  //     //       console.error("Error in Deleting Webinar:", error);
+  //     //     }
+  //     //   }
+  //     // });
+  //   };
 
   console.log(addWeb);
 
@@ -197,9 +197,9 @@ function AdminWebinar() {
   const [page, setPage] = useState(1);
   const itemsPerPage = 4;
 
-//   const handleChangePage = (event, newPage) => {
-//     setPage(newPage);
-//   };
+  //   const handleChangePage = (event, newPage) => {
+  //     setPage(newPage);
+  //   };
 
   const getWebs = async () => {
     try {
@@ -322,14 +322,16 @@ function AdminWebinar() {
                         type="file"
                         onChange={handleWebFileChange}
                         accept=".jpg,.jpeg,.png"
-
                       />
                       {fileError && <p className="text-danger">{fileError}</p>}
                     </Form.Group>
                     <div className="my-2 text-center">
                       <button
                         className="btn btn "
-                        style={{ backgroundColor: "rgb(39, 103, 141)", color: "white" }}
+                        style={{
+                          backgroundColor: "rgb(39, 103, 141)",
+                          color: "white",
+                        }}
                         onClick={handleAddWeb}
                       >
                         Add
@@ -342,9 +344,12 @@ function AdminWebinar() {
           </Accordion>
           {showTable && (
             <>
-              <h2 className="my-5 text-center" style={{ color: "rgb(39, 103, 141)" }}>
+              <h2
+                className="my-5 text-center"
+                style={{ color: "rgb(39, 103, 141)" }}
+              >
                 {" "}
-                 Webinars
+                Webinars
               </h2>
 
               <Table
@@ -420,7 +425,7 @@ function AdminWebinar() {
                 <Pagination
                   count={Math.ceil(listWeb.length / itemsPerPage)}
                   page={page}
-                //   onChange={handleChangePage}
+                  //   onChange={handleChangePage}
                   style={{ color: "#B08968" }}
                 />
               </Stack>
