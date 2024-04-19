@@ -18,6 +18,7 @@ import {
 
 const ProviderVerification = () => {
   const [requestList, setRequestList] = useState([]);
+  const [disabledButtons, setDisabledButtons] = useState([]);
   console.log(requestList);
 
   useEffect(() => {
@@ -28,25 +29,40 @@ const ProviderVerification = () => {
     fetchData();
   }, []);
 
-  const handleAccept = async (data) => {
+  const handleAccept = async (data, index) => {
+    setDisabledButtons([...disabledButtons, index]);
     const result = await approveRequest(data);
     if (result.status === 200) {
       toast.success("Request approved.");
+      setDisabledButtons((currentButtons) =>
+        currentButtons.filter((button) => button !== index)
+      );
       const newList = requestList.filter(
         (provider) => provider._id !== data._id
       );
       setRequestList(newList);
+    } else {
+      toast.error("Oops! Something went wrong.");
+      setDisabledButtons((currentButtons) =>
+        currentButtons.filter((button) => button !== index)
+      );
     }
   };
 
-  const handleReject = async (email, data) => {
+  const handleReject = async (email, data, index) => {
+    setDisabledButtons([...disabledButtons, index]);
     const result = await rejectRequest({ email });
-    if (result.status === "200") {
+    if (result.status === 200) {
       toast.success("Request Rejected");
       const newList = requestList.filter(
         (provider) => provider._id !== data._id
       );
       setRequestList(newList);
+    } else {
+      toast.error("Oops! Something went wrong.");
+      setDisabledButtons((currentButtons) =>
+        currentButtons.filter((button) => button !== index)
+      );
     }
   };
 
@@ -72,7 +88,7 @@ const ProviderVerification = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {requestList?.map((request) => {
+                  {requestList?.map((request, index) => {
                     return (
                       <TableRow
                         hover
@@ -98,15 +114,17 @@ const ProviderVerification = () => {
                             {" "}
                             <button
                               className="btn btn-success"
-                              onClick={() => handleAccept(request)}
+                              onClick={() => handleAccept(request, index)}
+                              disabled={disabledButtons.includes(index)}
                             >
                               Accept
                             </button>
                             <button
                               className="btn btn-danger"
                               onClick={() =>
-                                handleReject(request.email, request)
+                                handleReject(request.email, request, index)
                               }
+                              disabled={disabledButtons.includes(index)}
                             >
                               Reject
                             </button>

@@ -51,7 +51,7 @@ const AdminChatBox = () => {
             <div className="chat_body_admin poppins-regular">
               <div className="admin_chat_admin">
                 <p>
-                  <div className="admin_title">Admin</div>
+                  <div className="admin_title">User</div>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam
                   doloremque possimus explicabo, eveniet, accusamus animi soluta
                   optio eum commodi sunt, delectus nobis voluptatibus. Eius
@@ -71,13 +71,13 @@ const AdminChatBox = () => {
               </div>
               <div className="admin_chat_admin">
                 <p>
-                  <div className="admin_title">Admin</div>
+                  <div className="admin_title">User</div>
                   Hello
                 </p>
               </div>
               <div className="admin_chat_admin">
                 <p>
-                  <div className="admin_title">Admin</div>
+                  <div className="admin_title">User</div>
                   Lorem ipsum, dolor sit amet consectetur.
                 </p>
               </div>

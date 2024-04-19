@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 import { paymentUser } from "../../Services/allAPI";
 
-function Payment({ item }) {
+function Payment({ item, setConfirmedRequests, setApprovedRequests }) {
   const [cardNumber, setCardNumber] = useState("");
   const [holderName, setHolderName] = useState("");
   const [disableButton, setDisableButton] = useState(false);
@@ -77,19 +77,28 @@ function Payment({ item }) {
           Authorization: `${token}`,
         };
         const response = await paymentUser(id, headers);
+        console.log(response);
         if (response.status >= 200 && response.status <= 300) {
-          console.log(response);
+          setApprovedRequests((currentRequests) => {
+            return currentRequests.filter(
+              (request) => request._id !== item._id
+            );
+          });
+          setConfirmedRequests((currentRequests) => {
+            const newData = { ...item, amountStatus: "paid" };
+            return [...currentRequests, newData];
+          });
           toast.success("Payment Completed");
           handleClose();
-        } else if (response.status === 401) {
+        } else if (response.response.status === 401) {
           toast.warning("Service provider not available.");
           handleClose();
           setDisableButton(false);
-        } else if (response.status === 404) {
+        } else if (response.response.status === 404) {
           toast.warning("Payment already processed.");
           handleClose();
           setDisableButton(false);
-        } else if (response.status === 400) {
+        } else if (response.response.status === 400) {
           toast.warning("Service provider not available.");
           handleClose();
           setDisableButton(false);

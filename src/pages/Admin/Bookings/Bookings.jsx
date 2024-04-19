@@ -130,7 +130,7 @@ function Bookings() {
                       </li>
                       <li className="">End Time: {request.endingTime}</li>
                       <li className="">Starting Date: {request.startDate}</li>
-                      <li className="">End Date: {request.endDate}</li>
+                      <li className="">Amount: {request.amountPaid}</li>
                     </ul>
                     <Card.Footer>
                       <div className="d-flex justify-content-center gap-3">
@@ -186,6 +186,7 @@ function Bookings() {
                       <li className="">End Time: {request.endingTime}</li>
                       <li className="">Starting Date: {request.startDate}</li>
                       <li className="">End Date: {request.endDate}</li>
+                      <li className="">Amount: {request.amountPaid}</li>
                     </ul>
                     <Card.Footer>
                       <p className="text-success text-center">Approved</p>

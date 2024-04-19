@@ -70,6 +70,10 @@ function App() {
             path="/admin/service-providers"
             element={<ServiceProviders />}
           />
+          <Route
+            path="/admin/service-provider-details"
+            element={<ServiceProviderDetails role="admin" />}
+          />
         </Route>
 
         {/* service provider */}
@@ -97,6 +101,10 @@ function App() {
           <Route path="/user/complaints" element={<Complaint />} />
           <Route path="/user/webinar" element={<UserWebinar />} />
           <Route path="/user/blog" element={<UserBlog />} />
+          <Route
+            path="/user/service-providers"
+            element={<ServiceProviders role="user" />}
+          />
           <Route
             path="/user/service-provider-details"
             element={<ServiceProviderDetails />}

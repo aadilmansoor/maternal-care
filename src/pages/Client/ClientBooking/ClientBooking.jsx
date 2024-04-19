@@ -19,6 +19,7 @@ const ClientBooking = () => {
   const [listOfServices, setListOfServices] = useState([]);
   const [serviceProviders, setServiceProviders] = useState([]);
   const [buttonDisable, setButtonDisable] = useState(false);
+  const [amount, setAmount] = useState(0);
   const [providerDetails, setProviderDetails] = useState({
     typeOfCare: "pre-delivery care",
     service: "caretaker",
@@ -33,6 +34,7 @@ const ClientBooking = () => {
     serviceProviderEmail: "",
     serviceProviderMobile: "",
     rate: "",
+    amount: "",
   });
 
   const navigate = useNavigate();
@@ -112,6 +114,20 @@ const ClientBooking = () => {
     fetchServiceProvider();
   }, [providerDetails.service, providerDetails.location]);
 
+  useEffect(() => {
+    const workinghours = calculateDecimalHours(
+      providerDetails.startingTime,
+      providerDetails.endingTime
+    );
+    const noOfDays = daysBetweenDates(
+      formatDate(providerDetails.startDate),
+      formatDate(providerDetails.endDate)
+    );
+    const amountPaid = providerDetails.rate * workinghours * noOfDays;
+    console.log({ amountPaid, rate: providerDetails.rate, workinghours });
+    setAmount(amountPaid);
+  }, [providerDetails]);
+
   const handleClose = () => setShow(false);
   const handleBooking = ({
     username,
@@ -140,6 +156,7 @@ const ClientBooking = () => {
     ) {
       toast.warning("Start Time should be earlier end Time");
     }
+
     setProviderDetails((currentDetails) => {
       return {
         ...currentDetails,
@@ -380,6 +397,7 @@ const ClientBooking = () => {
             <li>End Time: {providerDetails.endingTime} </li>
             <li>Start Date: {formatDate(providerDetails.startDate)} </li>
             <li>End Date: {formatDate(providerDetails.endDate)} </li>
+            <li>Amount: {amount} </li>
           </ul>
         </Modal.Body>
         <Modal.Footer>

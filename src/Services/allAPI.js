@@ -333,3 +333,23 @@ export const sentMessageUser = async (req) => {
 export const receiveMessageAPI = async (req) => {
   return await commonAPI("POST", `${base_URL}/maternalcare/chat/get`, req, "");
 };
+
+// post review by user
+export const addReviewAPI = async (req, headers) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/serviceprovider/review`,
+    req,
+    headers
+  );
+};
+
+// get review
+export const getReviewAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/serviceprovider/review/view`,
+    req,
+    ""
+  );
+};
