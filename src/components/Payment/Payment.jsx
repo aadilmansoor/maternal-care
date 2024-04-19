@@ -105,7 +105,7 @@ function Payment({ item, setConfirmedRequests, setApprovedRequests }) {
         }
       } catch (error) {
         setDisableButton(false);
-        toast.danger("Oops! Something went wrong.");
+        toast.error("Oops! Something went wrong.");
         console.log(error);
       }
     }

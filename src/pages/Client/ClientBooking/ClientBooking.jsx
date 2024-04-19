@@ -108,8 +108,11 @@ const ClientBooking = () => {
         location: providerDetails.location,
         service: providerDetails.service,
       });
-      setServiceProviders(result?.data?.searchUser);
-      console.log(serviceProviders);
+      if (result.status === 200) {
+        setServiceProviders(result?.data?.searchUser);
+      } else {
+        searchServiceProvider([]);
+      }
     };
     fetchServiceProvider();
   }, [providerDetails.service, providerDetails.location]);
@@ -204,7 +207,7 @@ const ClientBooking = () => {
       toast.success("Submitted. Wait for confirmation");
       navigate("/user");
     } else {
-      toast.danger("Oops! Something went wrong.");
+      toast.error("Oops! Something went wrong.");
       setButtonDisable(false);
     }
   };
@@ -327,7 +330,9 @@ const ClientBooking = () => {
         </InputGroup>
       </div>
       <div className="table1">
-        {serviceProviders !== undefined ? (
+        {serviceProviders?.filter((provider) =>
+          provider.location.includes(providerDetails.location)
+        ).length > 0 ? (
           <Table responsive bordered hover>
             <thead className="p-2">
               <tr>
@@ -344,23 +349,27 @@ const ClientBooking = () => {
               </tr>
             </thead>
             <tbody>
-              {serviceProviders?.map((provider) => {
-                return (
-                  <tr key={provider._id}>
-                    <td>{provider.username}</td>
-                    <td>{provider.location}</td>
-                    <td>{provider.rate}</td>
-                    <td>
-                      <button
-                        className="btn btn-sm btn-success"
-                        onClick={() => handleBooking(provider)}
-                      >
-                        Book
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
+              {serviceProviders
+                ?.filter((provider) =>
+                  provider.location.includes(providerDetails.location)
+                )
+                .map((provider) => {
+                  return (
+                    <tr key={provider._id}>
+                      <td>{provider.username}</td>
+                      <td>{provider.location}</td>
+                      <td>{provider.rate}</td>
+                      <td>
+                        <button
+                          className="btn btn-sm btn-success"
+                          onClick={() => handleBooking(provider)}
+                        >
+                          Book
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </Table>
         ) : (
