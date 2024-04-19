@@ -34,6 +34,10 @@ export const serviceProviderServices = [
     service: "Mark Attendance",
     path: "/service-provider/mark-attendance",
   },
+  {
+    service: "Payment",
+    path: "/service-provider/payment",
+  },
 ];
 
 export const adminServices = [
