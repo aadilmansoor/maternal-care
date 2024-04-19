@@ -15,7 +15,6 @@ import dayjs from "dayjs";
 import Accordion from "react-bootstrap/Accordion";
 import Table from "react-bootstrap/Table";
 import Pagination from "@mui/material/Pagination";
-import axios from "axios";
 import { registerBlog, viewBlog } from "../../../Services/allAPI";
 import { toast } from "react-toastify";
 
@@ -292,7 +291,7 @@ function AddBlog() {
               style={{ color: "rgb(39, 103, 141)" }}
             >
               {" "}
-              Listing Blogs
+              Blogs
             </h2>
             <Table
               striped

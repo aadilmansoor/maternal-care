@@ -12,9 +12,7 @@ import { useEffect, useState } from "react";
 import { getApprovedServiceProvidersList } from "../../../Services/allAPI";
 import { useNavigate } from "react-router-dom";
 
-
-
-const ServiceProviders = () => {
+const ServiceProviders = ({ role }) => {
   const [serviceProvidersList, setServiceProvidersList] = useState([]);
   const navigate = useNavigate();
 
@@ -22,15 +20,20 @@ const ServiceProviders = () => {
     const fetchData = async () => {
       const result = await getApprovedServiceProvidersList();
       setServiceProvidersList(result?.data?.response);
-      
-      
-      
     };
     fetchData();
   }, []);
 
   const handleMoreDetails = (serviceProvider) => {
-    navigate("/user/service-provider-details");
+    if (role === "user") {
+      navigate("/user/service-provider-details", {
+        state: serviceProvider,
+      });
+    } else {
+      navigate("/admin/service-provider-details", {
+        state: serviceProvider,
+      });
+    }
   };
 
   const handleAttendance = (id) => {
@@ -49,7 +52,7 @@ const ServiceProviders = () => {
                   <TableCell>Name</TableCell>
                   <TableCell align="right">Service</TableCell>
                   {/* <TableCell align="right">Location</TableCell> */}
-                  <TableCell align="right">Status</TableCell>
+                  <TableCell align="right">Specialization</TableCell>
                   <TableCell align="right">Action</TableCell>
                 </TableRow>
               </TableHead>
@@ -74,15 +77,7 @@ const ServiceProviders = () => {
                         {serviceProvider.location}
                       </TableCell> */}
                       <TableCell align="right">
-                        <span
-                          className={`${
-                            serviceProvider.status
-                              ? "text-success"
-                              : "text-danger"
-                          }`}
-                        >
-                          {serviceProvider.status ? "Active" : "Inactive"}
-                        </span>
+                        {serviceProvider.specialization}
                       </TableCell>
                       <TableCell align="right">
                         <span className="btn_container">
@@ -90,13 +85,11 @@ const ServiceProviders = () => {
                             variant="primary"
                             size="sm"
                             className="me-2"
-                            onClick={() =>
-                              handleMoreDetails(serviceProvider)
-                            }
+                            onClick={() => handleMoreDetails(serviceProvider)}
                           >
                             More Details
                           </Button>
-                          <Button
+                          {/* <Button
                             variant="primary"
                             size="sm"
                             onClick={() =>
@@ -104,7 +97,7 @@ const ServiceProviders = () => {
                             }
                           >
                             See Attendance
-                          </Button>
+                          </Button> */}
                         </span>
                       </TableCell>
                     </TableRow>

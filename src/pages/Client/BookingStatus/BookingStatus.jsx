@@ -121,6 +121,9 @@ const BookingStatus = () => {
                           End Date: {request.endDate}
                         </Card.Subtitle>
                         <Card.Subtitle className="mb-4 text-muted">
+                          Amount: {request.amountPaid}
+                        </Card.Subtitle>
+                        <Card.Subtitle className="mb-4 text-muted">
                           Service Provider Status:{" "}
                           {request.serviceProviderStatus}
                         </Card.Subtitle>
@@ -177,6 +180,9 @@ const BookingStatus = () => {
                           End Date: {request.endDate}
                         </Card.Subtitle>
                         <Card.Subtitle className="mb-4 text-muted">
+                          Amount: {request.amountPaid}
+                        </Card.Subtitle>
+                        <Card.Subtitle className="mb-4 text-muted">
                           Service Provider Status:{" "}
                           {request.serviceProviderStatus}
                         </Card.Subtitle>
@@ -185,7 +191,11 @@ const BookingStatus = () => {
                         </Card.Subtitle>
 
                         <div className="text-center">
-                          <Payment item={request} />
+                          <Payment
+                            item={request}
+                            setApprovedRequests={setApprovedRequests}
+                            setConfirmedRequests={setConfirmedRequests}
+                          />
                         </div>
                       </Card.Body>
                     </Card>
@@ -229,6 +239,9 @@ const BookingStatus = () => {
                         </Card.Subtitle>
                         <Card.Subtitle className="mb-4 text-muted">
                           End Date: {request.endDate}
+                        </Card.Subtitle>
+                        <Card.Subtitle className="mb-4 text-muted">
+                          Amount: {request.amountPaid}
                         </Card.Subtitle>
                         <Card.Subtitle className="mb-4 text-muted">
                           Service Provider Status:{" "}

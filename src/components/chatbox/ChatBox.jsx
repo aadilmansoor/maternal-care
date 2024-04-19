@@ -1,13 +1,45 @@
 import { useEffect, useRef, useState } from "react";
 import "./ChatBox.css";
+import { receiveMessageAPI, sentMessageUser } from "../../Services/allAPI";
 
 const ChatBox = () => {
+  const [message, setMessage] = useState("");
+  const [allMessages, setAllMessages] = useState([]);
   const [showChatBox, setShowChatBox] = useState(false);
+  console.log(allMessages);
+
+  useEffect(() => {
+    const getMessages = async () => {
+      const userID = localStorage.getItem("userId");
+      const result = await receiveMessageAPI({ userID });
+      setAllMessages(result.data.user);
+    };
+    getMessages();
+  }, []);
 
   const AlwaysScrollToBottom = () => {
     const elementRef = useRef();
     useEffect(() => elementRef.current.scrollIntoView());
     return <div ref={elementRef} />;
+  };
+
+  const handleSubmit = async () => {
+    if (!message) {
+      return;
+    }
+    const userID = localStorage.getItem("userId");
+    const result = await sentMessageUser({ userID, message });
+    if (result.status === 200) {
+      const newMessage = { user_message: message, _id: message };
+      setAllMessages((currentMessages) => [...currentMessages, newMessage]);
+      setMessage("");
+    }
+  };
+
+  const handleEnter = async (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
   };
 
   return (
@@ -37,43 +69,36 @@ const ChatBox = () => {
           </span>
         </div>
         <div className="chat_body poppins-regular">
-          <div className="admin_chat">
-            <p>
-              <div className="admin_title">Admin</div>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam
-              doloremque possimus explicabo, eveniet, accusamus animi soluta
-              optio eum commodi sunt, delectus nobis voluptatibus. Eius dolor,
-              expedita repudiandae amet eaque animi.
-            </p>
-          </div>
-          <div className="user_chat">
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam
-              doloremque possimus explicabo, eveniet, accusamus animi soluta
-              optio eum commodi sunt, delectus nobis voluptatibus. Eius dolor,
-              expedita repudiandae amet eaque animi.
-            </p>
-          </div>
-          <div className="user_chat">
-            <p>Hi</p>
-          </div>
-          <div className="admin_chat">
-            <p>
-              <div className="admin_title">Admin</div>
-              Hello
-            </p>
-          </div>
-          <div className="admin_chat">
-            <p>
-              <div className="admin_title">Admin</div>
-              Lorem ipsum, dolor sit amet consectetur.
-            </p>
-          </div>
+          {allMessages.map((message) => {
+            if (!message.user_message) {
+              return (
+                <div className="admin_chat" key={message._id}>
+                  <p>
+                    <span className="admin_title">Admin</span>
+                    <br />
+                    {message.admin_message}
+                  </p>
+                </div>
+              );
+            } else {
+              return (
+                <div className="user_chat" key={message._id}>
+                  <p>{message.user_message}</p>
+                </div>
+              );
+            }
+          })}
           <AlwaysScrollToBottom />
         </div>
         <div className="chat_input">
-          <input type="text" placeholder="Message" />
-          <div className="sent_icon">
+          <input
+            type="text"
+            placeholder="Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleEnter}
+          />
+          <div className="sent_icon" onClick={handleSubmit}>
             <i className="fa-regular fa-paper-plane"></i>
           </div>
         </div>

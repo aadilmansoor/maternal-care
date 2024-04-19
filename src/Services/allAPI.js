@@ -265,7 +265,7 @@ export const getBookingStatus = async (headers) => {
 };
 
 // pay amount by user
-export const paymentUser = async (req,headers) => {
+export const paymentUser = async (req, headers) => {
   return await commonAPI(
     "POST",
     `${base_URL}/maternalcare/primarybooking/user/payment/view`,
@@ -280,6 +280,76 @@ export const viewWebinar = async () => {
     "GET",
     `${base_URL}/maternalcare/user/webinar/view`,
     "",
+    ""
+  );
+};
+
+//view all blogs by user
+export const viewAllBlogByUser = async () => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/user/blog/view`,
+    "",
+    ""
+  );
+};
+
+//view all leave request by admin
+export const viewAllLeaveRequests = async () => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/admin/serviceprovider/leaverequest/view`,
+    "",
+    ""
+  );
+};
+
+//accept leave request by admin
+export const acceptLeaveRequestByAdmin = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/admin/serviceprovider/leaverequest/accept`,
+    req,
+    ""
+  );
+};
+
+//reject leave request by admin
+export const rejectLeaveRequestByAdmin = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/admin/serviceprovider/leaverequest/reject`,
+    req,
+    ""
+  );
+};
+
+//sent message by user
+export const sentMessageUser = async (req) => {
+  return await commonAPI("POST", `${base_URL}/maternalcare/chat/post`, req, "");
+};
+
+//receive message by user or admin
+export const receiveMessageAPI = async (req) => {
+  return await commonAPI("POST", `${base_URL}/maternalcare/chat/get`, req, "");
+};
+
+// post review by user
+export const addReviewAPI = async (req, headers) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/serviceprovider/review`,
+    req,
+    headers
+  );
+};
+
+// get review
+export const getReviewAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/serviceprovider/review/view`,
+    req,
     ""
   );
 };

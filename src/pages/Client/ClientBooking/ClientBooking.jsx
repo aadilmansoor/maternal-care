@@ -18,6 +18,8 @@ const ClientBooking = () => {
   const [disableTime, setDisableTime] = useState(true);
   const [listOfServices, setListOfServices] = useState([]);
   const [serviceProviders, setServiceProviders] = useState([]);
+  const [buttonDisable, setButtonDisable] = useState(false);
+  const [amount, setAmount] = useState(0);
   const [providerDetails, setProviderDetails] = useState({
     typeOfCare: "pre-delivery care",
     service: "caretaker",
@@ -32,6 +34,7 @@ const ClientBooking = () => {
     serviceProviderEmail: "",
     serviceProviderMobile: "",
     rate: "",
+    amount: "",
   });
 
   const navigate = useNavigate();
@@ -105,11 +108,28 @@ const ClientBooking = () => {
         location: providerDetails.location,
         service: providerDetails.service,
       });
-      setServiceProviders(result?.data?.searchUser);
-      console.log(serviceProviders);
+      if (result.status === 200) {
+        setServiceProviders(result?.data?.searchUser);
+      } else {
+        searchServiceProvider([]);
+      }
     };
     fetchServiceProvider();
   }, [providerDetails.service, providerDetails.location]);
+
+  useEffect(() => {
+    const workinghours = calculateDecimalHours(
+      providerDetails.startingTime,
+      providerDetails.endingTime
+    );
+    const noOfDays = daysBetweenDates(
+      formatDate(providerDetails.startDate),
+      formatDate(providerDetails.endDate)
+    );
+    const amountPaid = providerDetails.rate * workinghours * noOfDays;
+    console.log({ amountPaid, rate: providerDetails.rate, workinghours });
+    setAmount(amountPaid);
+  }, [providerDetails]);
 
   const handleClose = () => setShow(false);
   const handleBooking = ({
@@ -139,6 +159,7 @@ const ClientBooking = () => {
     ) {
       toast.warning("Start Time should be earlier end Time");
     }
+
     setProviderDetails((currentDetails) => {
       return {
         ...currentDetails,
@@ -155,6 +176,7 @@ const ClientBooking = () => {
   };
 
   const handleConfirm = async () => {
+    setButtonDisable(true);
     const token = localStorage.getItem("maternity-token");
     const headers = {
       "Content-type": "application/json",
@@ -184,6 +206,9 @@ const ClientBooking = () => {
     if (result.status === 200) {
       toast.success("Submitted. Wait for confirmation");
       navigate("/user");
+    } else {
+      toast.error("Oops! Something went wrong.");
+      setButtonDisable(false);
     }
   };
 
@@ -305,7 +330,9 @@ const ClientBooking = () => {
         </InputGroup>
       </div>
       <div className="table1">
-        {serviceProviders !== undefined ? (
+        {serviceProviders?.filter((provider) =>
+          provider.location.includes(providerDetails.location)
+        ).length > 0 ? (
           <Table responsive bordered hover>
             <thead className="p-2">
               <tr>
@@ -322,23 +349,27 @@ const ClientBooking = () => {
               </tr>
             </thead>
             <tbody>
-              {serviceProviders?.map((provider) => {
-                return (
-                  <tr key={provider._id}>
-                    <td>{provider.username}</td>
-                    <td>{provider.location}</td>
-                    <td>{provider.rate}</td>
-                    <td>
-                      <button
-                        className="btn btn-sm btn-success"
-                        onClick={() => handleBooking(provider)}
-                      >
-                        Book
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
+              {serviceProviders
+                ?.filter((provider) =>
+                  provider.location.includes(providerDetails.location)
+                )
+                .map((provider) => {
+                  return (
+                    <tr key={provider._id}>
+                      <td>{provider.username}</td>
+                      <td>{provider.location}</td>
+                      <td>{provider.rate}</td>
+                      <td>
+                        <button
+                          className="btn btn-sm btn-success"
+                          onClick={() => handleBooking(provider)}
+                        >
+                          Book
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </Table>
         ) : (
@@ -375,13 +406,22 @@ const ClientBooking = () => {
             <li>End Time: {providerDetails.endingTime} </li>
             <li>Start Date: {formatDate(providerDetails.startDate)} </li>
             <li>End Date: {formatDate(providerDetails.endDate)} </li>
+            <li>Amount: {amount} </li>
           </ul>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
+          <Button
+            variant="danger"
+            onClick={handleClose}
+            disabled={buttonDisable}
+          >
             Cancel
           </Button>
-          <Button variant="success" onClick={(e) => handleConfirm(e)}>
+          <Button
+            variant="success"
+            onClick={(e) => handleConfirm(e)}
+            disabled={buttonDisable}
+          >
             Confirm
           </Button>
         </Modal.Footer>

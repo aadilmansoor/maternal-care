@@ -83,10 +83,10 @@ function UserHeader({ role = "User" }) {
             <div className="d-flex align-items-center h-100">
               <Link
                 to={
-                  role === "admin"
+                  role === "Admin"
                     ? "/admin"
                     : role === "provider"
-                    ? "/provider"
+                    ? "/service-provider"
                     : "/user"
                 }
                 className="ms-3"
@@ -110,7 +110,7 @@ function UserHeader({ role = "User" }) {
               Webinar
             </a>
             <a
-              href="/"
+              href="/user/blog"
               className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
                 role !== "User" ? "d-none" : ""
               }`}

@@ -27,7 +27,7 @@ import Newsletter from "./pages/Admin/Newsletter/Newsletter";
 import MarkAttendance from "./pages/Service_Provider/MarkAttendance/MarkAttendance";
 import ServiceProviderInfo from "./components/ServiceProviderInfo/ServiceProviderInfo";
 import ServiceProviders from "./pages/Admin/ServiceProviders/ServiceProviders";
-import ChatPage from "./pages/Admin/ChatPage/ChatPage";
+import ComplaintBox from "./pages/Admin/ComplaintBox/ComplaintBox";
 import SpBookings from "./pages/Service_Provider/ServiceProviderBookings/SpBookings";
 import UserLayout from "./Layout/UserLayout";
 import AdminLayout from "./Layout/AdminLayout";
@@ -37,6 +37,7 @@ import AdminWebinar from "./pages/Admin/AdminWebinar/AdminWebinar";
 import UserWebinar from "./pages/Client/UserWebinar/UserWebinar";
 import UserBlog from "./pages/Client/UserBlog/UserBlog";
 import SalaryPayment from "./pages/Service_Provider/SalaryPayment/SalaryPayment";
+import AdminChatBox from "./pages/Admin/AdminChatBox/AdminChatBox";
 
 function App() {
   return (
@@ -64,10 +65,15 @@ function App() {
             path="/admin/service-provider-info"
             element={<ServiceProviderInfo />}
           />
-          <Route path="/admin/complaint-box" element={<ChatPage />} />
+          <Route path="/admin/complaint-box" element={<ComplaintBox />} />
+          <Route path="/admin/chat-box" element={<AdminChatBox />} />
           <Route
             path="/admin/service-providers"
             element={<ServiceProviders />}
+          />
+          <Route
+            path="/admin/service-provider-details"
+            element={<ServiceProviderDetails role="admin" />}
           />
         </Route>
 
@@ -98,6 +104,10 @@ function App() {
           <Route path="/user/complaints" element={<Complaint />} />
           <Route path="/user/webinar" element={<UserWebinar />} />
           <Route path="/user/blog" element={<UserBlog />} />
+          <Route
+            path="/user/service-providers"
+            element={<ServiceProviders role="user" />}
+          />
           <Route
             path="/user/service-provider-details"
             element={<ServiceProviderDetails />}

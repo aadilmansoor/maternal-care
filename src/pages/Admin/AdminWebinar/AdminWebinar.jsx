@@ -131,7 +131,7 @@ function AdminWebinar() {
         }
       } catch (error) {
         console.log(error);
-        toast.danger("Oops!something went wrong");
+        toast.error("Oops!something went wrong");
 
         // Swal.fire({
         //   title: "Webinar Not Added Not Added",
