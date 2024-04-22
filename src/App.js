@@ -36,6 +36,7 @@ import AddBlog from "./pages/Admin/Blog/Blog";
 import AdminWebinar from "./pages/Admin/AdminWebinar/AdminWebinar";
 import UserWebinar from "./pages/Client/UserWebinar/UserWebinar";
 import UserBlog from "./pages/Client/UserBlog/UserBlog";
+import SalaryPayment from "./pages/Service_Provider/SalaryPayment/SalaryPayment";
 import AdminChatBox from "./pages/Admin/AdminChatBox/AdminChatBox";
 
 function App() {
@@ -90,6 +91,8 @@ function App() {
             element={<MarkAttendance />}
           />
           <Route path="/service-provider/bookings" element={<SpBookings />} />
+          <Route path="/service-provider/payment" element={<SalaryPayment />} />
+
         </Route>
 
         {/* client */}
