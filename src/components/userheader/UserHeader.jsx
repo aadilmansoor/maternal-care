@@ -104,7 +104,7 @@ function UserHeader({ role = "User" }) {
             <a
               href="/user/webinar"
               className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
-                role !== "User" ? "d-none" : ""
+                role !== "User" && role !== "provider" ? "d-none" : ""
               }`}
             >
               Webinar
@@ -112,7 +112,7 @@ function UserHeader({ role = "User" }) {
             <a
               href="/user/blog"
               className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
-                role !== "User" ? "d-none" : ""
+                role !== "User" && role !== "provider" ? "d-none" : ""
               }`}
             >
               Blog

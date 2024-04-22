@@ -96,6 +96,7 @@ const UserWebinar = () => {
                 md={6}
                 lg={4}
                 className="d-flex justify-content-center mb-4"
+                key={webinar._id}
               >
                 <Card style={{ width: "20rem" }}>
                   <Card.Img
