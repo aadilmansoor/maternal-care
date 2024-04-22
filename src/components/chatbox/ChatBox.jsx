@@ -12,7 +12,10 @@ const ChatBox = () => {
     const getMessages = async () => {
       const userID = localStorage.getItem("userId");
       const result = await receiveMessageAPI({ userID });
-      setAllMessages(result.data.user);
+      if(result.status===200){
+        setAllMessages(result.data.user);
+      }
+     
     };
     getMessages();
   }, []);
