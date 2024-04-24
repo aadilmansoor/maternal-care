@@ -34,10 +34,10 @@ export const serviceProviderServices = [
     service: "Mark Attendance",
     path: "/service-provider/mark-attendance",
   },
-  {
-    service: "Payment",
-    path: "/service-provider/payment",
-  },
+  // {
+  //   service: "Payment",
+  //   path: "/service-provider/payment",
+  // },
 ];
 
 export const adminServices = [
@@ -73,5 +73,4 @@ export const adminServices = [
     service: "Add Categories",
     path: "/admin/categories",
   },
- 
 ];

@@ -11,10 +11,43 @@
   width: 49px;
 }
 
+.logo-container_canvas {
+  height: 100px;
+  width: 100px;
+}
+
 .canvas_container {
   min-height: 580px;
 }
 
 .btn_contain {
   width: 300px;
+}
+
+.profile_header_image {
+  width: 65px;
+  height: 65px;
+  border-radius: 100%;
+}
+
+.nav_btn {
+  text-align: center;
+  background-color: transparent;
+  width: 100%;
+}
+
+.drawer_bars {
+  display: none;
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .drawer_bars {
+    display: block;
+  }
+
+  .logo_bars {
+    display: none;
+  }
 }

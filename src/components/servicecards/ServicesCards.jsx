@@ -20,8 +20,7 @@ const ServicesCards = ({ services }) => {
               <Card
                 key="light"
                 text="dark"
-                style={{ width: "18rem" }}
-                className="mb-2 py-2 card"
+                className="mb-2 py-2 card service_cards"
               >
                 <Link to={path} key={service} className="card-body">
                   <Card.Body>

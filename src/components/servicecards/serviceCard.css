@@ -10,3 +10,14 @@
     text-decoration: none;
     color: rgb(53, 50, 50);
 }
+
+.service_cards {
+    width: 18rem;
+}
+
+@media screen and (max-width: 400px) {
+    .service_cards {
+        margin: 0 15px;
+        width: 100%;
+    }
+}

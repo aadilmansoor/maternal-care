@@ -353,3 +353,43 @@ export const getReviewAPI = async (req) => {
     ""
   );
 };
+
+// get salary of service provider
+export const viewSalaryAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/serviceprovider/salary`,
+    req,
+    ""
+  );
+};
+
+// get salary of service provider
+export const getUserAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/user/get/id`,
+    req,
+    ""
+  );
+};
+
+// get salary of service provider
+export const getProviderAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/serviceprovider/get/id`,
+    req,
+    ""
+  );
+};
+
+// get categories
+export const getAllCategoriesAPI = async (req) => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/category/get`,
+    "",
+    ""
+  );
+};

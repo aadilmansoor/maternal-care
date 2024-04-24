@@ -86,8 +86,12 @@ const Attendance = () => {
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell>{attendance.date}</TableCell>
-                      <TableCell align="right">{attendance.time_in}</TableCell>
-                      <TableCell align="right">{attendance.time_out}</TableCell>
+                      <TableCell align="right">
+                        {attendance.present ? attendance.time_in : "--"}
+                      </TableCell>
+                      <TableCell align="right">
+                        {attendance.present ? attendance.time_out : "--"}
+                      </TableCell>
                       <TableCell align="right">
                         {attendance.present ? (
                           <span className="text-success fs-6">Present</span>

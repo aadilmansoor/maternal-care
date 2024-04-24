@@ -91,8 +91,9 @@ function App() {
             element={<MarkAttendance />}
           />
           <Route path="/service-provider/bookings" element={<SpBookings />} />
-          <Route path="/service-provider/payment" element={<SalaryPayment />} />
-
+          {/* <Route path="/service-provider/payment" element={<SalaryPayment />} /> */}
+          <Route path="/service-provider/webinar" element={<UserWebinar />} />
+          <Route path="/service-provider/blog" element={<UserBlog />} />
         </Route>
 
         {/* client */}

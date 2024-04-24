@@ -1,11 +1,12 @@
 import "./userHeader.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
-import { useState } from "react";
+import { Button, Col, Form, InputGroup, Nav, Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Images/img2.png";
 import { toast } from "react-toastify";
 import { uploadProviderImage } from "../../Services/allAPI";
+import { useUserContext } from "../../context/UserContext";
 
 function UserHeader({ role = "User" }) {
   const [image, setImage] = useState({
@@ -18,8 +19,24 @@ function UserHeader({ role = "User" }) {
     img: "",
   });
   const [showRight, setShowRight] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const { user, provider } = useUserContext();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (role === "provider") {
+      if (provider.imageUrl !== "") {
+        setImage({
+          imagePreview: provider.imageUrl,
+        });
+      }
+    }
+  }, [user, provider]);
 
   const handleCloseRight = () => setShowRight(false);
   const handleShowRight = () => setShowRight(true);
@@ -67,7 +84,10 @@ function UserHeader({ role = "User" }) {
     const uploadData = async () => {
       try {
         const result = await uploadProviderImage(profileDetails);
-        console.log(result);
+        if (result.status === 200) {
+          toast.success("Photo updated.");
+          setProfileDetails({ ...profileDetails, email: "", password: "" });
+        }
       } catch (error) {
         console.log(error);
       }
@@ -78,8 +98,23 @@ function UserHeader({ role = "User" }) {
   return (
     <>
       <div className="top_nav" style={{ width: "100%" }}>
-        <Row className="mx-0">
-          <Col className="py-1">
+        <Row className="mx-0 py-1">
+          <Col
+            className={`py-1 ${
+              role === "User" || role === "provider" ? "drawer_bars" : "d-none"
+            }`}
+          >
+            <div className="d-flex align-items-center h-100">
+              <span className="p-2 rounded-2" onClick={handleShow}>
+                <i className="fa-solid fa-bars fa-xl"></i>
+              </span>
+            </div>
+          </Col>
+          <Col
+            className={`py-1 ${
+              role === "User" || role === "provider" ? "logo_bars" : ""
+            }`}
+          >
             <div className="d-flex align-items-center h-100">
               <Link
                 to={
@@ -97,36 +132,101 @@ function UserHeader({ role = "User" }) {
                   alt="logo"
                 />
               </Link>
+              <a
+                href={`${
+                  role === "User"
+                    ? "/user/webinar"
+                    : "/service-provider/webinar"
+                }`}
+                className={`ms-4 roboto-regular fs-5 text-decoration-none text-white me-4 ${
+                  role !== "User" && role !== "provider" ? "d-none" : ""
+                }`}
+              >
+                Webinar
+              </a>
+              <a
+                href={`${
+                  role === "User" ? "/user/blog" : "/service-provider/blog"
+                }`}
+                className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
+                  role !== "User" && role !== "provider" ? "d-none" : ""
+                }`}
+              >
+                Blog
+              </a>
             </div>
           </Col>
 
           <Col className=" d-flex justify-content-end align-items-center py-1">
-            <a
-              href="/user/webinar"
-              className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
-                role !== "User" && role !== "provider" ? "d-none" : ""
-              }`}
-            >
-              Webinar
-            </a>
-            <a
-              href="/user/blog"
-              className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
-                role !== "User" && role !== "provider" ? "d-none" : ""
-              }`}
-            >
-              Blog
-            </a>
             <div className=" d-flex align-items-center justify-content-center me-3">
-              <button type="button" className="btn" onClick={handleShowRight}>
-                <h1 className=" text-dark me-2 ">
-                  <i className="fa-solid fa-circle-user fa-lg"></i>
-                </h1>
+              <button
+                type="button"
+                className="btn d-flex h-100 align-items-center w-100"
+                onClick={handleShowRight}
+              >
+                <img
+                  style={{ borderRadius: "100%" }}
+                  src={image.imagePreview}
+                  alt="profile"
+                  className="rounded-full"
+                  width={50}
+                  height={50}
+                />
               </button>
             </div>
           </Col>
         </Row>
       </div>
+
+      <Offcanvas
+        show={show}
+        onHide={handleClose}
+        className="bg-dark text-white drawer_bars"
+      >
+        <Offcanvas.Header>
+          <Offcanvas.Title>
+            <div className="d-flex align-items-center h-100">
+              <Link
+                to={
+                  role === "Admin"
+                    ? "/admin"
+                    : role === "provider"
+                    ? "/service-provider"
+                    : "/user"
+                }
+                className="ms-3"
+              >
+                <img
+                  src={logo}
+                  className="rounded-circle bg-dark object-fit-contain logo-container_canvas"
+                  alt="logo"
+                />
+              </Link>
+              <h3>Maternal Care</h3>
+            </div>
+          </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <Nav defaultActiveKey="/home" className="flex-column">
+            <Nav.Link
+              href={`${
+                role === "User" ? "/user/webinar" : "/service-provider/webinar"
+              }`}
+              className="fs-5 bg-white mb-1 rounded-2"
+            >
+              <span className="w-100 border-1 bg-white text-dark">Webinar</span>
+            </Nav.Link>
+            <Nav.Link
+              href={`${
+                role === "User" ? "/user/blog" : "/service-provider/blog"
+              }`}
+              className="fs-5 bg-white mb-1 text-dark rounded-2"
+            >
+              Blog
+            </Nav.Link>
+          </Nav>
+        </Offcanvas.Body>
+      </Offcanvas>
 
       <Offcanvas
         show={showRight}
@@ -136,7 +236,7 @@ function UserHeader({ role = "User" }) {
       >
         <Offcanvas.Header className="bg-dark d-flex" closeButton>
           <Offcanvas.Title className="text-white">
-            {role} Profile
+            {role === "provider" ? "Service Provider" : role} Profile
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="bg-dark position-relative canvas_container">

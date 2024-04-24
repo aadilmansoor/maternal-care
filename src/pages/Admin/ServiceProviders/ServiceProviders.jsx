@@ -36,8 +36,16 @@ const ServiceProviders = ({ role }) => {
     }
   };
 
-  const handleAttendance = (id) => {
-    console.log(id);
+  const handleAttendance = (serviceProvider) => {
+    if (role === "user") {
+      navigate("/user/service-provider-attendance", {
+        state: serviceProvider,
+      });
+    } else {
+      navigate("/admin/service-provider-attendance", {
+        state: serviceProvider,
+      });
+    }
   };
 
   return (
@@ -89,15 +97,13 @@ const ServiceProviders = ({ role }) => {
                           >
                             More Details
                           </Button>
-                          {/* <Button
+                          <Button
                             variant="primary"
                             size="sm"
-                            onClick={() =>
-                              handleAttendance(serviceProvider._id)
-                            }
+                            onClick={() => handleAttendance(serviceProvider)}
                           >
                             See Attendance
-                          </Button> */}
+                          </Button>
                         </span>
                       </TableCell>
                     </TableRow>
