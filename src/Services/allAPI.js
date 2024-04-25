@@ -385,11 +385,41 @@ export const getProviderAPI = async (req) => {
 };
 
 // get categories
-export const getAllCategoriesAPI = async (req) => {
+export const getAllCategoriesAPI = async () => {
   return await commonAPI(
     "GET",
     `${base_URL}/maternalcare/category/get`,
     "",
+    ""
+  );
+};
+
+// add categories
+export const addCategoryAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/maincategory/add`,
+    req,
+    ""
+  );
+};
+
+// add subcategory
+export const addSubCategoryAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/subcategory/add`,
+    req,
+    ""
+  );
+};
+
+// delete category
+export const deleteCategoryAPI = async (req) => {
+  return await commonAPI(
+    "DELETE",
+    `${base_URL}/maternalcare/maincategory/delete`,
+    req,
     ""
   );
 };
