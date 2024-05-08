@@ -8,34 +8,40 @@ const ShowReview = ({ reviews }) => {
         Reviews
       </h4>
 
-      <ul className="reviewlist">
-        {reviews.map((review) => {
-          return (
-            <>
-              <li>
-                <div>
-                  <p className="poppins-semibold mb-2 text-capitalize mt-2">
-                    {review.username}
-                  </p>
-                  <p className="poppins-regular">{review.date}</p>
-                  <div className="rating">
-                    <Rating
-                      size="small"
-                      name="simple-controlled"
-                      value={review.ratings}
-                      readOnly
-                      className="mb-1"
-                    />
-                  </div>
+      {reviews.length === 0 ? (
+        <p className="text-center">No reviews available</p>
+      ) : (
+        <ul className="reviewlist">
+          {reviews.map((review) => {
+            return (
+              <>
+                <li>
+                  <div>
+                    <p className="poppins-semibold mb-2 text-capitalize mt-2">
+                      {review.username}
+                    </p>
+                    <p className="poppins-regular">{review.date}</p>
+                    <div className="rating">
+                      <Rating
+                        size="small"
+                        name="simple-controlled"
+                        value={review.ratings}
+                        readOnly
+                        className="mb-1"
+                      />
+                    </div>
 
-                  <p className="mt-2 mb-2 poppins-regular">{review.comments}</p>
-                </div>
-                <hr />
-              </li>
-            </>
-          );
-        })}
-      </ul>
+                    <p className="mt-2 mb-2 poppins-regular">
+                      {review.comments}
+                    </p>
+                  </div>
+                  <hr />
+                </li>
+              </>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };
