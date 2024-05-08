@@ -38,6 +38,7 @@ import UserWebinar from "./pages/Client/UserWebinar/UserWebinar";
 import UserBlog from "./pages/Client/UserBlog/UserBlog";
 import SalaryPayment from "./pages/Service_Provider/SalaryPayment/SalaryPayment";
 import AdminChatBox from "./pages/Admin/AdminChatBox/AdminChatBox";
+import EmergencySupport from "./pages/Client/EmergencySupport/EmergencySupport";
 
 function App() {
   return (
@@ -105,6 +106,8 @@ function App() {
           <Route path="/user/complaints" element={<Complaint />} />
           <Route path="/user/webinar" element={<UserWebinar />} />
           <Route path="/user/blog" element={<UserBlog />} />
+          <Route path="/user/emergency-support" element={<EmergencySupport />} />
+
           <Route
             path="/user/service-providers"
             element={<ServiceProviders role="user" />}

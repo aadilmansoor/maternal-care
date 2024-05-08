@@ -423,3 +423,14 @@ export const deleteCategoryAPI = async (req) => {
     ""
   );
 };
+
+//get Emergency support
+
+export const getEmergencyAPI = async () => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/emergency/get`,
+    "",
+    ""
+  );
+};
