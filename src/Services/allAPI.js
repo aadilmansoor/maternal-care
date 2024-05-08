@@ -324,16 +324,6 @@ export const rejectLeaveRequestByAdmin = async (req) => {
   );
 };
 
-//sent message by user
-export const sentMessageUser = async (req) => {
-  return await commonAPI("POST", `${base_URL}/maternalcare/chat/post`, req, "");
-};
-
-//receive message by user or admin
-export const receiveMessageAPI = async (req) => {
-  return await commonAPI("POST", `${base_URL}/maternalcare/chat/get`, req, "");
-};
-
 // post review by user
 export const addReviewAPI = async (req, headers) => {
   return await commonAPI(
@@ -424,6 +414,7 @@ export const deleteCategoryAPI = async (req) => {
   );
 };
 
+
 //get Emergency support
 
 export const getEmergencyAPI = async () => {
@@ -431,6 +422,68 @@ export const getEmergencyAPI = async () => {
     "GET",
     `${base_URL}/maternalcare/emergency/get`,
     "",
+
+//sent message by user
+export const sentMessageUserAPI = async (req) => {
+  return await commonAPI("POST", `${base_URL}/maternalcare/chat/post`, req, "");
+};
+
+//receive message by user
+export const receiveMessageAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternity/chat/user/read`,
+    req,
+    ""
+  );
+};
+
+//get all messages for admin
+export const getAllMessagesAPI = async () => {
+  return await commonAPI("GET", `${base_URL}/maternalcare/chat/get`, "", "");
+};
+
+// sent message by admin
+export const sentMessageByAdminAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternitycare/admin/chat/post`,
+    req,
+    ""
+  );
+};
+
+// get message by admin
+export const getMessageByAdminAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/chat/admin/read`,
+    req,
+    ""
+  );
+};
+
+// get message by user
+export const getMessageByUserAPI = async (req) => {
+  return await commonAPI("POST", `${base_URL}/maternalcare/chat/user`, req, "");
+};
+
+// register complaint by user
+export const registerComplaintAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/complaints/post`,
+    req,
+    ""
+  );
+};
+
+// register complaint by user
+export const getComplaintsAPI = async (req) => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/maternalcare/complaints/get`,
+    req,
     ""
   );
 };

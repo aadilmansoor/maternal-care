@@ -1,23 +1,34 @@
 import { useEffect, useRef, useState } from "react";
 import "./ChatBox.css";
-import { receiveMessageAPI, sentMessageUser } from "../../Services/allAPI";
+import {
+  getMessageByUserAPI,
+  receiveMessageAPI,
+  sentMessageUserAPI,
+} from "../../Services/allAPI";
+import { useUserContext } from "../../context/UserContext";
+import { Badge } from "@mui/material";
 
 const ChatBox = () => {
   const [message, setMessage] = useState("");
+  const [unreadCount, setUnreadCount] = useState("");
   const [allMessages, setAllMessages] = useState([]);
   const [showChatBox, setShowChatBox] = useState(false);
-  console.log(allMessages);
+
+  const { user } = useUserContext();
+
+  const getMessages = async () => {
+    const userId = localStorage.getItem("userId");
+    const result = await getMessageByUserAPI({ userId });
+    if (result.status === 200) {
+      setUnreadCount(result.data.chatGet.adminUnreadcount);
+      // setAllMessages(result.data.chatPost);
+    }
+  };
 
   useEffect(() => {
-    const getMessages = async () => {
-      const userID = localStorage.getItem("userId");
-      const result = await receiveMessageAPI({ userID });
-      if(result.status===200){
-        setAllMessages(result.data.user);
-      }
-     
-    };
-    getMessages();
+    setInterval(() => {
+      getMessages();
+    }, 1000);
   }, []);
 
   const AlwaysScrollToBottom = () => {
@@ -30,12 +41,16 @@ const ChatBox = () => {
     if (!message) {
       return;
     }
-    const userID = localStorage.getItem("userId");
-    const result = await sentMessageUser({ userID, message });
+    const userId = localStorage.getItem("userId");
+    const result = await sentMessageUserAPI({
+      userId,
+      username: user.username,
+      text: message,
+    });
     if (result.status === 200) {
-      const newMessage = { user_message: message, _id: message };
-      setAllMessages((currentMessages) => [...currentMessages, newMessage]);
+      getMessages();
       setMessage("");
+      handleShowChatBox();
     }
   };
 
@@ -45,15 +60,32 @@ const ChatBox = () => {
     }
   };
 
+  const handleShowChatBox = async () => {
+    setShowChatBox(true);
+    const userId = localStorage.getItem("userId");
+    const result = await receiveMessageAPI({ userId });
+    if (result.status === 200) {
+      setAllMessages(result.data.chatPost);
+    }
+  };
+
+  const handleHideChatBox = () => {
+    setShowChatBox(false);
+  };
+
   return (
     <div>
       <span
         className={`message_icon ${
           showChatBox ? "d-none" : ""
         } position-fixed bottom-0 end-0 mb-3 me-3`}
-        onClick={() => setShowChatBox(true)}
+        onClick={handleShowChatBox}
       >
-        <i className="fa-regular fa-message"></i>
+        <Badge badgeContent={unreadCount} color="warning">
+          <span>
+            <i className="fa-regular fa-message"></i>
+          </span>
+        </Badge>
       </span>
       <div
         className={`chat_box ${
@@ -66,27 +98,27 @@ const ChatBox = () => {
           </p>
           <span
             className="position-absolute end-0 top-0 text-white close_btn mt-2 me-3"
-            onClick={() => setShowChatBox(false)}
+            onClick={handleHideChatBox}
           >
             <i className="fa-solid fa-xmark"></i>
           </span>
         </div>
         <div className="chat_body poppins-regular">
-          {allMessages.map((message) => {
-            if (!message.user_message) {
+          {allMessages?.message?.map((message, index) => {
+            if (!message.userMessage.message) {
               return (
-                <div className="admin_chat" key={message._id}>
+                <div className="admin_chat" key={index}>
                   <p>
                     <span className="admin_title">Admin</span>
                     <br />
-                    {message.admin_message}
+                    {message.adminMessage.message}
                   </p>
                 </div>
               );
             } else {
               return (
-                <div className="user_chat" key={message._id}>
-                  <p>{message.user_message}</p>
+                <div className="user_chat" key={index}>
+                  <p>{message.userMessage.message}</p>
                 </div>
               );
             }

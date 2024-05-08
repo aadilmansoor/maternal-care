@@ -73,7 +73,7 @@ const ServiceProviderInfo = ({ serviceProvider }) => {
           type="text"
           id="Qualification"
           aria-label="Disabled input example"
-          value={serviceProvider.username}
+          value={serviceProvider.qualification}
           readOnly
         />
         <Form.Label htmlFor="Rate" className="mt-3">

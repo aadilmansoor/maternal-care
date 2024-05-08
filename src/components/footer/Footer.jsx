@@ -29,12 +29,15 @@ function Footer() {
                 <p>Login</p>
               </Link>
             </Col>
-            <Col md={4} className="mt-5  text-center mb-5">
+            <Col
+              md={4}
+              className="mt-5 text-center mb-5 d-flex flex-column justify-content-center"
+            >
               <h4>Contact Us</h4>
-              <p>
+              {/* <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. alias
                 ad optio autem deleniti expedita.
-              </p>
+              </p> */}
               <hr />
               <div className="mt-2">
                 <i className="fa-brands fa-instagram me-4 fa-2x"></i>
