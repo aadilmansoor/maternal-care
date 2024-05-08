@@ -36,6 +36,8 @@ const ClientBooking = () => {
     rate: "",
     amount: "",
   });
+  console.log({ providerDetails });
+  console.log({ serviceProviders });
 
   const navigate = useNavigate();
 
@@ -139,7 +141,7 @@ const ClientBooking = () => {
     profile_img,
     email,
     mobile,
-    serviceProviderId,
+    _id,
   }) => {
     if (
       providerDetails.timing === "" ||
@@ -169,7 +171,7 @@ const ClientBooking = () => {
         profile_img,
         serviceProviderEmail: email,
         serviceProviderMobile: mobile,
-        serviceProviderId,
+        serviceProviderId: _id,
       };
     });
     setShow(true);
