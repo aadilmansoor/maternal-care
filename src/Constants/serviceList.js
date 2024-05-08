@@ -77,4 +77,12 @@ export const adminServices = [
     service: "Add Categories",
     path: "/admin/categories",
   },
+  {
+    service: "Chat Box",
+    path: "/admin/chat-box",
+  },
+  {
+    service: "Complaint Box",
+    path: "/admin/complaint-box",
+  },
 ];
