@@ -4,18 +4,20 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { leaveRequest } from "../../../Services/allAPI";
 import { formatDate } from "../../../utils";
+import { useNavigate } from "react-router-dom";
 
 const ProviderLeaveRequest = () => {
-  const [date, setDate] = useState('')
-  const [reason,setReason] = useState('')
+  const [date, setDate] = useState("");
+  const [reason, setReason] = useState("");
 
-  const handleSubmit=(e)=>{
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!date || !reason ) {
+    if (!date || !reason) {
       toast.warning("Please fill in all details.");
       return;
-
     }
     const uploadData = async () => {
       const token = localStorage.getItem("maternity-token");
@@ -28,24 +30,21 @@ const ProviderLeaveRequest = () => {
       const result = await leaveRequest(
         {
           date: formattedDate,
-          reason
+          reason,
         },
         headers
       );
       console.log(result);
-      if(result.status===200){
-        toast.success('Application Sent. Wait for confirmation')
+      if (result.status === 200) {
+        toast.success("Application Sent. Wait for confirmation");
+        navigate("/service-provider");
+      } else if (result.response.status === 400) {
+        toast.warning("Leave Request Already Submitted");
       }
-      else if(result.response.status===400){
-        toast.warning('Leave Request Already Submitted')
-
-      }
-      
-    }
+    };
     uploadData();
-  }
+  };
 
-  
   return (
     <div>
       <h2 className="my-5 text-center">Leave Request</h2>
@@ -55,9 +54,7 @@ const ProviderLeaveRequest = () => {
             type="date"
             className="form-control"
             value={date}
-            onChange={(e) =>
-              setDate(e.target.value)
-            }
+            onChange={(e) => setDate(e.target.value)}
             placeholder="Username"
             aria-label="Username"
             aria-describedby="basic-addon1"
@@ -67,9 +64,7 @@ const ProviderLeaveRequest = () => {
           <Form.Control
             as="textarea"
             value={reason}
-            onChange={(e) =>
-              setReason(e.target.value)
-            }
+            onChange={(e) => setReason(e.target.value)}
             placeholder="Leave a comment here"
             style={{ height: "100px" }}
           />
@@ -78,7 +73,7 @@ const ProviderLeaveRequest = () => {
           <Button variant="danger" size="sm">
             Cancel
           </Button>{" "}
-          <Button onClick={(e)=>handleSubmit(e)} variant="primary" size="sm">
+          <Button onClick={(e) => handleSubmit(e)} variant="primary" size="sm">
             Submit
           </Button>{" "}
         </div>

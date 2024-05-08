@@ -36,9 +36,10 @@ import AddBlog from "./pages/Admin/Blog/Blog";
 import AdminWebinar from "./pages/Admin/AdminWebinar/AdminWebinar";
 import UserWebinar from "./pages/Client/UserWebinar/UserWebinar";
 import UserBlog from "./pages/Client/UserBlog/UserBlog";
-import SalaryPayment from "./pages/Service_Provider/SalaryPayment/SalaryPayment";
+// import SalaryPayment from "./pages/Service_Provider/SalaryPayment/SalaryPayment";
 import AdminChatBox from "./pages/Admin/AdminChatBox/AdminChatBox";
 import EmergencySupport from "./pages/Client/EmergencySupport/EmergencySupport";
+import EmergencyContacts from "./pages/Admin/EmergencyContacts/EmergencyConatacts";
 
 function App() {
   return (
@@ -80,6 +81,10 @@ function App() {
             path="/admin/service-provider-attendance"
             element={<Attendance />}
           />
+          <Route
+            path="/admin/emergency-support"
+            element={<EmergencyContacts />}
+          />
         </Route>
 
         {/* service provider */}
@@ -99,6 +104,10 @@ function App() {
           {/* <Route path="/service-provider/payment" element={<SalaryPayment />} /> */}
           <Route path="/service-provider/webinar" element={<UserWebinar />} />
           <Route path="/service-provider/blog" element={<UserBlog />} />
+          <Route
+            path="/service-provider/emergency-support"
+            element={<EmergencySupport />}
+          />
         </Route>
 
         {/* client */}
@@ -110,7 +119,10 @@ function App() {
           <Route path="/user/complaints" element={<Complaint />} />
           <Route path="/user/webinar" element={<UserWebinar />} />
           <Route path="/user/blog" element={<UserBlog />} />
-          <Route path="/user/emergency-support" element={<EmergencySupport />} />
+          <Route
+            path="/user/emergency-support"
+            element={<EmergencySupport />}
+          />
 
           <Route
             path="/user/service-providers"

@@ -156,9 +156,11 @@ function UserHeader({ role = "User" }) {
               </a>
               <a
                 href={`${
-                  role === "User" ? "/user/blog" : "/service-provider/blog"
+                  role === "User"
+                    ? "/user/emergency-support"
+                    : "/service-provider/emergency-support"
                 }`}
-                className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
+                className={`roboto-regular fs-5 text-decoration-none text-white me-4 text-nowrap ${
                   role !== "User" && role !== "provider" ? "d-none" : ""
                 }`}
               >
@@ -244,7 +246,9 @@ function UserHeader({ role = "User" }) {
             </Nav.Link>
             <Nav.Link
               href={`${
-                role === "User" ? "/user/blog" : "/service-provider/blog"
+                role === "User"
+                  ? "/user/emergency-support"
+                  : "/service-provider/emergency-support"
               }`}
               className="fs-5 bg-white mb-1 text-dark rounded-2 text-nowrap"
             >

@@ -32,14 +32,12 @@ function AdminDashBoard() {
               md={6}
               className="mt-5 d-flex justify-content-center align-items-center flex-column"
             >
-              <h3 className="text-danger">
+              <h3 className="poppins-semibold-italic">
                 Begin your child's journey with Us
               </h3>
-              <p className="text-center text-secondary">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Officiis, molestias, labore consequuntur id, accusamus adipisci
-                aut blanditiis provident expedita aperiam explicabo et tempora
-                tempore facilis doloremque placeat asperiores reprehenderit non.
+              <p className="text-center text-secondary poppins-regular">
+                Welcome to our platform. We prioritize excellence in care and
+                support, ensuring every aspect meets the highest standards.
               </p>
             </Col>
           </Row>

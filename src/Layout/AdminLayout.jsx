@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { Footer, UserHeader } from "../components";
-import { Outlet, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { Outlet } from "react-router-dom";
 
 const AdminLayout = () => {
   // const navigate = useNavigate();
@@ -13,7 +11,7 @@ const AdminLayout = () => {
   // }, []);
   return (
     <>
-      <div style={{ minHeight: "72vh" }}>
+      <div style={{ minHeight: "77vh" }}>
         <UserHeader role="Admin" />
         <Outlet />
       </div>

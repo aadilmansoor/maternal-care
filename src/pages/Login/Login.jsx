@@ -179,7 +179,6 @@ function Login() {
                         textAlign: "justify",
                       }}
                     >
-                      {" "}
                       We are dedicated to providing comprehensive and
                       compassionate care for mothers-to-be and their families.
                       Our platform is designed to ensure seamless communication
@@ -231,8 +230,12 @@ function Login() {
                             }
                           />
                         </div>
-                        <div className="d-flex justify-content-center  gap-3 flex-wrap mt-3 ">
-                          <div className="">
+                        <div
+                          className={`d-flex justify-content-center  gap-3 flex-wrap mt-3 ${
+                            role === "admin" ? "d-none" : ""
+                          }`}
+                        >
+                          {/* <div className="">
                             <input
                               className="me-2"
                               style={{ width: "20px", height: "20px" }}
@@ -248,7 +251,17 @@ function Login() {
                             onClick={handleShow}
                           >
                             Forgot password?
-                          </span>
+                          </span> */}
+                          Don't have an account?{" "}
+                          <Link
+                            to={
+                              role === "provider"
+                                ? "/service-provider-register"
+                                : "/client-register"
+                            }
+                          >
+                            Create an account
+                          </Link>
                         </div>
                         <div className="d-flex justify-content-center align-items-center">
                           <button

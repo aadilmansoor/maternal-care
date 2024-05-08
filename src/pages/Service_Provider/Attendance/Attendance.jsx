@@ -30,7 +30,7 @@ const Attendance = () => {
       if (localStorage.getItem("maternity-role") === "provider") {
         serviceProviderId = localStorage.getItem("serviceProviderId");
       } else {
-        serviceProviderId = serviceProvider._id;
+        serviceProviderId = serviceProvider?._id || "";
       }
       const result = await serviceProviderShowAttendance({
         month,
@@ -94,7 +94,7 @@ const Attendance = () => {
                 {data.map((attendance) => {
                   return (
                     <TableRow
-                      key={attendance._id}
+                      key={attendance?._id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell>{attendance.date}</TableCell>

@@ -414,14 +414,25 @@ export const deleteCategoryAPI = async (req) => {
   );
 };
 
-
 //get Emergency support
-
 export const getEmergencyAPI = async () => {
   return await commonAPI(
     "GET",
     `${base_URL}/maternalcare/emergency/get`,
     "",
+    ""
+  );
+};
+
+// add emergency contact
+export const addEmergencyAPI = async (req) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/maternalcare/emergency/add`,
+    req,
+    ""
+  );
+};
 
 //sent message by user
 export const sentMessageUserAPI = async (req) => {

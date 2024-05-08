@@ -11,10 +11,8 @@ function Footer() {
             <Col md={4} className="mt-5 mb-5">
               <h3 className="head text-center">Maternal Care</h3>
               <p className="text-center">
-                Lorem, ipsum dolor sit amet consectetur um, blanditiis porro
-                tempora, quae odit inventore commodi temporibus laboriosam
-                dolorem, obcaecati dolor. Lorem ipsum dolor sit amet consectetur
-                adip.tatibus eius esse.
+                Empowering mothers through compassionate care and support, every
+                step of the journey
               </p>
             </Col>
             <Col md={4} className="mt-5  text-center">

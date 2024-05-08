@@ -62,9 +62,13 @@ export const adminServices = [
     path: "/admin/blog",
   },
   {
-    service: "Send Newsletter",
-    path: "/admin/send-newsletter",
+    service: "Emergency Support",
+    path: "/admin/emergency-support",
   },
+  // {
+  //   service: "Send Newsletter",
+  //   path: "/admin/send-newsletter",
+  // },
   {
     service: "Service Providers",
     path: "/admin/service-providers",
