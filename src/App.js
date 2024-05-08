@@ -75,6 +75,10 @@ function App() {
             path="/admin/service-provider-details"
             element={<ServiceProviderDetails role="admin" />}
           />
+          <Route
+            path="/admin/service-provider-attendance"
+            element={<Attendance />}
+          />
         </Route>
 
         {/* service provider */}
@@ -112,6 +116,10 @@ function App() {
           <Route
             path="/user/service-provider-details"
             element={<ServiceProviderDetails />}
+          />
+          <Route
+            path="/user/service-provider-attendance"
+            element={<Attendance />}
           />
         </Route>
       </Routes>

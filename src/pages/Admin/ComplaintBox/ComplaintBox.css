@@ -49,6 +49,10 @@ hr {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url("/src/Images/chat-bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .message_container {
@@ -70,8 +74,16 @@ hr {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
+.back_arrow {
+    display: none;
+}
+
 @media screen and (max-width: 850px) {
     .chat_profile {
-        display: none;
+        width: 100%;
+    }
+
+    .back_arrow {
+        display: block;
     }
 }

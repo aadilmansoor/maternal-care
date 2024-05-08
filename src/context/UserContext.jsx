@@ -6,6 +6,7 @@ export const INITIAL_USER = {
   id: "",
   username: "",
   email: "",
+  phone: "",
 };
 
 export const INITIAL_PROVIDER = {
@@ -37,13 +38,13 @@ const UserProvider = ({ children }) => {
       try {
         const userID = localStorage.getItem("userId");
         const result = await getUserAPI({ userID });
-        console.log(result);
         if (result.status === 200) {
           const client = result.data.user;
           setUser({
             id: client._id,
             username: client.userName,
             email: client.userEmail,
+            phone: client.userPhoneNumber,
           });
         }
       } catch (error) {
@@ -56,7 +57,6 @@ const UserProvider = ({ children }) => {
       try {
         const userID = localStorage.getItem("serviceProviderId");
         const result = await getProviderAPI({ userID });
-        console.log(result);
         if (result.status === 200) {
           const client = result.data.user;
           setProvider({
@@ -82,7 +82,6 @@ const UserProvider = ({ children }) => {
     provider,
     setProvider,
   };
-  console.log(value);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

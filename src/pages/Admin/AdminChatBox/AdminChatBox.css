@@ -42,13 +42,17 @@ hr {
 
 }
 
-.message_box {
-    height: 100vh;
+.message_box_admin {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url("/src/Images/chat-bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 90vh;
 }
 
 .message_container_admin {
@@ -206,6 +210,10 @@ hr {
     margin-bottom: 20px;
 }
 
+.back_arrow {
+    display: none;
+}
+
 @media screen and (max-width:450px) {
     .chat_box {
         margin-bottom: 0;
@@ -239,7 +247,15 @@ hr {
 }
 
 @media screen and (max-width: 850px) {
-    .chat_profile_admin {
+    .hide_content {
         display: none;
+    }
+
+    .chat_profile_admin {
+        width: 100%;
+    }
+
+    .back_arrow {
+        display: block;
     }
 }

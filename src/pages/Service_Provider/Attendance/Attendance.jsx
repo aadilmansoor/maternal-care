@@ -12,23 +12,31 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { serviceProviderShowAttendance } from "../../../Services/allAPI";
+import { useLocation } from "react-router-dom";
+import { getCurrentMonth, getCurrentYear } from "../../../utils";
+
+const currentMonth = getCurrentMonth();
+const currentYear = getCurrentYear();
 
 const Attendance = () => {
-  const [month, setMonth] = useState("01");
-  const [year, setYear] = useState("2024");
+  const [month, setMonth] = useState(currentMonth);
+  const [year, setYear] = useState(currentYear);
   const [data, setData] = useState([]);
-  console.log(data);
+  const location = useLocation();
+  const serviceProvider = location.state;
   useEffect(() => {
     const fetchData = async () => {
-      const token = localStorage.getItem("maternity-token");
-      const headers = {
-        "Content-type": "application/json",
-        Authorization: `${token}`,
-      };
-      const result = await serviceProviderShowAttendance(
-        { month, year },
-        headers
-      );
+      let serviceProviderId = "";
+      if (localStorage.getItem("maternity-role") === "provider") {
+        serviceProviderId = localStorage.getItem("serviceProviderId");
+      } else {
+        serviceProviderId = serviceProvider._id;
+      }
+      const result = await serviceProviderShowAttendance({
+        month,
+        year,
+        serviceProviderId,
+      });
       if (result.status === 200) {
         setData(result.data);
       } else {
@@ -39,10 +47,13 @@ const Attendance = () => {
   }, [month, year]);
   return (
     <div className="d-flex flex-column align-items-center mt-4 container_size">
-      <h2 className="text-center mt-5 mb-4">Attendance</h2>
+      <h2 className="text-center mt-5 mb-4 text-capitalize">
+        {serviceProvider ? serviceProvider.username + "'s" : ""} Attendance
+      </h2>
       <div className="d-flex gap-3 date-pickers mb-3">
         <Form.Select
           aria-label="month"
+          value={month}
           onChange={(e) => setMonth(e.target.value)}
         >
           {months.map(({ month, value }) => {
@@ -55,6 +66,7 @@ const Attendance = () => {
         </Form.Select>
         <Form.Select
           aria-label="year"
+          value={year}
           onChange={(e) => setYear(e.target.value)}
         >
           {years.map((year) => {

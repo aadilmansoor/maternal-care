@@ -138,7 +138,7 @@ function UserHeader({ role = "User" }) {
                     ? "/user/webinar"
                     : "/service-provider/webinar"
                 }`}
-                className={`ms-4 roboto-regular fs-5 text-decoration-none text-white me-4 ${
+                className={`ms-4 roboto-regular fs-5 text-decoration-none text-white me-5 ${
                   role !== "User" && role !== "provider" ? "d-none" : ""
                 }`}
               >
@@ -148,31 +148,49 @@ function UserHeader({ role = "User" }) {
                 href={`${
                   role === "User" ? "/user/blog" : "/service-provider/blog"
                 }`}
-                className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
+                className={`roboto-regular fs-5 text-decoration-none text-white me-5 ${
                   role !== "User" && role !== "provider" ? "d-none" : ""
                 }`}
               >
                 Blog
+              </a>
+              <a
+                href={`${
+                  role === "User" ? "/user/blog" : "/service-provider/blog"
+                }`}
+                className={`roboto-regular fs-5 text-decoration-none text-white me-4 ${
+                  role !== "User" && role !== "provider" ? "d-none" : ""
+                }`}
+              >
+                Emergency Support
               </a>
             </div>
           </Col>
 
           <Col className=" d-flex justify-content-end align-items-center py-1">
             <div className=" d-flex align-items-center justify-content-center me-3">
-              <button
-                type="button"
-                className="btn d-flex h-100 align-items-center w-100"
-                onClick={handleShowRight}
-              >
-                <img
-                  style={{ borderRadius: "100%" }}
-                  src={image.imagePreview}
-                  alt="profile"
-                  className="rounded-full"
-                  width={50}
-                  height={50}
-                />
-              </button>
+              {role === "Admin" ? (
+                <Button variant="danger" onClick={(e) => handleLogOut(e)}>
+                  Log Out
+                </Button>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    className="btn d-flex h-100 align-items-center w-100"
+                    onClick={handleShowRight}
+                  >
+                    <img
+                      style={{ borderRadius: "100%" }}
+                      src={image.imagePreview}
+                      alt="profile"
+                      className="rounded-full"
+                      width={50}
+                      height={50}
+                    />
+                  </button>
+                </>
+              )}
             </div>
           </Col>
         </Row>
@@ -224,6 +242,14 @@ function UserHeader({ role = "User" }) {
             >
               Blog
             </Nav.Link>
+            <Nav.Link
+              href={`${
+                role === "User" ? "/user/blog" : "/service-provider/blog"
+              }`}
+              className="fs-5 bg-white mb-1 text-dark rounded-2 text-nowrap"
+            >
+              Emergency Support
+            </Nav.Link>
           </Nav>
         </Offcanvas.Body>
       </Offcanvas>
@@ -249,77 +275,113 @@ function UserHeader({ role = "User" }) {
               borderRadius: "5%",
             }}
           >
-            <div className="d-flex align-items-center justify-content-center mt-4">
-              <label htmlFor="admin_profile">
-                <input
-                  id="admin_profile"
-                  name="profile"
-                  type="file"
-                  style={{ display: "none" }}
-                  onChange={(e) => handleImageChange(e)}
-                  accept=".jpg,.jpeg,.png"
-                />
-                <img
-                  className="mt-4"
-                  src={image.imagePreview}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    borderRadius: "50%",
-                  }}
-                  alt="profile"
-                />
-              </label>
-            </div>
-            <div className="d-flex align-items-center justify-content-center mt-2">
-              <p className="text-white">ADD PICTURE</p>
-            </div>
-            <div className="d-flex align-items-center justify-content-center mt-2 rounded-5">
-              <InputGroup className="mb-3 mx-4">
-                <Form.Control
-                  placeholder="Email"
-                  aria-label="Username"
-                  value={profileDetails.email}
-                  onChange={(e) =>
-                    setProfileDetails({
-                      ...profileDetails,
-                      email: e.target.value,
-                    })
-                  }
-                />
-              </InputGroup>
-            </div>
+            {role === "provider" ? (
+              <>
+                <div className="d-flex align-items-center justify-content-center mt-4">
+                  <label htmlFor="admin_profile">
+                    <input
+                      id="admin_profile"
+                      name="profile"
+                      type="file"
+                      style={{ display: "none" }}
+                      onChange={(e) => handleImageChange(e)}
+                      accept=".jpg,.jpeg,.png"
+                    />
+                    <img
+                      className="mt-4"
+                      src={image.imagePreview}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        borderRadius: "50%",
+                      }}
+                      alt="profile"
+                    />
+                  </label>
+                </div>
+                <div className="d-flex align-items-center justify-content-center mt-2">
+                  <p className="text-white">ADD PICTURE</p>
+                </div>
+                <div className="d-flex align-items-center justify-content-center mt-2 rounded-5">
+                  <InputGroup className="mb-3 mx-4">
+                    <Form.Control
+                      placeholder="Email"
+                      aria-label="Username"
+                      value={profileDetails.email}
+                      onChange={(e) =>
+                        setProfileDetails({
+                          ...profileDetails,
+                          email: e.target.value,
+                        })
+                      }
+                    />
+                  </InputGroup>
+                </div>
 
-            <div className="d-flex align-items-center justify-content-center mt-2 rounded-5">
-              <InputGroup className="mb-3 mx-4">
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  aria-label="Password"
-                  value={profileDetails.password}
-                  onChange={(e) =>
-                    setProfileDetails({
-                      ...profileDetails,
-                      password: e.target.value,
-                    })
-                  }
-                />
-              </InputGroup>
-            </div>
-            <div className="d-flex align-items-center justify-content-center mt-3">
-              <button
-                className="btn btn-info"
-                style={{ borderStyle: "dotted" }}
-                onClick={(e) => handleSubmit(e)}
-              >
-                Update Profile
-              </button>
-            </div>
-            <div className="position-absolute bottom-0 text-center  btn_contain mt-5 mb-5">
-              <Button variant="danger" onClick={(e) => handleLogOut(e)}>
-                Log Out
-              </Button>
-            </div>
+                <div className="d-flex align-items-center justify-content-center mt-2 rounded-5">
+                  <InputGroup className="mb-3 mx-4">
+                    <Form.Control
+                      type="password"
+                      placeholder="Password"
+                      aria-label="Password"
+                      value={profileDetails.password}
+                      onChange={(e) =>
+                        setProfileDetails({
+                          ...profileDetails,
+                          password: e.target.value,
+                        })
+                      }
+                    />
+                  </InputGroup>
+                </div>
+                <div className="d-flex align-items-center justify-content-center mt-3">
+                  <button
+                    className="btn btn-info"
+                    style={{ borderStyle: "dotted" }}
+                    onClick={(e) => handleSubmit(e)}
+                  >
+                    Update Profile
+                  </button>
+                </div>
+                <div className="position-absolute bottom-0 text-center  btn_contain mt-5 mb-5">
+                  <Button variant="danger" onClick={(e) => handleLogOut(e)}>
+                    Log Out
+                  </Button>
+                </div>
+              </>
+            ) : role === "User" ? (
+              <>
+                <Form className="mx-3 pt-5">
+                  <Form.Group className="mb-4" controlId="formBasicEmail">
+                    <Form.Label className="text-white">Username</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={user.username}
+                      className="text-capitalize"
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-4" controlId="formBasicEmail">
+                    <Form.Label className="text-white">Email</Form.Label>
+                    <Form.Control type="text" value={user.email} />
+                  </Form.Group>
+                  <Form.Group className="mb-4" controlId="formBasicEmail">
+                    <Form.Label className="text-white">Phone Number</Form.Label>
+                    <Form.Control
+                      type="text"
+                      className="text-capitalize"
+                      value={user.phone}
+                    />
+                  </Form.Group>
+                </Form>
+                <div className="position-absolute bottom-0 text-center  btn_contain mt-5 mb-5">
+                  <Button variant="danger" onClick={(e) => handleLogOut(e)}>
+                    Log Out
+                  </Button>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
           </div>
         </Offcanvas.Body>
       </Offcanvas>

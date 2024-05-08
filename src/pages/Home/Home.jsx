@@ -8,6 +8,7 @@ import img2 from "../../Images/img3.png";
 import img7 from "../../Images/img7.png";
 import img5 from "../../Images/img5.png";
 import Carousel from "react-bootstrap/Carousel";
+import { Footer } from "../../components";
 
 function Home() {
   return (
@@ -284,6 +285,7 @@ function Home() {
           </Row>
         </Container>
       </div>
+      <Footer />
     </>
   );
 }

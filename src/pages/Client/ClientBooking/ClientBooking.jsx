@@ -216,101 +216,125 @@ const ClientBooking = () => {
     <>
       <h2 className="appointment mb-4 mt-3">Book Appointment</h2>
       <div className="container_group">
-        <div className="mb-2 d-flex gap-2 input_group">
-          <Form.Select
-            aria-label="Default select example"
-            onChange={(e) =>
-              setProviderDetails({
-                ...providerDetails,
-                typeOfCare: e.target.value,
-              })
-            }
-            className="text-capitalize"
-          >
-            <option value="pre-delivery care">Pre-delivery Care</option>
-            <option value="post-delivery care">Post-delivery Care</option>
-            <option value="yoga therapy">Yoga Therapy</option>
-            <option value="doctor support">Doctor Support</option>
-          </Form.Select>
-          <Form.Select
-            aria-label="Default select example"
-            onChange={(e) =>
-              setProviderDetails({
-                ...providerDetails,
-                service: e.target.value,
-                services: e.target.value,
-              })
-            }
-            className="text-capitalize"
-          >
-            {listOfServices.map((value) => {
-              return (
-                <option key={value} value={value} className="text-capitalize">
-                  {value}
-                </option>
-              );
-            })}
-          </Form.Select>
-          <Form.Select
-            aria-label="Default select example"
-            onChange={(e) =>
-              setProviderDetails({ ...providerDetails, timing: e.target.value })
-            }
-          >
-            <option>Select Timing</option>
-            <option value="full day">Full Day</option>
-            <option value="day">Day</option>
-            <option value="night">Night</option>
-            <option value="custom">Custom</option>
-          </Form.Select>
+        <div className="mb-3 d-flex gap-2 input_group">
+          <Form.Group className="w-100">
+            <Form.Label>Type of Care:</Form.Label>
+            <Form.Select
+              aria-label="Default select example"
+              onChange={(e) =>
+                setProviderDetails({
+                  ...providerDetails,
+                  typeOfCare: e.target.value,
+                })
+              }
+              className="text-capitalize"
+            >
+              <option value="pre-delivery care">Pre-delivery Care</option>
+              <option value="post-delivery care">Post-delivery Care</option>
+              <option value="yoga therapy">Yoga Therapy</option>
+              <option value="doctor support">Doctor Support</option>
+            </Form.Select>
+          </Form.Group>
+          <Form.Group className="w-100">
+            <Form.Label>Services:</Form.Label>
+            <Form.Select
+              aria-label="Default select example"
+              onChange={(e) =>
+                setProviderDetails({
+                  ...providerDetails,
+                  service: e.target.value,
+                  services: e.target.value,
+                })
+              }
+              className="text-capitalize"
+            >
+              {listOfServices.map((value) => {
+                return (
+                  <option key={value} value={value} className="text-capitalize">
+                    {value}
+                  </option>
+                );
+              })}
+            </Form.Select>
+          </Form.Group>
+          <Form.Group className="w-100">
+            <Form.Label>Timings:</Form.Label>
+            <Form.Select
+              aria-label="Default select example"
+              onChange={(e) =>
+                setProviderDetails({
+                  ...providerDetails,
+                  timing: e.target.value,
+                })
+              }
+            >
+              <option>Select Timing</option>
+              <option value="full day">Full Day</option>
+              <option value="day">Day</option>
+              <option value="night">Night</option>
+              <option value="custom">Custom</option>
+            </Form.Select>
+          </Form.Group>
         </div>
-        <div className="mb-2 d-flex gap-2 input_group">
-          <input
-            className=" form-control "
-            type="time"
-            value={providerDetails.startingTime}
-            onChange={(e) =>
-              setProviderDetails({
-                ...providerDetails,
-                startingTime: e.target.value,
-              })
-            }
-            disabled={disableTime}
-          />
-          <input
-            className=" form-control "
-            type="time"
-            value={providerDetails.endingTime}
-            onChange={(e) =>
-              setProviderDetails({
-                ...providerDetails,
-                endingTime: e.target.value,
-              })
-            }
-            disabled={disableTime}
-          />
-          <input
-            className=" form-control "
-            type="date"
-            value={providerDetails.startDate}
-            onChange={(e) =>
-              setProviderDetails({
-                ...providerDetails,
-                startDate: e.target.value,
-              })
-            }
-          />
-          <input
-            className=" form-control "
-            type="date"
-            value={providerDetails.endDate}
-            onChange={(e) =>
-              setProviderDetails({
-                ...providerDetails,
-                endDate: e.target.value,
-              })
-            }
-          />
+        <div className="mb-3 d-flex gap-2 input_group">
+          <Form.Group className="w-100">
+            <Form.Label>Start Time:</Form.Label>
+            <input
+              className=" form-control "
+              type="time"
+              value={providerDetails.startingTime}
+              onChange={(e) =>
+                setProviderDetails({
+                  ...providerDetails,
+                  startingTime: e.target.value,
+                })
+              }
+              disabled={disableTime}
+            />
+          </Form.Group>
+          <Form.Group className="w-100">
+            <Form.Label>End Time:</Form.Label>
+            <input
+              className=" form-control "
+              type="time"
+              value={providerDetails.endingTime}
+              onChange={(e) =>
+                setProviderDetails({
+                  ...providerDetails,
+                  endingTime: e.target.value,
+                })
+              }
+              disabled={disableTime}
+            />
+          </Form.Group>
+          <Form.Group className="w-100">
+            <Form.Label>Start Date:</Form.Label>
+            <input
+              className=" form-control "
+              type="date"
+              value={providerDetails.startDate}
+              onChange={(e) =>
+                setProviderDetails({
+                  ...providerDetails,
+                  startDate: e.target.value,
+                })
+              }
+            />
+          </Form.Group>
+          <Form.Group className="w-100">
+            <Form.Label>End Date:</Form.Label>
+            <input
+              className=" form-control "
+              type="date"
+              value={providerDetails.endDate}
+              onChange={(e) =>
+                setProviderDetails({
+                  ...providerDetails,
+                  endDate: e.target.value,
+                })
+              }
+            />
+          </Form.Group>
         </div>
         <InputGroup className="search_input mb-5">
           <Form.Control
