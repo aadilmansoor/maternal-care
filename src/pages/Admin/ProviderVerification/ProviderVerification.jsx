@@ -19,7 +19,6 @@ import {
 const ProviderVerification = () => {
   const [requestList, setRequestList] = useState([]);
   const [disabledButtons, setDisabledButtons] = useState([]);
-  console.log(requestList);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +31,7 @@ const ProviderVerification = () => {
   const handleAccept = async (data, index) => {
     setDisabledButtons([...disabledButtons, index]);
     const result = await approveRequest(data);
+    console.log({ result });
     if (result.status === 200) {
       toast.success("Request approved.");
       setDisabledButtons((currentButtons) =>
